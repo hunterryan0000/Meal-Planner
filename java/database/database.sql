@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, recipes, ingredients, recipe_ingredients, appliances, recipe_appliances;
+DROP TABLE IF EXISTS users, recipes, ingredients, recipe_ingredients, appliances, recipe_appliances, meals, meals_mealplan, meals_recipes, mealplan;
 
 DROP SEQUENCE IF EXISTS seq_user_id;
 
@@ -27,7 +27,7 @@ insert into users (username,password_hash,role) values ('David', '$2a$10$Xfy2MHX
 insert into users (username,password_hash,role) values ('Marcello', '$2a$10$mI2EpGybkNndTZwmswuUjerSITgRXAHVqG0izB.b6dLv9PNrywpPe', 'ROLE_USER');
 
 CREATE TABLE recipes (
-	recipe_id int not null PRIMARY KEY,
+	recipe_id serial not null PRIMARY KEY,
 	user_id int,
 	name varchar(50),
 	description varchar(999),
