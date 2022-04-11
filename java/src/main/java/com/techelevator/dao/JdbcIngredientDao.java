@@ -20,7 +20,7 @@ public class JdbcIngredientDao implements IngredientDao{
     public List<Ingredient> getSearch(String searchTerm) {
         String sql = "select * from ingredients where name ilike ? limit 20";
 
-        SqlRowSet resultSet = jdbcTemplate.queryForRowSet(sql, "" + searchTerm + "%");
+        SqlRowSet resultSet = jdbcTemplate.queryForRowSet(sql, "%" + searchTerm + "%");
 
         List<Ingredient> results = new ArrayList<>();
         while(resultSet.next()){
