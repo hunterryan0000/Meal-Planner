@@ -62,6 +62,38 @@ create table recipe_appliances(
 	foreign key (recipe_id) references recipes(recipe_id)
 );
 
+create table meals (
+	meal_id serial not null primary key,
+	name varchar(100),
+	description varchar (999),
+	time_of_day timestamp
+);
+
+create table meals_recipes (
+	meal_id int,
+	recipe_id int,
+	foreign key (recipe_id) references recipes(recipe_id),
+	foreign key (meal_id) references meals(meal_id)
+);
+
+create table mealplan(
+	mealplan_id serial not null primary key,
+	user_id int,
+	name varchar (100),
+	totaldays int,
+	foreign key (user_id) references users(user_id)
+);
+
+create table meals_mealplan(
+	mealplan_id int,
+	meal_id int,
+	day int,
+	time time,
+	foreign key (mealplan_id) references mealplan(mealplan_id),
+	foreign key (meal_id) references meals(meal_id)
+);
+
+
 
 
 
