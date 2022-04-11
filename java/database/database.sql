@@ -21,6 +21,10 @@ CREATE TABLE users (
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+insert into users (username,password_hash,role) values ('Matthew', '$2a$10$1LtCDecTzFojoeW86CNDkO6oo8Y3Xr296rVrtrlQH4CduC5PG5cyq', 'ROLE_USER');
+insert into users (username,password_hash,role) values ('Ryan', '$2a$10$ESPshb4vZsUzsoLHvd/p5.peGZ7zTq3heGkzjCisIm4Zz4eP09S.q', 'ROLE_USER');
+insert into users (username,password_hash,role) values ('David', '$2a$10$Xfy2MHXkL/pynLSNNktDr.aQkAs//mH.Wed2/8qo8NMm5BrhtyAGy', 'ROLE_USER');
+insert into users (username,password_hash,role) values ('Marcello', '$2a$10$mI2EpGybkNndTZwmswuUjerSITgRXAHVqG0izB.b6dLv9PNrywpPe', 'ROLE_USER');
 
 CREATE TABLE recipes (
 	recipe_id int not null PRIMARY KEY,
