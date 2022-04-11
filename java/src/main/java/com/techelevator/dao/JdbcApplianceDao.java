@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Appliance;
+import com.techelevator.model.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -27,6 +28,21 @@ public class JdbcApplianceDao implements ApplianceDao{
         }
         return results;
     }
+
+    @Override
+    public List<Appliance> getListByRecipeId(Long recipe_id) {
+        List<Appliance>applianceList = new ArrayList<>();
+        String sql = "select * from appliances \n" +
+                "join recipe_appliances on recipe_appliances.appliance_id = appliances.appliance_id\n" +
+                "where recipe_appliances.recipe_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
+        while (results.next()) {
+            Appliance appliance = mapRowToAppliance(results);
+            applianceList.add(appliance);
+        }
+        return applianceList;
+    }
+
 
     private Appliance mapRowToAppliance(SqlRowSet resultSet){
         Appliance appliance = new Appliance();

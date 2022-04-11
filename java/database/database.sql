@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, recipes, ingredients, recipe_ingredients, appliances, recipe_appliances;
+DROP TABLE IF EXISTS users, recipes, ingredients, recipe_ingredients, appliances, recipe_appliances, meals, meals_mealplan, meals_recipes, mealplan;
 
 DROP SEQUENCE IF EXISTS seq_user_id;
 
@@ -27,7 +27,7 @@ insert into users (username,password_hash,role) values ('David', '$2a$10$Xfy2MHX
 insert into users (username,password_hash,role) values ('Marcello', '$2a$10$mI2EpGybkNndTZwmswuUjerSITgRXAHVqG0izB.b6dLv9PNrywpPe', 'ROLE_USER');
 
 CREATE TABLE recipes (
-	recipe_id int not null PRIMARY KEY,
+	recipe_id serial not null PRIMARY KEY,
 	user_id int,
 	name varchar(50),
 	description varchar(999),
@@ -61,6 +61,38 @@ create table recipe_appliances(
 	foreign key (appliance_id) references appliances(appliance_id),
 	foreign key (recipe_id) references recipes(recipe_id)
 );
+
+create table meals (
+	meal_id serial not null primary key,
+	name varchar(100),
+	description varchar (999),
+	time_of_day timestamp
+);
+
+create table meals_recipes (
+	meal_id int,
+	recipe_id int,
+	foreign key (recipe_id) references recipes(recipe_id),
+	foreign key (meal_id) references meals(meal_id)
+);
+
+create table mealplan(
+	mealplan_id serial not null primary key,
+	user_id int,
+	name varchar (100),
+	totaldays int,
+	foreign key (user_id) references users(user_id)
+);
+
+create table meals_mealplan(
+	mealplan_id int,
+	meal_id int,
+	day int,
+	time time,
+	foreign key (mealplan_id) references mealplan(mealplan_id),
+	foreign key (meal_id) references meals(meal_id)
+);
+
 
 
 

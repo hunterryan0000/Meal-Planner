@@ -8,4 +8,6 @@ public interface ApplianceDao {
 
     List<Appliance> getSearch(String searchTerm);
 
+    List<Appliance> getListByRecipeId(Long recipe_id);
+
 }
