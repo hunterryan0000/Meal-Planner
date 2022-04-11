@@ -8,6 +8,10 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
+  },
+
+  findIngredient(term) {
+    return axios.get(`/ingredient/search/${term}`)
   }
 
 }
