@@ -24,4 +24,6 @@ public class IngredientSearchController {
         return ingredientDao.getSearch(term);
     }
 
+
+
 }
