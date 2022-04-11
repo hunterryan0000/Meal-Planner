@@ -1,9 +1,9 @@
 <template>
   <div>
   <h1> Create Recipe </h1>
-  <form>
-    <label for="recipe-name" >Recipe Name:</label>
-    <input id="recipe-name" v-model="name">
+  <form >
+    <label class="form-label" for="recipe-name" >Recipe Name:</label>
+    <input class="form-label" id="recipe-name" v-model="name">
 
     <label for="description">Description:</label>
     <textarea id="description" v-model="description"> </textarea>
