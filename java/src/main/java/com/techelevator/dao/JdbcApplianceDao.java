@@ -28,6 +28,12 @@ public class JdbcApplianceDao implements ApplianceDao{
         return results;
     }
 
+    @Override
+    public List<Appliance> getListByRecipeId(Long recipe_id) {
+        return null;
+    }
+
+
     private Appliance mapRowToAppliance(SqlRowSet resultSet){
         Appliance appliance = new Appliance();
         appliance.setId(resultSet.getLong("appliance_id"));

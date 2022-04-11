@@ -29,6 +29,11 @@ public class JdbcIngredientDao implements IngredientDao{
         return results;
     }
 
+    @Override
+    public List<Ingredient> getListByRecipeId(Long recipe_id) {
+        return null;
+    }
+
     private Ingredient mapRowToIngredient(SqlRowSet resultSet){
         Ingredient ingredient = new Ingredient();
         ingredient.setId(resultSet.getLong("ingredient_id"));
