@@ -41,7 +41,7 @@
     <br>
     
     <label for="servings">Servings:</label>
-    <b-form-select id="servings" v-model="serving" :options="servingOptions">
+    <b-form-select id="servings" v-model="servings" :options="servingOptions">
         <template #first>
         <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
       </template>
@@ -150,7 +150,7 @@ export default {
             name: '',
             description: '',
             instructions: '',
-            serving: null,
+            servings: null,
             difficulty: 1,
 
             ingredientList: [],
@@ -180,14 +180,14 @@ export default {
     methods: {
         addIngredientToArray(){
             let ingredientObject = {
-                id: null,
+                ingredient_id: null,
                 name: this.ingredient,
                 quantity: this.ingredientQuantity,
                 measurement: this.ingredientMeasurement
             }
             for (let index = 0; index < this.ingredientList.length; index++) {
                 if (this.ingredient === this.ingredientList[index].name){
-                    ingredientObject.id = this.ingredientList[index].id;
+                    ingredientObject.ingredient_id = this.ingredientList[index].id;
                 }
             }
             this.ingredients.push(ingredientObject);
@@ -218,7 +218,11 @@ export default {
         },
         consoleLogRecipeList(){
             console.log(this.getRecipe);
-            console.log(typeof this.difficulty);
+            AuthService.addRecipe(this.getRecipe)
+            .then((response) => {
+                console.log(response.data);
+            })
+
         },
         searchIngredientList(){
             this.ingredientList = [];
@@ -252,10 +256,10 @@ export default {
                 name: this.name,
                 description: this.description,
                 instructions: this.instructions,
-                serving: Number(this.serving),
+                servings: Number(this.servings),
                 difficulty: Number(this.difficulty),
-                ingredients: this.ingredients,
-                appliances: this.appliances
+                ingredientList: this.ingredients,
+                applianceList: this.appliances
             }
         }
     }

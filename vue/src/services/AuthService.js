@@ -25,6 +25,10 @@ export default {
 
   getRecipes() {
     return http.get(`/recipes/all`, { headers: authHeader() });
+  },
+
+  addRecipe(recipe) {
+    return http.post(`/recipes/add`, recipe, {headers: authHeader()})
   }
 
 }
