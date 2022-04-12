@@ -8,6 +8,6 @@ public interface RecipeDao {
 
     List<Recipe> getAll(Long userId);
 
-    Recipe getRecipeById(Long recipeId);
+    Recipe getRecipeById(Long recipeId, Long userId);
 
 }

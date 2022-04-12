@@ -18,7 +18,7 @@ public class JdbcIngredientDao implements IngredientDao{
 
     @Override
     public List<Ingredient> getSearch(String searchTerm) {
-        String sql = "select * from ingredients where name ilike ? limit 20";
+        String sql = "select * from ingredients where name ilike ? limit 10";
 
         SqlRowSet resultSet = jdbcTemplate.queryForRowSet(sql, "%" + searchTerm + "%");
 

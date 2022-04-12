@@ -19,7 +19,7 @@ public class JdbcApplianceDao implements ApplianceDao{
 
     @Override
     public List<Appliance> getSearch(String searchTerm) {
-        String sql = "select * from appliances where name ilike ? limit 20";
+        String sql = "select * from appliances where name ilike ? limit 10";
 
         SqlRowSet resultSet = jdbcTemplate.queryForRowSet(sql, "%" + searchTerm + "%");
         List<Appliance> results = new ArrayList<>();
