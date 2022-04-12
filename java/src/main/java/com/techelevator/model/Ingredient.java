@@ -5,6 +5,7 @@ public class Ingredient {
 
     private String name;
 
+
     public Long getId() {
         return id;
     }

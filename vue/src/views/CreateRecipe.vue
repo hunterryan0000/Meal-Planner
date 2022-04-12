@@ -62,9 +62,19 @@
         </div>
     </ul>
     <b-container fluid>
+        <b-row>
+             <b-col sm="11">
+                <b-form-input list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+            </b-col>
+        </b-row>
+        <b-row>
+             <b-col sm="11">
+                <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input>
+            </b-col>
+        </b-row>
         <b-row class="my-1">
             <b-col sm="11">
-                <b-form-input list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+            <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
             </b-col>
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
@@ -130,6 +140,8 @@ export default {
         return {
             ingredients: [],
             ingredient: '',
+            ingredientMeasurement: '',
+            ingredientQuantity: null,
             appliances: [],
             appliance: '',
             name: '',

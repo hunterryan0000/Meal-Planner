@@ -22,4 +22,8 @@ export default {
     return http.get(`/appliance/search/${term}`)
   },
 
+  getRecipes() {
+    return http.get(`/recipes/all`)
+  }
+
 }

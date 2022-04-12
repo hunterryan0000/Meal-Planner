@@ -18,15 +18,15 @@ public class Recipe {
 
     private int difficulty;
 
-    private List<Ingredient> ingredientList;
+    private List<RecipeIngredients> ingredientList;
 
     private List<Appliance> applianceList;
 
-    public List<Ingredient> getIngredientList() {
+    public List<RecipeIngredients> getIngredientList() {
         return ingredientList;
     }
 
-    public void setIngredientList(List<Ingredient> ingredientList) {
+    public void setIngredientList(List<RecipeIngredients> ingredientList) {
         this.ingredientList = ingredientList;
     }
 

@@ -31,7 +31,7 @@ public class JdbcIngredientDao implements IngredientDao{
 
     @Override
     public List<Ingredient> getListByRecipeId(Long recipe_id) {
-        List<Ingredient>ingredientList = new ArrayList<>();
+        List<Ingredient> ingredientList = new ArrayList<>();
         String sql = "select ingredients.* from ingredients \n" +
                 "join recipe_ingredients on recipe_ingredients.ingredient_id = ingredients.ingredient_id\n" +
                 "where recipe_ingredients.recipe_id = ?";
