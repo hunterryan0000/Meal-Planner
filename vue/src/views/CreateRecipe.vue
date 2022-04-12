@@ -12,9 +12,6 @@
         <b-form-input id="recipe-name" v-model="name" trim></b-form-input>
     </b-form-group>
 
-    <!-- <label class="form-label" for="recipe-name">Recipe Name:</label>
-    <input class="form-label" id="recipe-name" v-model="name"> -->
-
     <br>
     <label for="description">Description:</label>
     <b-form-textarea
@@ -24,29 +21,8 @@
         rows="3"
         max-rows="6"
     ></b-form-textarea>
-
-    <!-- <label for="description">Description:</label>
-    <textarea id="description" v-model="description"> </textarea> -->
-
-
-    <br>
-    <label for="instructions">Instructions:</label>
-    <b-form-textarea
-      id="instructions"
-      v-model="instructions"
-      placeholder=""
-      rows="6"
-      max-rows="12"
-    ></b-form-textarea>
-    <br>
     
-    <label for="servings">Servings:</label>
-    <b-form-select id="servings" v-model="servings" :options="servingOptions">
-        <template #first>
-        <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
-      </template>
-    </b-form-select>
-    <br><br>
+    
 <!-- 
 ********** -->
 
@@ -99,6 +75,15 @@
 ********** -->
 
     <br>
+    <label for="servings">Servings:</label>
+    <b-form-select id="servings" v-model="servings" :options="servingOptions">
+        <template #first>
+        <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
+      </template>
+    </b-form-select>
+    <br>
+
+    <br>
     <label for="appliance-input">Appliances:</label> 
     <ul id="appliance-input" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="appliance in appliances" v-bind:key="appliance">
@@ -127,6 +112,17 @@
         </option>
     </datalist>
    
+    <br>
+    <label for="instructions">Instructions:</label>
+    <b-form-textarea
+      id="instructions"
+      v-model="instructions"
+      placeholder=""
+      rows="6"
+      max-rows="12"
+    ></b-form-textarea>
+    <br>
+
     
     <br>
     <label for="difficulty-range">Difficulty: {{ difficulty }}</label>
