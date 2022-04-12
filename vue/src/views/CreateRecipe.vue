@@ -54,7 +54,7 @@
     <ul id="ingredient-list" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="ingredient in ingredients" v-bind:key="ingredient">
         <div>
-            <li>{{ingredient}}</li>
+            <li>{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</li>
         </div>
         <div class="ml-auto">
             <button class="btn btn-danger btn-sm" v-on:click.prevent="removeIngredientFromArray(ingredient)">X</button>
@@ -69,22 +69,22 @@
         </b-row>
         <b-row>
              <b-col sm="11">
-                <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input>
+                <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
             </b-col>
         </b-row>
         <b-row class="my-1">
             <b-col sm="11">
-            <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
+            <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input>
             </b-col>
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
             </b-col>
         </b-row>
-        <datalist id="ingredient-list">
+        <!-- <datalist id="ingredient-list">
             <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
                 {{ingredient}}
             </option>
-        </datalist>
+        </datalist> -->
     </b-container>
     
     <br>
@@ -92,7 +92,7 @@
     <ul id="appliance-list" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="appliance in appliances" v-bind:key="appliance">
         <div>
-            <li>{{appliance}}</li>
+            <li>{{appliance.name}}</li>
         </div>
         <div class="ml-auto">
             <button class="btn btn-danger btn-sm" v-on:click.prevent="removeApplianceFromArray(appliance)">X</button>
@@ -110,11 +110,11 @@
         </b-row>
     </b-container>
 
-    <datalist id="appliance-list">
+    <!-- <datalist id="appliance-list">
         <option v-for="appliance in applianceList" v-bind:key="appliance">
             {{appliance}}
         </option>
-    </datalist>
+    </datalist> -->
    
     
     <br>
@@ -140,17 +140,24 @@ export default {
         return {
             ingredients: [],
             ingredient: '',
+
             ingredientMeasurement: '',
             ingredientQuantity: null,
+
             appliances: [],
             appliance: '',
+
             name: '',
             description: '',
             instructions: '',
             serving: null,
             difficulty: 1,
+
             ingredientList: [],
+            // List of search ingredients returned from DB
             applianceList: [],
+            // List of search appliances returned from DB
+
             servingOptions: [
                 {value: '1', text: '1'}, 
                 {value: '2', text: '2'},
@@ -172,10 +179,19 @@ export default {
     },
     methods: {
         addIngredientToArray(){
-            if(!this.ingredients.includes(this.ingredient)) {
-                this.ingredients.push(this.ingredient);
-                this.ingredient = "";
+            let ingredientObject = {
+                id: null,
+                name: this.ingredient,
+                quantity: this.ingredientQuantity,
+                measurement: this.ingredientMeasurement
             }
+            for (let index = 0; index < this.ingredientList.length; index++) {
+                if (this.ingredient === this.ingredientList[index].name){
+                    ingredientObject.id = this.ingredientList[index].id;
+                }
+            }
+            this.ingredients.push(ingredientObject);
+            console.log(this.ingredients);
         },
         removeIngredientFromArray(ingredient) {
             this.ingredients = this.ingredients.filter( element => {
@@ -183,10 +199,17 @@ export default {
             })
         },
         addApplianceToArray(){
-            if(!this.appliances.includes(this.appliance)) {
-                this.appliances.push(this.appliance);
-                this.appliance = "";
+            let applianceObject = {
+                id: null,
+                name: this.appliance
             }
+            for (let index = 0; index < this.applianceList.length; index++) {
+                if(this.appliance === this.applianceList[index].name){
+                    applianceObject.id = this.applianceList[index].id;
+                }
+            }
+            this.appliances.push(applianceObject);
+            console.log(this.appliances);
         },
         removeApplianceFromArray(appliance) {
             this.appliances = this.appliances.filter( element => {
@@ -204,7 +227,7 @@ export default {
                 AuthService.findIngredient(this.ingredient)
                 .then((response) => {
                     response.data.forEach(element => {
-                        this.ingredientList.push(element.name);
+                        this.ingredientList.push(element);
                     });
                 })
                 console.log(this.ingredientList);
@@ -216,7 +239,7 @@ export default {
                 AuthService.findAppliance(this.appliance)
                 .then((response) => {
                     response.data.forEach(element => {
-                        this.applianceList.push(element.name);
+                        this.applianceList.push(element);
                     });
                 })
                 console.log(this.applianceList);
