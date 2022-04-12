@@ -65,30 +65,33 @@
     <b-container fluid>
 
         <b-row>
-             <b-col sm="11">
+             
+            <b-col sm="3">
+                <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
+            </b-col>
+
+            <b-col sm="3">
+                <b-form-select placeholder="measurement" v-model="ingredientMeasurement" :options="measurementOptions">
+                    <template #first>
+                        <b-form-select-option :value="null" disabled>Measurement</b-form-select-option>
+                    </template>
+                </b-form-select>
+            <!-- <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input> -->
+            </b-col>
+
+            <b-col sm="5">
                 <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
             </b-col>
             <datalist id="ingredient-list">
-            <option v-for="ingredient in ingredientList" v-bind:key="ingredient.name">
+            <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
                 {{ingredient.name}}
             </option>
             </datalist>
-        </b-row>
-        <br>
-        <b-row>
-             <b-col sm="11">
-                <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
-            </b-col>
-        </b-row>
-        <br>
-        <b-row class="my-1">
-            <b-col sm="11">
-            <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input>
-            </b-col>
+
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
             </b-col>
-            
+
         </b-row>
 
     </b-container>
@@ -97,7 +100,7 @@
 
     <br>
     <label for="appliance-input">Appliances:</label> 
-    <ul id="appliance-list" style="list-style-type:none;">
+    <ul id="appliance-input" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="appliance in appliances" v-bind:key="appliance">
         <div>
             <li>{{appliance.name}}</li>
@@ -120,7 +123,7 @@
 
     <datalist id="appliance-list">
         <option v-for="appliance in applianceList" v-bind:key="appliance">
-            {{appliance}}
+            {{appliance.name}}
         </option>
     </datalist>
    
@@ -149,7 +152,7 @@ export default {
             ingredients: [],
             ingredient: '',
 
-            ingredientMeasurement: '',
+            ingredientMeasurement: null,
             ingredientQuantity: null,
 
             appliances: [],
@@ -185,7 +188,16 @@ export default {
             ],
 
             measurementOptions: [
-                {value: 'Tbsp', text: 'Tbsp'}
+                {value: 'Tbsp', text: 'Tbsp'},
+                {value: 'tsp', text: 'tsp'},
+                {value: 'cup', text: 'cup'},
+                {value: 'gallon', text: 'gallon'},
+                {value: 'grams', text: 'grams'},
+                {value: 'mg', text: 'mg'},
+                {value: 'lbs', text: 'lbs'},
+                {value: 'oz', text: 'oz'},
+                {value: 'liter', text: 'liter'},
+                {value: 'ml', text: 'ml'}
             ]
         }
     },
