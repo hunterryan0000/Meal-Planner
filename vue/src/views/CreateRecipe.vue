@@ -47,11 +47,12 @@
       </template>
     </b-form-select>
     <br><br>
-
+<!-- 
+********** -->
 
     <br>
     <label for="ingredient-input" >Ingredients:</label> 
-    <ul id="ingredient-list" style="list-style-type:none;">
+    <ul id="ingredient-input" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="ingredient in ingredients" v-bind:key="ingredient">
         <div>
             <li>{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</li>
@@ -62,16 +63,24 @@
         </div>
     </ul>
     <b-container fluid>
+
         <b-row>
              <b-col sm="11">
-                <b-form-input list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
             </b-col>
+            <datalist id="ingredient-list">
+            <option v-for="ingredient in ingredientList" v-bind:key="ingredient.name">
+                {{ingredient.name}}
+            </option>
+            </datalist>
         </b-row>
+        <br>
         <b-row>
              <b-col sm="11">
                 <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
             </b-col>
         </b-row>
+        <br>
         <b-row class="my-1">
             <b-col sm="11">
             <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input>
@@ -79,14 +88,13 @@
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
             </b-col>
+            
         </b-row>
-        <!-- <datalist id="ingredient-list">
-            <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
-                {{ingredient}}
-            </option>
-        </datalist> -->
+
     </b-container>
-    
+<!--     
+********** -->
+
     <br>
     <label for="appliance-input">Appliances:</label> 
     <ul id="appliance-list" style="list-style-type:none;">
@@ -110,11 +118,11 @@
         </b-row>
     </b-container>
 
-    <!-- <datalist id="appliance-list">
+    <datalist id="appliance-list">
         <option v-for="appliance in applianceList" v-bind:key="appliance">
             {{appliance}}
         </option>
-    </datalist> -->
+    </datalist>
    
     
     <br>
@@ -174,6 +182,10 @@ export default {
                 {value: '13', text: '13'},
                 {value: '14', text: '14'},
                 {value: '15', text: '15'},
+            ],
+
+            measurementOptions: [
+                {value: 'Tbsp', text: 'Tbsp'}
             ]
         }
     },
@@ -186,7 +198,7 @@ export default {
                 measurement: this.ingredientMeasurement
             }
             for (let index = 0; index < this.ingredientList.length; index++) {
-                if (this.ingredient === this.ingredientList[index].name){
+                if (this.ingredient.toLowerCase().trim() === this.ingredientList[index].name.toLowerCase().trim()){
                     ingredientObject.ingredient_id = this.ingredientList[index].id;
                 }
             }
@@ -204,7 +216,7 @@ export default {
                 name: this.appliance
             }
             for (let index = 0; index < this.applianceList.length; index++) {
-                if(this.appliance === this.applianceList[index].name){
+                if(this.appliance.toLowerCase().trim() === this.applianceList[index].name.toLowerCase().trim()){
                     applianceObject.id = this.applianceList[index].id;
                 }
             }
