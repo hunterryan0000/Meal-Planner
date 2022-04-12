@@ -32,7 +32,7 @@ public class JdbcApplianceDao implements ApplianceDao{
     @Override
     public List<Appliance> getListByRecipeId(Long recipe_id) {
         List<Appliance>applianceList = new ArrayList<>();
-        String sql = "select * from appliances \n" +
+        String sql = "select appliances.* from appliances \n" +
                 "join recipe_appliances on recipe_appliances.appliance_id = appliances.appliance_id\n" +
                 "where recipe_appliances.recipe_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);

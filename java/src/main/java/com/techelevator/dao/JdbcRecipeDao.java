@@ -6,10 +6,12 @@ import com.techelevator.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcRecipeDao implements RecipeDao{
 
     @Autowired
@@ -29,9 +31,9 @@ public class JdbcRecipeDao implements RecipeDao{
 
         List<Recipe> results = new ArrayList<>();
         while(resultSet.next()){
-            //results.add();
+            results.add(mapRowToRecipe(resultSet));
         }
-        return null;
+        return results;
     }
 
     @Override
@@ -46,12 +48,10 @@ public class JdbcRecipeDao implements RecipeDao{
         recipe.setName(resultSet.getString("name"));
         recipe.setDescription(resultSet.getString("description"));
         recipe.setInstructions(resultSet.getString("instructions"));
-        recipe.setServings(resultSet.getInt("servings"));
+        recipe.setServings(resultSet.getInt("serving"));
         recipe.setDifficulty(resultSet.getInt("difficulty"));
         recipe.setIngredientList(ingredientDao.getListByRecipeId(recipe.getId()));
         recipe.setApplianceList(applianceDao.getListByRecipeId(recipe.getId()));
-
-
         return recipe;
     }
 }
