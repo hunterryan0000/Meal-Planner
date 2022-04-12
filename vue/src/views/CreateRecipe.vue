@@ -104,13 +104,10 @@
     <label for="1">1</label>
     <input type="radio" id="2" value="2" name="difficulty" v-model="difficulty">
     <label for="1">2</label>
-    <br>
     <input type="radio" id="3" value="3" name="difficulty" v-model="difficulty">
     <label for="1">3</label>
-    <br>
     <input type="radio" id="4" value="4" name="difficulty" v-model="difficulty">
     <label for="1">4</label>
-    <br>
     <input type="radio" id="5" value="5" name="difficulty" v-model="difficulty">
     <label for="1">5</label>
     <br>
