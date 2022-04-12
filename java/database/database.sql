@@ -30,10 +30,11 @@ CREATE TABLE recipes (
 	recipe_id serial not null PRIMARY KEY,
 	user_id int,
 	name varchar(50),
-	description varchar(999),
-	instructions varchar(999),
+	description varchar(2999),
+	instructions varchar(2999),
 	serving int,
 	difficulty int,
+	photo_url varchar(999),
 	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
@@ -46,6 +47,8 @@ create table recipe_ingredients (
 	recipe_id int,
 	ingredient_id int,
 	name varchar(50),
+	quantity int,
+	measurement varchar(50),
 	foreign key (recipe_id) references recipes(recipe_id),
 	foreign key (ingredient_id) references ingredients(ingredient_id)
 );
