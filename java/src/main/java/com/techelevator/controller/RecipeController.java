@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class RecipeController {
 
@@ -28,6 +29,7 @@ public class RecipeController {
 
     @RequestMapping(path = "/recipes/all", method =  RequestMethod.GET)
     public List<Recipe> findAll(Principal principal) {
+        System.out.println(principal);
         return recipeDao.getAll(new Long(userDao.findIdByUsername(principal.getName())));
     }
 

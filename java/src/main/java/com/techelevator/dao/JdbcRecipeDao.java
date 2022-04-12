@@ -54,8 +54,8 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public Recipe addRecipe(Recipe recipe) {
-        String sql = "insert into recipes values (default, ?, ?, ?, ?, ?, ?) returning recipe_id";
-        Long recipe_id = jdbcTemplate.queryForObject(sql, long.class, recipe.getUser_id(), recipe.getName(), recipe.getDescription(), recipe.getInstructions(), recipe.getServings(), recipe.getDifficulty());
+        String sql = "insert into recipes values (default, ?, ?, ?, ?, ?, ?, ?) returning recipe_id";
+        Long recipe_id = jdbcTemplate.queryForObject(sql, long.class, recipe.getUser_id(), recipe.getName(), recipe.getDescription(), recipe.getInstructions(), recipe.getServings(), recipe.getDifficulty(), recipe.getPhoto_url());
         for(RecipeIngredients recipeIngredients: recipe.getIngredientList()){
             recipeIngredients.setRecipe_id(recipe_id);
             System.out.println(recipeIngredients.getIngredient_id());
@@ -80,6 +80,7 @@ public class JdbcRecipeDao implements RecipeDao{
         recipe.setInstructions(resultSet.getString("instructions"));
         recipe.setServings(resultSet.getInt("serving"));
         recipe.setDifficulty(resultSet.getInt("difficulty"));
+        recipe.setPhoto_url(resultSet.getString("photo_url"));
         recipe.setIngredientList(recipeIngredientsDao.getListByRecipeId(recipe.getId()));
         recipe.setApplianceList(applianceDao.getListByRecipeId(recipe.getId()));
         return recipe;

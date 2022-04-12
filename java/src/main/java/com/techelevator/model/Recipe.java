@@ -18,6 +18,16 @@ public class Recipe {
 
     private int difficulty;
 
+    private String photo_url;
+
+    public String getPhoto_url() {
+        return photo_url;
+    }
+
+    public void setPhoto_url(String photo_url) {
+        this.photo_url = photo_url;
+    }
+
     private List<RecipeIngredients> ingredientList;
 
     private List<Appliance> applianceList;
