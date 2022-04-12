@@ -1,18 +1,9 @@
 <template>
-  <div>
-      <h3>{{recipe.name}}</h3>
-      <p>{{recipe.description}}</p>
-      <p>{{recipe.instructions}}</p>
-      <h2>Ingredients</h2>
-      <div v-for="ingredient in recipe.ingredientList" :key="ingredient.id" >
-          {{ingredient.name}}
-      </div>
-      <h2>Appliances</h2>
-      <div v-for="appliance in recipe.applianceList" :key="appliance.id">
-          {{appliance.name}}
-      </div>
+  <div v-on:click.prevent="pushRecipeDetails(recipe)">
       <div :style="{ 'background-image': 'url(' + recipe.photo_url + ')' }" class="parallax">
       </div>
+      <span>{{recipe.name}}</span>
+      <p>{{recipe.description}}</p>
   </div>
 </template>
 
@@ -21,7 +12,13 @@ export default {
     name: "recipe-card",
     props: {
         recipe: Object
+    },
+    methods: {
+    pushRecipeDetails(recipe){
+      console.log("hit");
+      this.$router.push({ name: 'details', params: {recipe: recipe}})
     }
+  }
 }
 </script>
 
@@ -30,16 +27,27 @@ export default {
     width: 10%;
 }
 .parallax {
-  /* The image used */
   
 
-  /* Set a specific height */
   min-height: 200px;
 
-  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  margin-bottom: 15px;
+
+}
+span{
+    font-weight: bolder;
+    font-size: 150%;
+    line-height: 30px;
+}
+p{
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 100%;
 }
 </style>
