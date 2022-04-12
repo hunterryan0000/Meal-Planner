@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Recipes from '../views/Recipes.vue'
+import CreateRecipe from '../views/CreateRecipe.vue'
 
 Vue.use(Router)
 
@@ -53,6 +55,22 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/recipes",
+      name: "recipes",
+      component: Recipes,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/create-recipe",
+      name: "create-recipe",
+      component: CreateRecipe,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
