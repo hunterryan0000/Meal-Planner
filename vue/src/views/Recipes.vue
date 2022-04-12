@@ -8,7 +8,19 @@
 </template>
 
 <script>
-export default {
+//import AuthService from '../services/AuthService.js'
+
+export default  {
+  name: 'recipes',
+  data () {
+
+  },
+  // methods: {
+  //   created() {
+  //     AuthService.getRecipes
+  //     .then()
+  //   }
+  // }
 
 }
 </script>
