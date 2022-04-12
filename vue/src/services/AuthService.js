@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from './auth-header';
 
 const http = axios.create({
   baseURL: 'http://localhost:3000'
@@ -23,7 +24,7 @@ export default {
   },
 
   getRecipes() {
-    return http.get(`/recipes/all`)
+    return http.get(`/recipes/all`, { headers: authHeader() });
   }
 
 }
