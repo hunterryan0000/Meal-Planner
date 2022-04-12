@@ -1,8 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Appliance;
-import com.techelevator.model.Ingredient;
-import com.techelevator.model.Recipe;
+import com.techelevator.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -22,6 +20,12 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Autowired
     private ApplianceDao applianceDao;
+
+    @Autowired
+    private RecipeIngredientsDao recipeIngredientsDao;
+
+    @Autowired
+    private RecipeAppliancesDao recipeAppliancesDao;
 
     @Override
     public List<Recipe> getAll(Long userId) {
@@ -45,6 +49,28 @@ public class JdbcRecipeDao implements RecipeDao{
             return mapRowToRecipe(resultSet);
         }
         return null;
+    }
+
+
+    @Override
+    public Recipe addRecipe(Recipe recipe) {
+        String sql = "insert into recipes values (default, ?, ?, ?, ?, ?, ?) returning recipe_id";
+        Long recipe_id = jdbcTemplate.queryForObject(sql, long.class, recipe.getUser_id(), recipe.getName(), recipe.getDescription(), recipe.getInstructions(), recipe.getServings(), recipe.getDifficulty());
+        for(Ingredient ingredient: recipe.getIngredientList()){
+            RecipeIngredients recipe_ingredients = new RecipeIngredients();
+            recipe_ingredients.setRecipe_id(recipe_id);
+            recipe_ingredients.setIngredient_id(ingredient.getId());
+            recipe_ingredients.setName(ingredient.getName());
+            recipeIngredientsDao.addRecipeIngredients(recipe_ingredients);
+        }
+        for(Appliance appliance: recipe.getApplianceList()){
+            RecipeAppliances recipeAppliances = new RecipeAppliances();
+            recipeAppliances.setAppliance_id(appliance.getId());
+            recipeAppliances.setRecipe_id(recipe_id);
+            recipeAppliancesDao.addRecipeAppliances(recipeAppliances);
+        }
+        recipe.setId(recipe_id);
+        return recipe;
     }
 
     private Recipe mapRowToRecipe(SqlRowSet resultSet){

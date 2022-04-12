@@ -10,4 +10,6 @@ public interface RecipeDao {
 
     Recipe getRecipeById(Long recipeId, Long userId);
 
+    Recipe addRecipe(Recipe recipe);
+
 }
