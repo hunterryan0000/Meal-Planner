@@ -56,12 +56,10 @@ public class JdbcRecipeDao implements RecipeDao{
     public Recipe addRecipe(Recipe recipe) {
         String sql = "insert into recipes values (default, ?, ?, ?, ?, ?, ?) returning recipe_id";
         Long recipe_id = jdbcTemplate.queryForObject(sql, long.class, recipe.getUser_id(), recipe.getName(), recipe.getDescription(), recipe.getInstructions(), recipe.getServings(), recipe.getDifficulty());
-        for(Ingredient ingredient: recipe.getIngredientList()){
-            RecipeIngredients recipe_ingredients = new RecipeIngredients();
-            recipe_ingredients.setRecipe_id(recipe_id);
-            recipe_ingredients.setIngredient_id(ingredient.getId());
-            recipe_ingredients.setName(ingredient.getName());
-            recipeIngredientsDao.addRecipeIngredients(recipe_ingredients);
+        for(RecipeIngredients recipeIngredients: recipe.getIngredientList()){
+            recipeIngredients.setRecipe_id(recipe_id);
+            System.out.println(recipeIngredients.getIngredient_id());
+            recipeIngredientsDao.addRecipeIngredients(recipeIngredients);
         }
         for(Appliance appliance: recipe.getApplianceList()){
             RecipeAppliances recipeAppliances = new RecipeAppliances();
@@ -82,7 +80,7 @@ public class JdbcRecipeDao implements RecipeDao{
         recipe.setInstructions(resultSet.getString("instructions"));
         recipe.setServings(resultSet.getInt("serving"));
         recipe.setDifficulty(resultSet.getInt("difficulty"));
-        recipe.setIngredientList(ingredientDao.getListByRecipeId(recipe.getId()));
+        recipe.setIngredientList(recipeIngredientsDao.getListByRecipeId(recipe.getId()));
         recipe.setApplianceList(applianceDao.getListByRecipeId(recipe.getId()));
         return recipe;
     }
