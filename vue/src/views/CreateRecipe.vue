@@ -41,20 +41,21 @@
     <br>
     
     <label for="servings">Servings:</label>
-    <b-form-select id="servings" v-model="serving" :options="servingOptions">
+    <b-form-select id="servings" v-model="servings" :options="servingOptions">
         <template #first>
         <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
       </template>
     </b-form-select>
     <br><br>
-
+<!-- 
+********** -->
 
     <br>
     <label for="ingredient-input" >Ingredients:</label> 
-    <ul id="ingredient-list" style="list-style-type:none;">
+    <ul id="ingredient-input" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="ingredient in ingredients" v-bind:key="ingredient">
         <div>
-            <li>{{ingredient}}</li>
+            <li>{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</li>
         </div>
         <div class="ml-auto">
             <button class="btn btn-danger btn-sm" v-on:click.prevent="removeIngredientFromArray(ingredient)">X</button>
@@ -62,37 +63,47 @@
         </div>
     </ul>
     <b-container fluid>
+
         <b-row>
-             <b-col sm="11">
-                <b-form-input list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+             
+            <b-col sm="3">
+                <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
             </b-col>
-        </b-row>
-        <b-row>
-             <b-col sm="11">
-                <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input>
+
+            <b-col sm="3">
+                <b-form-select placeholder="measurement" v-model="ingredientMeasurement" :options="measurementOptions">
+                    <template #first>
+                        <b-form-select-option :value="null" disabled>Measurement</b-form-select-option>
+                    </template>
+                </b-form-select>
+            <!-- <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input> -->
             </b-col>
-        </b-row>
-        <b-row class="my-1">
-            <b-col sm="11">
-            <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
+
+            <b-col sm="5">
+                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
             </b-col>
+            <datalist id="ingredient-list">
+            <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
+                {{ingredient.name}}
+            </option>
+            </datalist>
+
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
             </b-col>
+
         </b-row>
-        <datalist id="ingredient-list">
-            <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
-                {{ingredient}}
-            </option>
-        </datalist>
+
     </b-container>
-    
+<!--     
+********** -->
+
     <br>
     <label for="appliance-input">Appliances:</label> 
-    <ul id="appliance-list" style="list-style-type:none;">
+    <ul id="appliance-input" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="appliance in appliances" v-bind:key="appliance">
         <div>
-            <li>{{appliance}}</li>
+            <li>{{appliance.name}}</li>
         </div>
         <div class="ml-auto">
             <button class="btn btn-danger btn-sm" v-on:click.prevent="removeApplianceFromArray(appliance)">X</button>
@@ -112,7 +123,7 @@
 
     <datalist id="appliance-list">
         <option v-for="appliance in applianceList" v-bind:key="appliance">
-            {{appliance}}
+            {{appliance.name}}
         </option>
     </datalist>
    
@@ -140,17 +151,24 @@ export default {
         return {
             ingredients: [],
             ingredient: '',
-            ingredientMeasurement: '',
+
+            ingredientMeasurement: null,
             ingredientQuantity: null,
+
             appliances: [],
             appliance: '',
+
             name: '',
             description: '',
             instructions: '',
-            serving: null,
+            servings: null,
             difficulty: 1,
+
             ingredientList: [],
+            // List of search ingredients returned from DB
             applianceList: [],
+            // List of search appliances returned from DB
+
             servingOptions: [
                 {value: '1', text: '1'}, 
                 {value: '2', text: '2'},
@@ -167,15 +185,37 @@ export default {
                 {value: '13', text: '13'},
                 {value: '14', text: '14'},
                 {value: '15', text: '15'},
+            ],
+
+            measurementOptions: [
+                {value: 'Tbsp', text: 'Tbsp'},
+                {value: 'tsp', text: 'tsp'},
+                {value: 'cup', text: 'cup'},
+                {value: 'gallon', text: 'gallon'},
+                {value: 'grams', text: 'grams'},
+                {value: 'mg', text: 'mg'},
+                {value: 'lbs', text: 'lbs'},
+                {value: 'oz', text: 'oz'},
+                {value: 'liter', text: 'liter'},
+                {value: 'ml', text: 'ml'}
             ]
         }
     },
     methods: {
         addIngredientToArray(){
-            if(!this.ingredients.includes(this.ingredient)) {
-                this.ingredients.push(this.ingredient);
-                this.ingredient = "";
+            let ingredientObject = {
+                ingredient_id: null,
+                name: this.ingredient,
+                quantity: this.ingredientQuantity,
+                measurement: this.ingredientMeasurement
             }
+            for (let index = 0; index < this.ingredientList.length; index++) {
+                if (this.ingredient.toLowerCase().trim() === this.ingredientList[index].name.toLowerCase().trim()){
+                    ingredientObject.ingredient_id = this.ingredientList[index].id;
+                }
+            }
+            this.ingredients.push(ingredientObject);
+            console.log(this.ingredients);
         },
         removeIngredientFromArray(ingredient) {
             this.ingredients = this.ingredients.filter( element => {
@@ -183,10 +223,17 @@ export default {
             })
         },
         addApplianceToArray(){
-            if(!this.appliances.includes(this.appliance)) {
-                this.appliances.push(this.appliance);
-                this.appliance = "";
+            let applianceObject = {
+                id: null,
+                name: this.appliance
             }
+            for (let index = 0; index < this.applianceList.length; index++) {
+                if(this.appliance.toLowerCase().trim() === this.applianceList[index].name.toLowerCase().trim()){
+                    applianceObject.id = this.applianceList[index].id;
+                }
+            }
+            this.appliances.push(applianceObject);
+            console.log(this.appliances);
         },
         removeApplianceFromArray(appliance) {
             this.appliances = this.appliances.filter( element => {
@@ -195,7 +242,11 @@ export default {
         },
         consoleLogRecipeList(){
             console.log(this.getRecipe);
-            console.log(typeof this.difficulty);
+            AuthService.addRecipe(this.getRecipe)
+            .then((response) => {
+                console.log(response.data);
+            })
+
         },
         searchIngredientList(){
             this.ingredientList = [];
@@ -204,7 +255,7 @@ export default {
                 AuthService.findIngredient(this.ingredient)
                 .then((response) => {
                     response.data.forEach(element => {
-                        this.ingredientList.push(element.name);
+                        this.ingredientList.push(element);
                     });
                 })
                 console.log(this.ingredientList);
@@ -216,7 +267,7 @@ export default {
                 AuthService.findAppliance(this.appliance)
                 .then((response) => {
                     response.data.forEach(element => {
-                        this.applianceList.push(element.name);
+                        this.applianceList.push(element);
                     });
                 })
                 console.log(this.applianceList);
@@ -229,10 +280,10 @@ export default {
                 name: this.name,
                 description: this.description,
                 instructions: this.instructions,
-                serving: Number(this.serving),
+                servings: Number(this.servings),
                 difficulty: Number(this.difficulty),
-                ingredients: this.ingredients,
-                appliances: this.appliances
+                ingredientList: this.ingredients,
+                applianceList: this.appliances
             }
         }
     }
