@@ -3,12 +3,11 @@ package com.techelevator.controller;
 import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Appliance;
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -36,4 +35,15 @@ public class RecipeController {
     public Recipe findById(@PathVariable Long recipe_id, Principal principal) {
         return recipeDao.getRecipeById(recipe_id, new Long(userDao.findIdByUsername(principal.getName())));
     }
+
+    @RequestMapping(path = "/recipes/add", method = RequestMethod.POST)
+    public Recipe addRecipe(Principal principal, @RequestBody Recipe recipe){
+       recipe.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+       recipe = recipeDao.addRecipe(recipe);
+       return recipe;
+    }
+
+
+
+
 }
