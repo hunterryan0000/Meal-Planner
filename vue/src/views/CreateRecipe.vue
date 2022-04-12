@@ -1,15 +1,15 @@
 <template>
-  <div class="mx-auto col-md-5">
-  <h1 class=""> Create Recipe </h1>
+  <div class="mx-auto col-md-7">
+  <h1 class="text-center"> Create Recipe </h1>
 
   <br>
   <form>
     <b-form-group
-    id="fieldset-1"
-    description="What is your recipe called?"
-    label="Recipe Name:"
-    label-for="recipe-name">
-    <b-form-input id="recipe-name" v-model="name" trim></b-form-input>
+        id="fieldset-1"
+        description="What is your recipe called?"
+        label="Recipe Name:"
+        label-for="recipe-name">
+        <b-form-input id="recipe-name" v-model="name" trim></b-form-input>
     </b-form-group>
 
     <!-- <label class="form-label" for="recipe-name">Recipe Name:</label>
@@ -18,11 +18,11 @@
     <br>
     <label for="description">Description:</label>
     <b-form-textarea
-      id="description"
-      v-model="description"
-      placeholder="Enter something..."
-      rows="3"
-      max-rows="6"
+        id="description"
+        v-model="description"
+        placeholder=""
+        rows="3"
+        max-rows="6"
     ></b-form-textarea>
 
     <!-- <label for="description">Description:</label>
@@ -34,88 +34,90 @@
     <b-form-textarea
       id="instructions"
       v-model="instructions"
-      placeholder="Enter something..."
+      placeholder=""
       rows="6"
       max-rows="12"
     ></b-form-textarea>
     <br>
-    <!-- <label for="instructions">Instructions:</label>
-    <textarea id="instructions" v-model="instructions"> </textarea> -->
+    
+    <label for="servings">Servings:</label>
+    <b-form-select id="servings" v-model="serving" :options="servingOptions">
+        <template #first>
+        <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
+      </template>
+    </b-form-select>
+    <br><br>
 
-    <b-form-group
-    id="add-ingredient"
-    description="Add an ingredient"
-    label="Ingredient:"
-    label-for="add-ingredient">
-    <b-form-input list="ingredient-list" id="recipe-name" v-model="ingredient" v-on:keyup="searchIngredientList()" trim></b-form-input>
-    </b-form-group>
 
-    <!-- <label for="add-ingredient">Ingredient:</label>
-    <input list="ingredient-list" id="add-ingredient" v-model="ingredient" v-on:keyup="searchIngredientList()"> -->
-
-    <button id="add-ingredient" v-on:click.prevent="addIngredientToArray()">Add</button>
-    <datalist id="ingredient-list">
-        <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
-            {{ingredient}}
-        </option>
-    </datalist>
-    <p>Ingredients</p>
-    <ul id="ingredient-list">
-        <li v-for="ingredient in ingredients" v-bind:key="ingredient">{{ingredient}}</li>
+    <br>
+    <label for="ingredient-input" >Ingredients:</label> 
+    <ul id="ingredient-list" style="list-style-type:none;">
+        <div style="margin: 2px;" class="d-flex" v-for="ingredient in ingredients" v-bind:key="ingredient">
+        <div>
+            <li>{{ingredient}}</li>
+        </div>
+        <div class="ml-auto">
+            <button class="btn btn-danger btn-sm" v-on:click.prevent="removeIngredientFromArray(ingredient)">X</button>
+        </div>
+        </div>
     </ul>
+    <b-container fluid>
+        <b-row class="my-1">
+            <b-col sm="11">
+                <b-form-input list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+            </b-col>
+            <b-col sm="1">
+                <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
+            </b-col>
+        </b-row>
+        <datalist id="ingredient-list">
+            <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
+                {{ingredient}}
+            </option>
+        </datalist>
+    </b-container>
+    
+    <br>
+    <label for="appliance-input">Appliances:</label> 
+    <ul id="appliance-list" style="list-style-type:none;">
+        <div style="margin: 2px;" class="d-flex" v-for="appliance in appliances" v-bind:key="appliance">
+        <div>
+            <li>{{appliance}}</li>
+        </div>
+        <div class="ml-auto">
+            <button class="btn btn-danger btn-sm" v-on:click.prevent="removeApplianceFromArray(appliance)">X</button>
+        </div>
+        </div>
+    </ul>
+    <b-container fluid>
+        <b-row class="my-1">
+            <b-col sm="11">
+                <b-form-input list="appliance-list" id="appliance-input" v-model="appliance" v-on:keyup="searchApplianceList()"  placeholder="Add appliance"></b-form-input>
+            </b-col>
+            <b-col sm="1">
+                <button class="btn btn-success" v-on:click.prevent="addApplianceToArray()">Add</button>
+            </b-col>
+        </b-row>
+    </b-container>
 
-    <b-form-group
-    id="add-appliance"
-    description="Add an appliance"
-    label="Appliance:"
-    label-for="add-appliance">
-    <b-form-input list="appliance-list" id="add-appliance" v-model="appliance" v-on:keyup="searchApplianceList()" trim></b-form-input>
-    </b-form-group>
-
-    <!-- <label for="add-appliance">Appliance:</label>
-    <input list="appliance-list" id="add-appliance" v-model="appliance" v-on:keyup="searchApplianceList()"> -->
-    <button id="add-appliance" v-on:click.prevent="addApplianceToArray()">Add</button>
-     <datalist id="appliance-list">
+    <datalist id="appliance-list">
         <option v-for="appliance in applianceList" v-bind:key="appliance">
             {{appliance}}
         </option>
     </datalist>
-    <p>Appliances</p>
-    <ul id="appliance-list">
-        <li v-for="appliance in appliances" v-bind:key="appliance">{{appliance}}</li>
-    </ul>
-
-    <label for="serving-size">Serving Size:</label>
-    <select id="serving-size" v-model="serving">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-
-    <p>Difficulty:</p>
-    <input type="radio" id="1" value="1" name="difficulty" v-model="difficulty">
-    <label for="1">1</label>
-    <input type="radio" id="2" value="2" name="difficulty" v-model="difficulty">
-    <label for="1">2</label>
-    <input type="radio" id="3" value="3" name="difficulty" v-model="difficulty">
-    <label for="1">3</label>
-    <input type="radio" id="4" value="4" name="difficulty" v-model="difficulty">
-    <label for="1">4</label>
-    <input type="radio" id="5" value="5" name="difficulty" v-model="difficulty">
-    <label for="1">5</label>
+   
+    
     <br>
+    <label for="difficulty-range">Difficulty: {{ difficulty }}</label>
+    <b-form-input id="difficulty-range" v-model="difficulty" type="range" min="1" max="10"></b-form-input>
 
-    <button v-on:click.prevent="consoleLogRecipeList()">Save to Recipe List</button>
-
+    <br><br>
+    <div class="text-center">
+        <button class="btn btn-primary" v-on:click.prevent="consoleLogRecipeList()">Save to Recipe List</button>
+    </div>
+    <br>
   </form>
-
+    
   </div>
 </template>
 
@@ -126,31 +128,58 @@ export default {
     name: 'create-recipe',
     data () {
         return {
-        ingredients: [],
-        ingredient: '',
-
-        appliances: [],
-        appliance: '',
-
-        name: '',
-        description: '',
-        instructions: '',
-        serving: 0,
-        difficulty: 0,
-
-        ingredientList: [],
-
-        applianceList: []
+            ingredients: [],
+            ingredient: '',
+            appliances: [],
+            appliance: '',
+            name: '',
+            description: '',
+            instructions: '',
+            serving: null,
+            difficulty: 1,
+            ingredientList: [],
+            applianceList: [],
+            servingOptions: [
+                {value: '1', text: '1'}, 
+                {value: '2', text: '2'},
+                {value: '3', text: '3'},
+                {value: '4', text: '4'},
+                {value: '5', text: '5'},
+                {value: '6', text: '6'},
+                {value: '7', text: '7'},
+                {value: '8', text: '8'},
+                {value: '9', text: '9'},
+                {value: '10', text: '10'},
+                {value: '11', text: '11'},
+                {value: '12', text: '12'},
+                {value: '13', text: '13'},
+                {value: '14', text: '14'},
+                {value: '15', text: '15'},
+            ]
         }
     },
     methods: {
         addIngredientToArray(){
-
-            this.ingredients.push(this.ingredient);
-            console.log(this.ingredients);
+            if(!this.ingredients.includes(this.ingredient)) {
+                this.ingredients.push(this.ingredient);
+                this.ingredient = "";
+            }
+        },
+        removeIngredientFromArray(ingredient) {
+            this.ingredients = this.ingredients.filter( element => {
+                return element !== ingredient;
+            })
         },
         addApplianceToArray(){
-            this.appliances.push(this.appliance);
+            if(!this.appliances.includes(this.appliance)) {
+                this.appliances.push(this.appliance);
+                this.appliance = "";
+            }
+        },
+        removeApplianceFromArray(appliance) {
+            this.appliances = this.appliances.filter( element => {
+                return element !== appliance;
+            })
         },
         consoleLogRecipeList(){
             console.log(this.getRecipe);
@@ -158,23 +187,28 @@ export default {
         },
         searchIngredientList(){
             this.ingredientList = [];
-            AuthService.findIngredient(this.ingredient)
-            .then((response) => {
-                response.data.forEach(element => {
-                    this.ingredientList.push(element.name);
-                });
-            })
-            console.log(this.ingredientList);
+            if(this.ingredient !== '') {
+                console.log(this.ingredient);
+                AuthService.findIngredient(this.ingredient)
+                .then((response) => {
+                    response.data.forEach(element => {
+                        this.ingredientList.push(element.name);
+                    });
+                })
+                console.log(this.ingredientList);
+            }
         },
         searchApplianceList(){
             this.applianceList = [];
-            AuthService.findAppliance(this.appliance)
-            .then((response) => {
-                response.data.forEach(element => {
-                    this.applianceList.push(element.name);
-                });
-            })
-            console.log(this.applianceList);
+            if(this.appliance !== '') { 
+                AuthService.findAppliance(this.appliance)
+                .then((response) => {
+                    response.data.forEach(element => {
+                        this.applianceList.push(element.name);
+                    });
+                })
+                console.log(this.applianceList);
+            }
         }
     },
     computed: {
@@ -194,5 +228,7 @@ export default {
 </script>
 
 <style>
-
+label {
+    font-weight: bold;
+}
 </style>
