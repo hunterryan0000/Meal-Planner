@@ -75,7 +75,7 @@
 
             <!-- Ingredient search -->
             <b-col sm="5">
-                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()" placeholder="Add ingredient"></b-form-input>
+                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()" v-on:keydown.enter.prevent="addIngredientToArray()" placeholder="Add ingredient"></b-form-input>
             </b-col>
             <datalist id="ingredient-list">
             <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
@@ -120,7 +120,7 @@
     <b-container fluid>
         <b-row class="my-1">
             <b-col sm="11">
-                <b-form-input list="appliance-list" id="appliance-input" v-model="appliance" v-on:keyup="searchApplianceList()"  placeholder="Add appliance"></b-form-input>
+                <b-form-input list="appliance-list" id="appliance-input" v-model="appliance" v-on:keyup="searchApplianceList()"  v-on:keydown.enter.prevent="addApplianceToArray()" placeholder="Add appliance"></b-form-input>
             </b-col>
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addApplianceToArray()">Add</button>
