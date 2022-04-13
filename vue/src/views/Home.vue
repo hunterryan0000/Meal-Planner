@@ -1,7 +1,7 @@
 <template>
   <div id="Home">
+    <h1 id="welcome">Welcome, {{this.$store.state.user.username}}!!!!!!</h1>
   </div>
-
   <!-- <div class="row">
       <div class="side">
         <h2>Recipe</h2>
@@ -36,19 +36,21 @@ export default {
 
 <style scoped>
 #Home {
-  background-image: url('https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?s=612x612');
+  /* background-image: url('https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?s=612x612');
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   
+}
+#welcome{
+  font-size: 75px;
+  color: white;
 }
 </style>
 
-<style>
-body{
-  background-image: url('https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?s=612x612');
-}
+<style scoped>
+
 
 /* * {
   box-sizing: border-box;
