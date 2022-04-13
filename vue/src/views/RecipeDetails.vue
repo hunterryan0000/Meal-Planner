@@ -1,9 +1,12 @@
 <template>
   <div>
-      <span id="span"><a href=""></a></span>
-      <div class="detailswrapper">
-          <div class="namedesc">
-              <span>{{recipe.name}}</span>
+    <span id="span">
+      <a href=""></a>
+    </span>
+    
+    <div class="detailswrapper">
+    <div class="namedesc">
+    <span>{{recipe.name}}</span>
               <br>
               <p>{{recipe.description}}</p>
           </div>
