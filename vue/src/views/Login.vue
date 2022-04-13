@@ -1,7 +1,7 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="mx-auto col-md-7" >
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal text-center">Please Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -12,27 +12,29 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" >Username:</label>
       <input
         type="text"
         id="username"
         class="form-control"
-        placeholder="Username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br>
+      <label for="password">Password:</label>
       <input
         type="password"
         id="password"
         class="form-control"
-        placeholder="Password"
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <br>
+      <div class="text-center">
+        <router-link :to="{ name: 'register' }">Need an account?</router-link> <br>
+        <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
+      </div>
     </form>
   </div>
 </template>
@@ -74,3 +76,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  h1 {
+    margin-top: 5%;
+  }
+
+  button {
+    margin: 3%;
+  }
+</style>

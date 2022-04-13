@@ -7,10 +7,10 @@
           <div class="" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <router-link class="nav-link" v-bind:to="{ name: 'recipes' }">Recipes</router-link>
+                <router-link class="nav-link" v-bind:to="{ name: 'recipes' }" v-if="$store.state.token != ''">Recipes</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" v-bind:to="{ name: 'create-recipe' }">Add Recipe</router-link>
+                <router-link class="nav-link" v-bind:to="{ name: 'create-recipe' } " v-if="$store.state.token != ''">Add Recipe</router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
