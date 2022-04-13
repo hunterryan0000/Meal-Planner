@@ -1,9 +1,12 @@
 <template>
   <div class="mx-auto col-md-7">
+  
   <h1 class="text-center"> Create Recipe </h1>
 
   <br>
   <form>
+
+<!-- recipe name -->
     <b-form-group
         id="fieldset-1"
         description="What is your recipe called?"
@@ -11,6 +14,18 @@
         label-for="recipe-name">
         <b-form-input id="recipe-name" v-model="name" trim></b-form-input>
     </b-form-group>
+
+<!-- recipe photo -->
+
+    <b-form-group
+        id="fieldset-1"
+        description="Enter the url for your photo"
+        label="Recipe photo:"
+        label-for="recipe-photo">
+        <b-form-input id="recipe-photo" v-model="recipePhoto" trim required></b-form-input>
+    </b-form-group>
+
+<!-- description -->
 
     <br>
     <label for="description">Description:</label>
@@ -22,9 +37,7 @@
         max-rows="6"
     ></b-form-textarea>
     
-    
-<!-- 
-********** -->
+<!-- Add ingredient -->
 
     <br>
     <label for="ingredient-input" >Ingredients:</label> 
@@ -42,10 +55,12 @@
 
         <b-row>
              
+            <!-- Quantity -->
             <b-col sm="3">
                 <b-form-input v-model="ingredientQuantity" placeholder="Quantity"></b-form-input>
             </b-col>
 
+            <!-- Measurement -->
             <b-col sm="3">
                 <b-form-select placeholder="measurement" v-model="ingredientMeasurement" :options="measurementOptions">
                     <template #first>
@@ -55,6 +70,7 @@
             <!-- <b-form-input v-model="ingredientMeasurement" placeholder="Measurement"></b-form-input> -->
             </b-col>
 
+            <!-- Ingredient search -->
             <b-col sm="5">
                 <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
             </b-col>
@@ -64,6 +80,7 @@
             </option>
             </datalist>
 
+            <!-- Add Ingredient Button -->
             <b-col sm="1">
                 <button class="btn btn-success" v-on:click.prevent="addIngredientToArray()">Add</button>
             </b-col>
@@ -71,8 +88,8 @@
         </b-row>
 
     </b-container>
-<!--     
-********** -->
+
+<!-- Serving Size -->
 
     <br>
     <label for="servings">Servings:</label>
@@ -82,6 +99,8 @@
       </template>
     </b-form-select>
     <br>
+
+<!-- Add appliance -->
 
     <br>
     <label for="appliance-input">Appliances:</label> 
@@ -112,6 +131,8 @@
         </option>
     </datalist>
    
+<!-- Recipe instructions -->
+
     <br>
     <label for="instructions">Instructions:</label>
     <b-form-textarea
@@ -123,20 +144,24 @@
     ></b-form-textarea>
     <br>
 
-    
+<!-- Difficulty bar -->
+
     <br>
     <label for="difficulty-range">Difficulty: {{ difficulty }}</label>
     <b-form-input id="difficulty-range" v-model="difficulty" type="range" min="1" max="10"></b-form-input>
 
     <br><br>
     <div class="text-center">
-        <button class="btn btn-primary" v-on:click.prevent="consoleLogRecipeList()">Save to Recipe List</button>
+        <button class="btn btn-primary" v-on:click.prevent="consoleLogRecipeList()" type="submit">Save to Recipe List</button>
     </div>
     <br>
   </form>
     
   </div>
 </template>
+
+
+
 
 <script>
 import AuthService from '../services/AuthService.js'
@@ -155,6 +180,7 @@ export default {
             appliance: '',
 
             name: '',
+            recipePhoto: '',
             description: '',
             instructions: '',
             servings: null,
@@ -274,6 +300,7 @@ export default {
         getRecipe() {
             return {
                 name: this.name,
+                photo_url: this.recipePhoto,
                 description: this.description,
                 instructions: this.instructions,
                 servings: Number(this.servings),
@@ -289,5 +316,11 @@ export default {
 <style>
 label {
     font-weight: bold;
+}
+
+div .mx-auto {
+    border: 5px solid rgb(230, 213, 195);
+    background-color: cornsilk;
+    border-radius: 10px;
 }
 </style>
