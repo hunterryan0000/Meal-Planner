@@ -1,39 +1,43 @@
 <template>
   <div>
-    <span id="span">
-      <a href=""></a>
-    </span>
+    <span id="span"> <a href=""></a> </span>
 
     <div class="detailswrapper">
-    <div class="namedesc">
-    <span>{{recipe.name}}</span>
-              <br>
-              <p>{{recipe.description}}</p>
-          </div>
-          <div>
-
-          </div>
-        <div class="photo">
-            <img :src="recipe.photo_url" >
-        </div>
-          <div class="apping">
-            <p>Servings: {{recipe.servings}}</p>
-            <p>Difficulty: {{recipe.difficulty}}</p> 
-            <p v-for="appliance in recipe.applianceList" :key="appliance.id">
-            {{appliance.name}}    
-            </p> 
-            <h5>Ingredients</h5>
-            <ul>
-                <li v-for="ingredient in recipe.ingredientList" :key="ingredient.id">
-                    {{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}
-                </li>
-            </ul>
-          </div>
-          <div class="instructions">
-              <h3>Instructions</h3>
-              <p v-for="string in recipe.instructions.split('\n')" :key="string">{{string}}</p>
-          </div>
+      <div class="namedesc">
+        <span>{{recipe.name}}</span>
+        <br>
+        <p>{{recipe.description}}</p>
       </div>
+
+      <!-- <div></div> -->
+  
+      <div class="photo">
+        <img :src="recipe.photo_url" >
+      </div>
+
+      <div class="apping">
+        <p>Servings: {{recipe.servings}}</p>
+        <p>Difficulty: {{recipe.difficulty}}</p> 
+        <p v-for="appliance in recipe.applianceList" :key="appliance.id"> Appliance: {{appliance.name}} </p>
+
+        <!-- Ingredients -->
+        <h5>Ingredients</h5>
+        <ul>
+          <li v-for="ingredient in recipe.ingredientList" :key="ingredient.id">
+            {{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Instructions -->
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <p v-for="string in recipe.instructions.split('\n')" :key="string">{{string}}</p>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
@@ -79,7 +83,7 @@ h1{
     width: 300px;
 }
 .namedesc {
-    color: white;
+    color: black;
     flex-basis: 40%;
     flex-grow: 0;
     flex-shrink: 0;
@@ -119,6 +123,8 @@ h1{
     overflow-y: auto;
     padding: 10px 10px 10px 10px;
 }
+
+/* This section of CSS defines the EDIT button */
 #span{
   position: relative;
   display: inline-flex;
