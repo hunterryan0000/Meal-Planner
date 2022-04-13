@@ -18,6 +18,11 @@
   height: 100vh;
   width: 100vw;
 }
+
+#nav {
+  margin-bottom: 5%;
+}
+
 </style>
 
 <style>
