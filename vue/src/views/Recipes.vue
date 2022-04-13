@@ -1,6 +1,6 @@
 <template>
 <div>
-  <router-link v-bind:to="{name: 'create-recipe'}"> Create Recipe </router-link>
+  <!-- <router-link v-bind:to="{name: 'create-recipe'}"> Create Recipe </router-link> -->
    <!-- goes to create-recipe -->
    <div class="cardWrapper">
      <recipe-card v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe" class="recipe_card"></recipe-card>
@@ -51,5 +51,6 @@ body{
   text-align: center;
   box-shadow: 5px 5px 5px #422424;
 }
+
 
 </style>
