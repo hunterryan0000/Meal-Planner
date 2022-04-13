@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="row">
+    <!-- <div class="row">
       <div class="side">
         <h2>Recipe</h2>
           <h5>Photo of Recipe:</h5>
@@ -23,7 +23,7 @@
 
     <div class="footer">
       <h2>Footer?</h2>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style>
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -65,7 +65,7 @@ export default {
   padding: 20px;
   text-align: center;
   background: #ddd;
-}
+} */
 
 
 </style>
