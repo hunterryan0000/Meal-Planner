@@ -16,13 +16,13 @@ export default {
     methods: {
     pushRecipeDetails(recipe){
       console.log("hit");
-      this.$router.push({ name: 'details', params: {recipe: recipe}})
+      this.$router.push('/recipes/'+recipe.id)
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .recipe_image{
     width: 10%;
 }

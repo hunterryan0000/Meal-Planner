@@ -73,10 +73,9 @@ const router = new Router({
       }
     },
     {
-      path: "/recipes/details",
+      path: "/recipes/:id",
       name: "details",
       component: RecipeDetails,
-      props: true,
       meta: {
         requiresAuth: true
       }

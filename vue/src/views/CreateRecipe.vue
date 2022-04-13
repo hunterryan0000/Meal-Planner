@@ -1,10 +1,13 @@
 <template>
-  <div class="mx-auto col-md-7">
-  
-  <h1 class="text-center"> Create Recipe </h1>
 
-  <br>
-  <form>
+<div >
+
+<div class="mx-auto col-md-7" >
+
+<h1 class="text-center"> Create Recipe </h1>
+
+<br>
+<form>
 
 <!-- recipe name -->
     <b-form-group
@@ -72,7 +75,7 @@
 
             <!-- Ingredient search -->
             <b-col sm="5">
-                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()" placeholder="Add ingredient"></b-form-input>
             </b-col>
             <datalist id="ingredient-list">
             <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
@@ -156,7 +159,7 @@
     </div>
     <br>
   </form>
-    
+  </div>
   </div>
 </template>
 
@@ -225,6 +228,7 @@ export default {
     },
     methods: {
         addIngredientToArray(){
+            console.log(this.ingredients)
             let ingredientObject = {
                 ingredient_id: null,
                 name: this.ingredient,
