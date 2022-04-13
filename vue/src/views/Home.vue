@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <!-- <div class="row">
+  <div id="Home">
+  </div>
+
+  <!-- <div class="row">
       <div class="side">
         <h2>Recipe</h2>
           <h5>Photo of Recipe:</h5>
@@ -24,8 +26,6 @@
     <div class="footer">
       <h2>Footer?</h2>
     </div> -->
-
-  </div>
 </template>
 
 <script>
@@ -34,7 +34,22 @@ export default {
 };
 </script>
 
+<style scoped>
+#Home {
+  background-image: url('https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?s=612x612');
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+</style>
+
 <style>
+body{
+  background-image: url('https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?s=612x612');
+}
+
 /* * {
   box-sizing: border-box;
 }
@@ -66,6 +81,4 @@ export default {
   text-align: center;
   background: #ddd;
 } */
-
-
 </style>
