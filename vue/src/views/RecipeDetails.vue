@@ -28,7 +28,7 @@
           </div>
           <div class="instructions">
               <h3>Instructions</h3>
-              <p>{{recipe.instructions}}</p>
+              <p v-for="string in recipe.instructions.split('\n')" :key="string">{{string}}</p>
           </div>
       </div>
   </div>
