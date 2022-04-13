@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">Home</router-link>
           <div class="" id="navbarSupportedContent">
@@ -27,14 +27,14 @@
 
 <style scoped>
 #app {
-    background-image: url('https://cdn.discordapp.com/attachments/872641665314222100/963544684028895253/wood.jpg');
+  background-image: url('https://cdn.discordapp.com/attachments/872641665314222100/963544684028895253/wood.jpg');
   height: 100vh;
   width: 100vw;
 }
 
-#nav {
+/* #nav {
   margin-bottom: 5%;
-}
+} */
 
 </style>
 
@@ -42,4 +42,10 @@
 body{
   background-image: url('https://cdn.discordapp.com/attachments/872641665314222100/963544684028895253/wood.jpg');
 }
+
+#nav {
+  margin-bottom: 5%;
+  background-color: cornsilk;
+}
+
 </style>

@@ -3,7 +3,7 @@
     <span id="span">
       <a href=""></a>
     </span>
-    
+
     <div class="detailswrapper">
     <div class="namedesc">
     <span>{{recipe.name}}</span>
@@ -72,8 +72,9 @@ h1{
     padding-right: 10vw;
 }
 .detailswrapper div {
-    border: 5px solid rgb(230, 213, 195);;
-    background-color: gray;
+    border: 5px solid rgb(230, 213, 195);
+    background-color: cornsilk;
+    border-radius: 10px;
     height: 300px;
     width: 300px;
 }
