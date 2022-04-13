@@ -155,7 +155,7 @@
 
     <br><br>
     <div class="text-center">
-        <button class="btn btn-primary" v-on:click.prevent="consoleLogRecipeList()" type="submit">Save to Recipe List</button>
+        <button class="btn btn-primary" v-on:click.prevent="submitRecipe()" type="submit">Save to Recipe List</button>
     </div>
     <br>
   </form>
@@ -266,13 +266,16 @@ export default {
                 return element !== appliance;
             })
         },
-        consoleLogRecipeList(){
+        submitRecipe(){
             console.log(this.getRecipe);
-            AuthService.addRecipe(this.getRecipe)
-            .then((response) => {
-                console.log(response.data);
+            if(this.name !== '' && this.instructions !== '') {
+                AuthService.addRecipe(this.getRecipe)
+                .then((response) => {
+                    console.log(response.data);
             })
-
+            } else {
+                alert("Recipe name and instructions cannot be empty");
+            }
         },
         searchIngredientList(){
             this.ingredientList = [];

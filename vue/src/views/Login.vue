@@ -32,9 +32,10 @@
       />
       <br>
       <div class="text-center">
-        <router-link :to="{ name: 'register' }">Need an account?</router-link> <br>
+        <router-link :to="{ name: 'register' }">Need an account?</router-link>  <br><br>
         <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
       </div>
+       <br>
     </form>
   </div>
 </template>
@@ -82,7 +83,4 @@ export default {
     margin-top: 5%;
   }
 
-  button {
-    margin: 3%;
-  }
 </style>
