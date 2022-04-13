@@ -1,10 +1,13 @@
 <template>
-  <div class="mx-auto col-md-7">
-  
-  <h1 class="text-center"> Create Recipe </h1>
 
-  <br>
-  <form>
+<div >
+
+<div class="mx-auto col-md-7" >
+
+<h1 class="text-center"> Create Recipe </h1>
+
+<br>
+<form>
 
 <!-- recipe name -->
     <b-form-group
@@ -156,7 +159,7 @@
     </div>
     <br>
   </form>
-    
+  </div>
   </div>
 </template>
 
