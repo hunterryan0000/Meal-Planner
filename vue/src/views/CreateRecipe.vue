@@ -56,7 +56,7 @@
             </b-col>
 
             <b-col sm="5">
-                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()"  placeholder="Add ingredient"></b-form-input>
+                <b-form-input name="ingredient-input" list="ingredient-list" id="ingredient-input" v-model="ingredient" v-on:keyup="searchIngredientList()" placeholder="Add ingredient"></b-form-input>
             </b-col>
             <datalist id="ingredient-list">
             <option v-for="ingredient in ingredientList" v-bind:key="ingredient">
@@ -199,6 +199,7 @@ export default {
     },
     methods: {
         addIngredientToArray(){
+            console.log(this.ingredients)
             let ingredientObject = {
                 ingredient_id: null,
                 name: this.ingredient,
