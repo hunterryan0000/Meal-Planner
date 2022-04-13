@@ -41,6 +41,19 @@ public class JdbcRecipeDao implements RecipeDao{
     }
 
     @Override
+    public List<Recipe> getRecipes(String searchTerm) {
+        String sql = "select * from recipes where name ilike ? limit 5";
+
+        SqlRowSet resultSet = jdbcTemplate.queryForRowSet(sql, "%" + searchTerm + "%");
+
+        List<Recipe> results = new ArrayList<>();
+        while(resultSet.next()){
+            results.add(mapRowToRecipe(resultSet));
+        }
+        return results;
+    }
+
+    @Override
     public Recipe getRecipeById(Long recipeId, Long userId) {
         String sql = "select * from recipes where user_id = ? and recipe_id = ?";
 
@@ -70,6 +83,7 @@ public class JdbcRecipeDao implements RecipeDao{
         recipe.setId(recipe_id);
         return recipe;
     }
+
 
     private Recipe mapRowToRecipe(SqlRowSet resultSet){
         Recipe recipe = new Recipe();
