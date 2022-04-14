@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Meal;
+import com.techelevator.model.MealsRecipes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -31,22 +32,66 @@ public class JdbcMealDao implements MealDao{
 
     @Override
     public Meal getMealById(Long mealId, Long userId) {
+        String sql = "SELECT * FROM meals where user_id = ? AND meal_id = ?";
+
+        SqlRowSet resultSet = jdbcTemplate.queryForRowSet(sql, userId, mealId);
+        if(resultSet.next()){
+            return mapRowToMeal(resultSet);
+        }
         return null;
     }
 
     @Override
     public Meal addMeal(Meal meal) {
-        return null;
+        String sql = "INSERT INTO meals VALUES (?, default, ?, ?, ?, ?) returning meal_id";
+        Long meal_id = jdbcTemplate.queryForObject(sql, long.class,
+                meal.getUser_id(), meal.getName(), meal.getDescription(), meal.getType_of_meal(), meal.getServings());
+        for(MealsRecipes mealsRecipes: meal.getMealsRecipesList()){
+            mealsRecipes.setMeal_id(meal_id);
+            mealsRecipesDao.addMealsRecipes(mealsRecipes);
+        }
+        meal.setId(meal_id);
+        return meal;
     }
 
     @Override
     public Meal modifyMeal(Meal meal) {
-        return null;
+        String sql = "UPDATE meals " +
+                "SET name = ?, description = ?, type_of_meal = ?, servings = ? " +
+                "WHERE meal_id = ?";
+
+        int updateRowsCount = jdbcTemplate.update(sql, meal.getName(), meal.getDescription(), meal.getType_of_meal(), meal.getServings());
+
+        //remove old recipes from meals
+        List<MealsRecipes> mealsRecipesList = getMealById(meal.getId(), meal.getUser_id()).getMealsRecipesList();
+        for (MealsRecipes mealsRecipes: mealsRecipesList){
+            mealsRecipesDao.removeMealsRecipes(mealsRecipes);
+        }
+
+        //add recipes to meals
+        List<MealsRecipes> updatedRecipesList = meal.getMealsRecipesList();
+        for (MealsRecipes mealsRecipes: updatedRecipesList) {
+            mealsRecipes.setMeal_id(meal.getId());
+            mealsRecipesDao.addMealsRecipes(mealsRecipes);
+        }
+
+        Meal updatedMeal = new Meal();
+        if(updateRowsCount == 1) {
+            updatedMeal = getMealById(meal.getId(), meal.getUser_id());
+        }
+        return updatedMeal;
     }
 
     @Override
     public void deleteMeal(Meal meal) {
 
+        List<MealsRecipes> recipesList = meal.getMealsRecipesList();
+        for (MealsRecipes recipes: recipesList){
+            mealsRecipesDao.removeMealsRecipes(recipes);
+        }
+
+        String sql = "DELETE FROM meals WHERE meal_id = ?";
+        jdbcTemplate.update(sql, meal.getId());
     }
 
 
