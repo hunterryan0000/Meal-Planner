@@ -36,16 +36,17 @@ export default {
 
 <style scoped>
 #Home {
-  /* background-image: url('https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?s=612x612');
+  /* background-image: url('https://media2.giphy.com/media/3oEjHC7al4GfnudR7y/giphy.gif?cid=ecf05e47852mxrdu0h8esuivv1wfrzk0w04efwvtyfztd46m&rid=giphy.gif&ct=g');
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
-  background-size: cover; */
-  
+  background-position: center; */
 }
+
 #welcome{
   font-size: 75px;
   color: white;
+  
 }
 </style>
 
