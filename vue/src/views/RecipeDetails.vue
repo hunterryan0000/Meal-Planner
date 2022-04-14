@@ -64,8 +64,9 @@ export default {
       this.$router.push('/recipes/edit/'+recipe.id)
     },
     deleteRecipe(recipe){
-      console.log("delete");
-      AuthService.deleteRecipe(recipe.id)
+      console.log(recipe);
+
+      AuthService.deleteRecipe(recipe)
       .then(() => {
         this.$router.push('/Recipes');
       })

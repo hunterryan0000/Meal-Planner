@@ -19,22 +19,19 @@
 
 <div class="parent">
 
-    <h3 class="recipe_header">All Recipes</h3>
-    <h3 class="meal_header">Meal</h3>
+    <h3 class="recipe_header">All Recipes</h3> 
+    <div class="meal_header">
+         <h3>Meal</h3>
+         <button>Add</button>
+    </div>
     <h3 class="recipe_meal_header">Recipes</h3>
     <form class="form" action="">
 
     <!-- meal name -->
-        <b-form-group
-            id="fieldset-1"
-            description="What is your meal called?"
-            label="Meal Name:"
-            label-for="meal-name">
+        <label for="meal-name">Meal Name:</label>
             <b-form-input id="meal-name" v-model="mealName" trim></b-form-input>
-        </b-form-group>
 
     <!-- meal description -->
-        <br>
         <label for="description">Description:</label>
         <b-form-textarea
             id="description"
@@ -50,6 +47,13 @@
                         <b-form-select-option :value="null" disabled>Meal Type</b-form-select-option>
                     </template>
         </b-form-select>
+
+        <label for="servings">Servings:</label>
+        <b-form-select id="servings" v-model="servings" :options="servingOptions">
+            <template #first>
+                <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
+            </template>
+        </b-form-select>    
     
     
     </form>
@@ -86,6 +90,7 @@ export default {
              {value: 'Lunch', text: 'Lunch'},
              {value: 'Dinner', text: 'Dinner'},
              {value: 'Snack', text: 'Snack'},
+             {value: 'Other', text: 'Other'}
          ],
          servings: null,
          servingOptions: [
@@ -171,7 +176,7 @@ export default {
 .parent {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-grid-template-rows: .5fr repeat(2, 1fr) .5fr repeat(2, 1fr);
+grid-template-rows: .25fr repeat(2, 1.5fr) .25fr repeat(2, 1fr);
 grid-column-gap: 0px;
 grid-row-gap: 0px;
 height: 80vh;
@@ -188,4 +193,24 @@ height: 80vh;
     height: 100px;
     border: 2px solid black;
 }
+label{
+    color: white;
+}
+.meal_header button{
+    display: block;
+    right: 15px;
+    top: 17vh;
+}
+.meal_header {
+    display: grid;
+    grid-template-columns: 10fr, 1fr;
+    grid-template-rows: 1fr
+}
+.meal_header h3{
+    grid-area: 1/1/1/10;
+}
+.meal_header button{
+    grid-area: 1/10/1/10;
+}
+
 </style>
