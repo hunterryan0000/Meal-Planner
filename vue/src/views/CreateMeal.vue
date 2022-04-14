@@ -121,10 +121,11 @@ export default {
   },
   methods: {
       submitMeal() {
+          console.log(this.getMeal)
           if(this.mealName !== ''){
               AuthService.addMeal(this.getMeal)
               .then((response) => {
-                  console.log(response);
+                  console.log(response.data);
               })
           }
       }
@@ -134,10 +135,17 @@ export default {
           return {
               name: this.mealName,
               description: this.mealDescription,
-              mealType: this.typeOfMeal,
+              type_of_meal: this.typeOfMeal,
               servings: this.servings,
-              recipeList: this.mealList
+              mealsRecipesList: this.getRecipesList
           }
+      },
+      getRecipesList(){
+          let list = [];
+          for(let item of this.mealList){
+              list.push({recipe_id: item.id});
+          }
+          return list;
       }
   }
   
