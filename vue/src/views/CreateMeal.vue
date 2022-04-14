@@ -1,23 +1,64 @@
 !<template>
-<div class="root">
+<!-- <div class="root">
   <div class="header">
       <h3 class="recipe_header">All Recipes</h3>
       <h3 class="meal_header">Meal List</h3>
   </div>
   <div class="wrapper">
-      <!-- <div id="recipe_list"> -->
+
           <draggable class="list-group" :list="recipeList" group="recipes" id="recipe_list">
               <recipe-panel v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
           </draggable>
-      <!-- </div> -->
-      <!-- <div id="meal_plan"> -->
-          <div>
+
           <draggable class="list-group" :list="mealList" group="recipes" id="meal_plan">
               <recipe-panel v-for="recipe in mealList" :key="recipe.id" :recipe="recipe"></recipe-panel>
           </draggable>
-          </div>
-      <!-- </div> -->
+
   </div>
+</div> -->
+
+<div class="parent">
+
+    <h3 class="recipe_header">All Recipes</h3>
+    <h3 class="meal_header">Meal</h3>
+    <h3 class="recipe_meal_header">Recipes</h3>
+    <form class="form" action="">
+
+    <!-- meal name -->
+        <b-form-group
+            id="fieldset-1"
+            description="What is your meal called?"
+            label="Meal Name:"
+            label-for="meal-name">
+            <b-form-input id="meal-name" v-model="mealName" trim></b-form-input>
+        </b-form-group>
+
+    <!-- meal description -->
+        <br>
+        <label for="description">Description:</label>
+        <b-form-textarea
+            id="description"
+            v-model="mealDescription"
+            placeholder=""
+            rows="3"
+            max-rows="6"
+        ></b-form-textarea>
+        
+        <label for="mealType">Meal Type:</label>
+        <b-form-select placeholder="Meal Type" v-model="typeOfMeal" :options="typeOptions" id="mealType">
+                    <template #first>
+                        <b-form-select-option :value="null" disabled>Meal Type</b-form-select-option>
+                    </template>
+        </b-form-select>
+    
+    
+    </form>
+    <draggable class="list-group" :list="recipeList" group="recipes" id="recipe_list">
+              <recipe-panel v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
+    </draggable>
+    <draggable class="list-group" :list="mealList" group="recipes" id="meal_plan">
+              <recipe-panel v-for="recipe in mealList" :key="recipe.id" :recipe="recipe"></recipe-panel>
+    </draggable>
 </div>
 </template>
 
@@ -36,7 +77,34 @@ export default {
   data () {
       return{
          recipeList: [] ,
-         mealList: []
+         mealList: [],
+         mealName: '',
+         mealDescription: '',
+         typeOfMeal: '',
+         typeOptions: [
+             {value: 'Breakfast', text: 'Breakfast'},
+             {value: 'Lunch', text: 'Lunch'},
+             {value: 'Dinner', text: 'Dinner'},
+             {value: 'Snack', text: 'Snack'},
+         ],
+         servings: null,
+         servingOptions: [
+                {value: '1', text: '1'}, 
+                {value: '2', text: '2'},
+                {value: '3', text: '3'},
+                {value: '4', text: '4'},
+                {value: '5', text: '5'},
+                {value: '6', text: '6'},
+                {value: '7', text: '7'},
+                {value: '8', text: '8'},
+                {value: '9', text: '9'},
+                {value: '10', text: '10'},
+                {value: '11', text: '11'},
+                {value: '12', text: '12'},
+                {value: '13', text: '13'},
+                {value: '14', text: '14'},
+                {value: '15', text: '15'},
+            ]
       }
   },
   created() {
@@ -52,7 +120,7 @@ export default {
 </script>
 
 <style scoped>
-div{
+/* div{
     border: 3px solid green;
 }
 .wrapper{
@@ -86,9 +154,38 @@ div{
     gap: 30px;
 
 }
-.header *{
+*/
+
+#recipe_list, #meal_plan{
+    width: 100%;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.recipe_header, .meal_header, .recipe_meal_header{
     color: white;
-    width: 50%;
+    width: 100%;
     text-align: center;
+} 
+
+.parent {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: .5fr repeat(2, 1fr) .5fr repeat(2, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+height: 80vh;
+}
+
+.recipe_header { grid-area: 1 / 1 / 2 / 3; }
+.meal_header { grid-area: 1 / 3 / 2 / 5; }
+.form { grid-area: 2 / 3 / 4 / 5; }
+.recipe_meal_header { grid-area: 4 / 3 / 5 / 5; }
+#meal_plan { grid-area: 5 / 3 / 7 / 5; }
+#recipe_list { grid-area: 2 / 1 / 7 / 3; }
+
+#recipe_list *, #meal_plan *{
+    height: 100px;
+    border: 2px solid black;
 }
 </style>
