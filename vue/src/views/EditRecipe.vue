@@ -15,21 +15,19 @@
         description="What is your recipe called?"
         label="Recipe Name:"
         label-for="recipe-name">
-        <b-form-input id="recipe-name" v-model="name" trim></b-form-input>
+        <b-form-input id="recipe-name" v-model="name" maxlength="50" trim></b-form-input>
     </b-form-group>
 
 <!-- recipe photo -->
-
     <b-form-group
         id="fieldset-1"
         description="Enter the url for your photo"
         label="Recipe photo:"
         label-for="recipe-photo">
-        <b-form-input id="recipe-photo" v-model="recipePhoto" trim required></b-form-input>
+        <b-form-input id="recipe-photo" v-model="recipePhoto" maxlength="999" trim required></b-form-input>
     </b-form-group>
 
 <!-- description -->
-
     <br>
     <label for="description">Description:</label>
     <b-form-textarea
@@ -38,10 +36,10 @@
         placeholder=""
         rows="3"
         max-rows="6"
+        maxlength="2999"
     ></b-form-textarea>
     
 <!-- Add ingredient -->
-
     <br>
     <label for="ingredient-input" >Ingredients:</label> 
     <ul id="ingredient-input" style="list-style-type:none;">
@@ -93,7 +91,6 @@
     </b-container>
 
 <!-- Serving Size -->
-
     <br>
     <label for="servings">Servings:</label>
     <b-form-select id="servings" v-model="servings" :options="servingOptions">
@@ -104,19 +101,20 @@
     <br>
 
 <!-- Add appliance -->
-
     <br>
-    <label for="appliance-input">Appliances:</label> 
+    <label for="appliance-input">Appliances:</label>
+
     <ul id="appliance-input" style="list-style-type:none;">
         <div style="margin: 2px;" class="d-flex" v-for="appliance in appliances" v-bind:key="appliance">
-        <div>
-            <li>{{appliance.name}}</li>
-        </div>
-        <div class="ml-auto">
-            <button class="btn btn-danger btn-sm" v-on:click.prevent="removeApplianceFromArray(appliance)">X</button>
-        </div>
+            <div>
+                <li>{{appliance.name}}</li>
+            </div>
+            <div class="ml-auto">
+                <button class="btn btn-danger btn-sm" v-on:click.prevent="removeApplianceFromArray(appliance)">X</button>
+            </div>
         </div>
     </ul>
+
     <b-container fluid>
         <b-row class="my-1">
             <b-col sm="11">
@@ -144,6 +142,7 @@
       placeholder=""
       rows="6"
       max-rows="12"
+      maxlength="2999"
     ></b-form-textarea>
     <br>
 

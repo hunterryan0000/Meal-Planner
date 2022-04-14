@@ -41,11 +41,13 @@ export default {
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover; */
-  
 }
 #welcome{
   font-size: 75px;
   color: white;
+  
+  margin: auto;
+  width: 50%;
 }
 </style>
 
