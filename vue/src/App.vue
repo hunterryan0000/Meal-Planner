@@ -7,6 +7,9 @@
           <div class="" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'create-meal'}" v-if="$store.state.token != ''">Create Meal</router-link>
+              </li>
+              <li class="nav-item">
                 <router-link class="nav-link" v-bind:to="{ name: 'recipes' }" v-if="$store.state.token != ''">Recipes</router-link>
               </li>
               <li class="nav-item">

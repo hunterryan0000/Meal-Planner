@@ -37,6 +37,10 @@ export default {
 
   searchRecipe(id) {
     return http.get(`/recipes/search/${id}`, {headers: authHeader()})
+  },
+
+  deleteRecipe(id) {
+    return http.delete(`/recipes/delete/${id}`, {headers: authHeader()})
   }
 
 }
