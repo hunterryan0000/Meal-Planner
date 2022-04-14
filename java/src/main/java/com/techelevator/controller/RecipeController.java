@@ -51,5 +51,10 @@ public class RecipeController {
         return recipeDao.modifyRecipe(recipe);
     }
 
+    @RequestMapping(path = "/recipes/delete", method = RequestMethod.DELETE)
+    public void deleteRecipe(Principal principal, @RequestBody Recipe recipe){
+        recipe.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        recipeDao.deleteRecipe(recipe);
+    }
 
 }

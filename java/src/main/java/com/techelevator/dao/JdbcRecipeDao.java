@@ -85,6 +85,27 @@ public class JdbcRecipeDao implements RecipeDao{
     }
 
     @Override
+    public void deleteRecipe(Recipe recipe) {
+        String sql = "DELETE FROM recipes WHERE recipe_id = ?";
+        jdbcTemplate.update(sql, recipe.getId());
+
+        List<RecipeIngredients> ingredients = recipe.getIngredientList();
+        for (RecipeIngredients recipeIngredient: ingredients) {
+            recipeIngredientsDao.removeRecipeIngredient(recipeIngredient);
+        }
+
+        List<Appliance> appliances = recipe.getApplianceList();
+        for(Appliance appliance: appliances) {
+            RecipeAppliances recipeAppliances = new RecipeAppliances();
+            recipeAppliances.setAppliance_id(appliance.getId());
+            recipeAppliances.setRecipe_id(recipe.getId());
+            recipeAppliancesDao.removeRecipeAppliances(recipeAppliances);
+        }
+
+
+    }
+
+    @Override
     public Recipe modifyRecipe(Recipe recipe) {
         String sql = "UPDATE recipes " +
                 "SET name = ?, description = ?, instructions = ?, serving = ?, difficulty = ?, photo_url = ?" +
