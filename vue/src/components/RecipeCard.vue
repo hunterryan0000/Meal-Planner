@@ -1,7 +1,8 @@
 <template>
   <div v-on:click.prevent="pushRecipeDetails(recipe)">
-      <div :style="{ 'background-image': 'url(' + recipe.photo_url + ')' }" class="parallax">
-      </div>
+      <!-- <div :style="{ 'background-image': 'url(' + recipe.photo_url + ')' }" class="parallax">
+      </div> -->
+      <img :src="recipe.photo_url" >
       <span>{{recipe.name}}</span>
       <p>{{recipe.description}}</p>
   </div>
@@ -49,5 +50,8 @@ p{
     padding-left: 15px;
     padding-right: 15px;
     font-size: 100%;
+}
+img{
+  width: 100%;
 }
 </style>

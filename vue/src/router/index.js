@@ -8,6 +8,7 @@ import store from '../store/index'
 import Recipes from '../views/Recipes.vue'
 import CreateRecipe from '../views/CreateRecipe.vue'
 import RecipeDetails from '../views/RecipeDetails.vue'
+import EditRecipe from '../views/EditRecipe.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: "/recipes/:id",
       name: "details",
       component: RecipeDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/recipes/edit/:id",
+      name: "edit-recipe",
+      component: EditRecipe,
       meta: {
         requiresAuth: true
       }
