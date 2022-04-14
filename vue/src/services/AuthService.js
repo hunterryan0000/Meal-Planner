@@ -41,6 +41,10 @@ export default {
 
   deleteRecipe(recipe) {
     return http.delete(`/recipes/delete`, {headers: authHeader(), data: recipe})
+  },
+
+  addMeal(meal) {
+    return http.post(`/meals/add`, meal, {header: authHeader()})
   }
 
 }
