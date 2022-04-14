@@ -38,6 +38,12 @@ public class JdbcRecipeIngredientsDao implements RecipeIngredientsDao {
         return ingredientsList;
     }
 
+    public void removeRecipeIngredient(RecipeIngredients recipeIngredients) {
+        String sql = "DELETE FROM recipe_ingredients" +
+                "WHERE recipe_id = ? AND ingredient_id = ?";
+        jdbcTemplate.update(sql, recipeIngredients.getRecipe_id(), recipeIngredients.getIngredient_id());
+    }
+
     private RecipeIngredients mapRowToIngredient(SqlRowSet resultSet){
         RecipeIngredients ingredient = new RecipeIngredients();
         ingredient.setRecipe_id(resultSet.getLong("recipe_id"));

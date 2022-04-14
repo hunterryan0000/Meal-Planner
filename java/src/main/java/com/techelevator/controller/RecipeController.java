@@ -47,7 +47,8 @@ public class RecipeController {
 
     @RequestMapping(path = "/recipes/edit", method = RequestMethod.PUT)
     public Recipe editRecipe(Principal principal, @RequestBody Recipe recipe){
-        return recipe;
+        recipe.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        return recipeDao.modifyRecipe(recipe);
     }
 
 

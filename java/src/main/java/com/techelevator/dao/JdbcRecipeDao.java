@@ -84,6 +84,22 @@ public class JdbcRecipeDao implements RecipeDao{
         return recipe;
     }
 
+    @Override
+    public Recipe modifyRecipe(Recipe recipe) {
+        String sql = "UPDATE recipes" +
+                "SET name = ?, description = ?, instructions = ?, serving = ?, difficulty = ?, photo_url = ?" +
+                "WHERE recipe_id = ?";
+        List<RecipeIngredients> ingredients = getRecipeById(recipe.getId(), recipe.getUser_id()).getIngredientList();
+
+
+        int updateRowsCount = jdbcTemplate.update(sql, recipe.getName(), recipe.getDescription(), recipe.getInstructions(), recipe.getServings(), recipe.getDifficulty(), recipe.getPhoto_url(), recipe.getId());
+        Recipe updatedRecipe = new Recipe();
+        if(updateRowsCount == 1){
+            updatedRecipe = getRecipeById(recipe.getId(), recipe.getUser_id());
+        }
+        return updatedRecipe;
+    }
+
 
     private Recipe mapRowToRecipe(SqlRowSet resultSet){
         Recipe recipe = new Recipe();
@@ -99,4 +115,6 @@ public class JdbcRecipeDao implements RecipeDao{
         recipe.setApplianceList(applianceDao.getListByRecipeId(recipe.getId()));
         return recipe;
     }
+
+
 }

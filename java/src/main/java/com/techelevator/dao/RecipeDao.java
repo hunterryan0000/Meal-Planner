@@ -15,4 +15,6 @@ public interface RecipeDao {
 
     Recipe addRecipe(Recipe recipe);
 
+    Recipe modifyRecipe(Recipe recipe);
+
 }
