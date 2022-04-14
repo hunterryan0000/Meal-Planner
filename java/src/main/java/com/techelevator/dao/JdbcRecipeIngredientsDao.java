@@ -39,7 +39,7 @@ public class JdbcRecipeIngredientsDao implements RecipeIngredientsDao {
     }
 
     public void removeRecipeIngredient(RecipeIngredients recipeIngredients) {
-        String sql = "DELETE FROM recipe_ingredients" +
+        String sql = "DELETE FROM recipe_ingredients " +
                 "WHERE recipe_id = ? AND ingredient_id = ?";
         jdbcTemplate.update(sql, recipeIngredients.getRecipe_id(), recipeIngredients.getIngredient_id());
     }

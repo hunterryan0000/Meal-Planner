@@ -86,13 +86,41 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public Recipe modifyRecipe(Recipe recipe) {
-        String sql = "UPDATE recipes" +
+        String sql = "UPDATE recipes " +
                 "SET name = ?, description = ?, instructions = ?, serving = ?, difficulty = ?, photo_url = ?" +
                 "WHERE recipe_id = ?";
-        List<RecipeIngredients> ingredients = getRecipeById(recipe.getId(), recipe.getUser_id()).getIngredientList();
-
 
         int updateRowsCount = jdbcTemplate.update(sql, recipe.getName(), recipe.getDescription(), recipe.getInstructions(), recipe.getServings(), recipe.getDifficulty(), recipe.getPhoto_url(), recipe.getId());
+
+        //remove old ingredients and appliances
+        List<RecipeIngredients> ingredients = getRecipeById(recipe.getId(), recipe.getUser_id()).getIngredientList();
+        for (RecipeIngredients recipeIngredient: ingredients) {
+            recipeIngredientsDao.removeRecipeIngredient(recipeIngredient);
+        }
+
+        List<Appliance> appliances = getRecipeById(recipe.getId(), recipe.getUser_id()).getApplianceList();
+        for(Appliance appliance: appliances) {
+            RecipeAppliances recipeAppliances = new RecipeAppliances();
+            recipeAppliances.setAppliance_id(appliance.getId());
+            recipeAppliances.setRecipe_id(recipe.getId());
+            recipeAppliancesDao.removeRecipeAppliances(recipeAppliances);
+        }
+
+        //add ingredients/appliances
+        List<RecipeIngredients> updatedIngredients = recipe.getIngredientList();
+        for (RecipeIngredients recipeIngredient: updatedIngredients) {
+            recipeIngredient.setRecipe_id(recipe.getId());
+            recipeIngredientsDao.addRecipeIngredients(recipeIngredient);
+        }
+
+        List<Appliance> updatedAppliances = recipe.getApplianceList();
+        for(Appliance appliance: updatedAppliances) {
+            RecipeAppliances recipeAppliances = new RecipeAppliances();
+            recipeAppliances.setAppliance_id(appliance.getId());
+            recipeAppliances.setRecipe_id(recipe.getId());
+            recipeAppliancesDao.addRecipeAppliances(recipeAppliances);
+        }
+
         Recipe updatedRecipe = new Recipe();
         if(updateRowsCount == 1){
             updatedRecipe = getRecipeById(recipe.getId(), recipe.getUser_id());

@@ -10,4 +10,6 @@ public interface RecipeIngredientsDao {
     void addRecipeIngredients(RecipeIngredients recipe_ingredients);
 
     List<RecipeIngredients> getListByRecipeId(Long recipe_id);
+
+    void removeRecipeIngredient(RecipeIngredients recipeIngredients);
 }

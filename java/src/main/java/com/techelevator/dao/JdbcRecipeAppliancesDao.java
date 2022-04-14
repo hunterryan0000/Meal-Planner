@@ -18,4 +18,11 @@ public class JdbcRecipeAppliancesDao implements RecipeAppliancesDao {
         String sql = "insert into recipe_appliances values (?, ?)";
         jdbcTemplate.update(sql, recipeAppliances.getAppliance_id(), recipeAppliances.getRecipe_id());
     }
+
+    @Override
+    public void removeRecipeAppliances(RecipeAppliances recipeAppliances) {
+        String sql = "DELETE FROM recipe_appliances " +
+                "WHERE recipe_id = ? AND appliance_id = ?";
+        jdbcTemplate.update(sql, recipeAppliances.getRecipe_id(), recipeAppliances.getAppliance_id());
+    }
 }

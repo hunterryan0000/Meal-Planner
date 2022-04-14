@@ -6,4 +6,5 @@ public interface RecipeAppliancesDao {
 
     void addRecipeAppliances(RecipeAppliances recipeAppliances);
 
+    void removeRecipeAppliances(RecipeAppliances recipeAppliances);
 }
