@@ -1,7 +1,7 @@
 <template>
   <div>
     <span id="span" v-on:click.prevent="editRecipe(recipe)"> <a href=""></a> </span>
-
+    <span id="delete" v-on:click.prevent="deleteRecipe(recipe)"><i class="fa fa-trash-o"></i></span>
     <div class="detailswrapper">
       <div class="namedesc">
         <span>{{recipe.name}}</span>
@@ -62,6 +62,13 @@ export default {
     editRecipe(recipe){
       console.log("hit");
       this.$router.push('/recipes/edit/'+recipe.id)
+    },
+    deleteRecipe(recipe){
+      console.log("delete");
+      AuthService.deleteRecipe(recipe.id)
+      .then(() => {
+        this.$router.push('/Recipes');
+      })
     }
   }
 }
@@ -178,5 +185,21 @@ h1{
 #span a:hover{
   transform: translateZ(-25px) rotateX(-90deg);
 }
+#delete {
+  float: right;
+  background-color: rgb(146, 4, 4);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 5px;
+}
+#delete i{
+  position: relative;
+  color: white;
+  font-size: 30px;
+  margin: 0;
+  top:20%;
+}
+
 
 </style>
