@@ -27,7 +27,6 @@
     <!-- meal name -->
         <b-form-group
             id="fieldset-1"
-            description="What is your meal called?"
             label="Meal Name:"
             label-for="meal-name">
             <b-form-input id="meal-name" v-model="mealName" trim></b-form-input>
@@ -50,6 +49,13 @@
                         <b-form-select-option :value="null" disabled>Meal Type</b-form-select-option>
                     </template>
         </b-form-select>
+
+        <label for="servings">Servings:</label>
+        <b-form-select id="servings" v-model="servings" :options="servingOptions">
+            <template #first>
+                <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
+            </template>
+        </b-form-select>    
     
     
     </form>

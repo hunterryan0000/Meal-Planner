@@ -86,8 +86,6 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public void deleteRecipe(Recipe recipe) {
-        String sql = "DELETE FROM recipes WHERE recipe_id = ?";
-        jdbcTemplate.update(sql, recipe.getId());
 
         List<RecipeIngredients> ingredients = recipe.getIngredientList();
         for (RecipeIngredients recipeIngredient: ingredients) {
@@ -101,6 +99,9 @@ public class JdbcRecipeDao implements RecipeDao{
             recipeAppliances.setRecipe_id(recipe.getId());
             recipeAppliancesDao.removeRecipeAppliances(recipeAppliances);
         }
+
+        String sql = "DELETE FROM recipes WHERE recipe_id = ?";
+        jdbcTemplate.update(sql, recipe.getId());
 
 
     }
