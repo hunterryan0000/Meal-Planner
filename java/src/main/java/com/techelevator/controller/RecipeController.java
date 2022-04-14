@@ -45,7 +45,10 @@ public class RecipeController {
        return recipe;
     }
 
-
+    @RequestMapping(path = "/recipes/edit", method = RequestMethod.PUT)
+    public Recipe editRecipe(Principal principal, @RequestBody Recipe recipe){
+        return recipe;
+    }
 
 
 }
