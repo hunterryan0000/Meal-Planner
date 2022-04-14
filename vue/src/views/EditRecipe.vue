@@ -4,7 +4,7 @@
 
 <div class="mx-auto col-md-7" >
 
-<h1 class="text-center"> Create Recipe </h1>
+<h1 class="text-center"> Edit Recipe </h1>
 
 <br>
 <form>
@@ -170,9 +170,10 @@
 import AuthService from '../services/AuthService.js'
 
 export default {
-    name: 'create-recipe',
+    name: 'edit-recipe',
     data () {
         return {
+            recipe: null,
             ingredients: [],
             ingredient: '',
 
@@ -226,6 +227,21 @@ export default {
             ]
         }
     },
+    created() {
+      AuthService.searchRecipe(this.$route.params.id)
+      .then((response) => {
+        console.log(response.data);
+        this.recipe = response.data;
+        this.ingredients = response.data.ingredientList;
+        this.appliances = response.data.applianceList;
+        this.name = response.data.name;
+        this.recipePhoto = response.data.photo_url;
+        this.description = response.data.description;
+        this.instructions = response.data.instructions;
+        this.servings = response.data.servings;
+        this.difficulty = response.data.difficulty;
+      })
+  },
     methods: {
         addIngredientToArray(){
             console.log(this.ingredients)
@@ -269,10 +285,10 @@ export default {
         submitRecipe(){
             console.log(this.getRecipe);
             if(this.name !== '' && this.instructions !== '') {
-                AuthService.addRecipe(this.getRecipe)
+                AuthService.editRecipe(this.getRecipe)
                 .then((response) => {
                     console.log(response.data);
-                    this.$router.push('/recipes/'+response.data.id);
+                    this.$router.push('/recipes/'+this.recipe.id);
             })
             } else {
                 alert("Recipe name and instructions cannot be empty");
@@ -307,6 +323,7 @@ export default {
     computed: {
         getRecipe() {
             return {
+                id: this.recipe.id,
                 name: this.name,
                 photo_url: this.recipePhoto,
                 description: this.description,

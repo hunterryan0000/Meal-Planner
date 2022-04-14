@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span id="span"> <a href=""></a> </span>
+    <span id="span" v-on:click.prevent="editRecipe(recipe)"> <a href=""></a> </span>
 
     <div class="detailswrapper">
       <div class="namedesc">
@@ -57,6 +57,12 @@ export default {
         console.log(response.data);
         this.recipe = response.data;
       })
+  },
+  methods: {
+    editRecipe(recipe){
+      console.log("hit");
+      this.$router.push('/recipes/edit/'+recipe.id)
+    }
   }
 }
 </script>

@@ -31,6 +31,10 @@ export default {
     return http.post(`/recipes/add`, recipe, {headers: authHeader()})
   },
   
+  editRecipe(recipe){
+    return http.put(`/recipes/edit`, recipe, {headers: authHeader()})
+  },
+
   searchRecipe(id) {
     return http.get(`/recipes/search/${id}`, {headers: authHeader()})
   }
