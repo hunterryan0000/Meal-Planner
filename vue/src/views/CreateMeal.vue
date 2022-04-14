@@ -48,10 +48,10 @@
                     </template>
         </b-form-select>
 
-        <label for="servings">Servings:</label>
+        <label for="servings">How many meals will this last?</label>
         <b-form-select id="servings" v-model="servings" :options="servingOptions">
             <template #first>
-                <b-form-select-option :value="null" disabled>-- How many servings does this recipe make? --</b-form-select-option>
+                <b-form-select-option :value="null" disabled>-- How many meals will this last? --</b-form-select-option>
             </template>
         </b-form-select>    
     
@@ -160,7 +160,10 @@ export default {
 
 }
 */
-
+.parent{
+    margin-left: 30px;
+    margin-right: 30px;
+}
 #recipe_list, #meal_plan{
     width: 100%;
     overflow-y: auto;
@@ -177,7 +180,7 @@ export default {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 grid-template-rows: .25fr repeat(2, 1.5fr) .25fr repeat(2, 1fr);
-grid-column-gap: 0px;
+grid-column-gap: 15px;
 grid-row-gap: 0px;
 height: 80vh;
 }
@@ -208,9 +211,29 @@ label{
 }
 .meal_header h3{
     grid-area: 1/1/1/10;
+    padding-left: 100px;
 }
 .meal_header button{
     grid-area: 1/10/1/10;
+                
+                
+    
+                    cursor: pointer;
+                    outline: 0;
+                    color: #fff;
+                    background-color: green;
+                    border-color: green;
+                    display: inline-block;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    text-align: center;
+                    border: 1px solid transparent;
+                    padding: 6px 12px;
+                    font-size: 16px;
+                    border-radius: .25rem;
+                
 }
+
+
 
 </style>
