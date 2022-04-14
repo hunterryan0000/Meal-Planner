@@ -40,7 +40,7 @@ export default {
   },
 
   deleteRecipe(recipe) {
-    return http.delete(`/recipes/delete`, {data: recipe}, {headers: authHeader()})
+    return http.delete(`/recipes/delete`, {headers: authHeader(), data: recipe})
   }
 
 }
