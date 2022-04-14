@@ -66,10 +66,13 @@ create table recipe_appliances(
 );
 
 create table meals (
+	user_id int,
 	meal_id serial not null primary key,
 	name varchar(100),
 	description varchar (999),
-	time_of_day timestamp
+	type_of_meal varchar (100),
+	servings int,
+	foreign key (user_id) references users(user_id)
 );
 
 create table meals_recipes (
