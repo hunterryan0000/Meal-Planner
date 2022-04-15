@@ -19,6 +19,9 @@
                 <router-link class="nav-link" :to="{ name: 'create-meal'}" v-if="$store.state.token != ''">Create Meal</router-link>
               </li>
               <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'create-mealplan'}" v-if="$store.state.token != ''">Create Plan</router-link>
+              </li>
+              <li class="nav-item">
                 <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </li>
             </ul>

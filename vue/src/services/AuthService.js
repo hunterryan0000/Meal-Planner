@@ -62,6 +62,10 @@ export default {
 
   editMeal(meal){
     return http.put(`/meals/edit`, meal, { headers: authHeader() })
+  },
+
+  addPlan(plan) {
+    return http.post(`/plans/add`, plan, {headers: authHeader()})
   }
 
 }
