@@ -1,6 +1,7 @@
 !<template>
   <div v-on:click.prevent="pushMealDetails(meal)">
-      <p>{{meal}}</p>
+      <span>{{meal.mealName}}</span>
+      <p>{{meal.mealDescription}}</p>
   </div>
 </template>
 
@@ -19,5 +20,17 @@ export default {
 </script>
 
 <style>
+span{
+    font-weight: bolder;
+    font-size: 150%;
+    line-height: 30px;
+}
+
+p{
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 100%;
+}
 
 </style>
