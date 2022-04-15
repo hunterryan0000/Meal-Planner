@@ -122,12 +122,13 @@ export default {
   methods: {
       submitMeal() {
           console.log(this.getMeal)
-          if(this.mealName !== ''){
+          if(this.mealName !== '' && this.typeOfMeal !== ''){
               AuthService.addMeal(this.getMeal)
               .then((response) => {
                   console.log(response.data);
                   this.$router.push('/meals/'+response.data.id);
               })
+              this.$router.push({ name: 'meals' });
           }
       }
   },

@@ -128,6 +128,7 @@ export default {
                     console.log(response.data);
                     this.$router.push('/meals/'+response.data.id);
                 })
+                this.$router.push({ name: 'meals' });
             }
         }
     },
