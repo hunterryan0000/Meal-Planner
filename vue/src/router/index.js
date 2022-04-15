@@ -11,7 +11,7 @@ import RecipeDetails from '../views/RecipeDetails.vue'
 import EditRecipe from '../views/EditRecipe.vue'
 import CreateMeal from '../views/CreateMeal.vue'
 import Meals from '../views/Meals.vue'
-
+import MealDetails from '../views/MealDetails.vue'
 
 Vue.use(Router)
 
@@ -80,6 +80,14 @@ const router = new Router({
       path: "/recipes/:id",
       name: "details",
       component: RecipeDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/meals/:id",
+      name: "mealdetails",
+      component: MealDetails,
       meta: {
         requiresAuth: true
       }

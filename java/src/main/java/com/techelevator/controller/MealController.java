@@ -50,6 +50,11 @@ public class MealController {
 
     @RequestMapping(path = "/meals/search/{meal_id}", method = RequestMethod.GET)
     public Meal findById(@PathVariable Long meal_id, Principal principal){
+        return mealDao.getMealById(meal_id, new Long(userDao.findIdByUsername(principal.getName())));
+    }
+
+    @RequestMapping(path = "/meals/edit", method = RequestMethod.PUT)
+    public Meal editMeal(Principal principal, @RequestBody Meal meal){
         return null;
     }
 }

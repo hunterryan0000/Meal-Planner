@@ -49,6 +49,10 @@ export default {
 
   getMeals(){
     return http.get(`/meals/all`, { headers: authHeader() })
+  },
+
+  searchMeal(id) {
+    return http.get(`/meals/search/${id}`, {headers: authHeader()})
   }
 
 }
