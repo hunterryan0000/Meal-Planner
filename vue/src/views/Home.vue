@@ -1,24 +1,24 @@
 <template>
   <div id="Home">
-    <h1 id="welcome">Kook Book<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
-    <!-- <img src=".gif" alt="Name gif"> -->
-    <h3 id="easy">Meal Planning Made Easy</h3>
-    <p>Get organized with the Kook Book Meal Planner. Customize your weekly meal plan based on your recipes.</p>
+      <h1 id="welcome">Kook Book<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
+      <!-- <img src=".gif" alt="Name gif"> -->
+      <h3 id="easy">Meal Planning Made Easy</h3>
+      <p>Get organized with the Kook Book Meal Planner. Customize your weekly meal plan based on your recipes.</p>
     <div class = "stepsContainer">
       <div class = "steps">
-        <img data-pin-nopin="true" class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/meal.jpg">
+        <img class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/meal.jpg">
         <br>
         <span class="nums">1</span>
         <span class="step-text">Add Recipes</span>
       </div>
       <div class = "steps">
-        <img data-pin-nopin="true" class="step-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS256s8dnj8IMnXjGqZw4FyQWomLGX9m0prWg&usqp=CAU">
+        <img class="step-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS256s8dnj8IMnXjGqZw4FyQWomLGX9m0prWg&usqp=CAU">
         <br>
         <span class="nums">2</span>
         <span class="step-text">Customize Meal planner</span>
       </div>
       <div class = "steps">
-        <img data-pin-nopin="true" class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/bag.jpg">
+        <img class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/bag.jpg">
         <br>
         <span class="nums">3</span>
         <span class="step-text">Customize Grocery List</span>
@@ -61,6 +61,7 @@ export default {
 #Home h3 {
   text-align:center; font-size:30px; text-transform:uppercase; color:white; letter-spacing:5px;
   font-family:"Playfair Display", serif; font-weight:200;
+  padding-top: 2rem;
 }
 
 #welcome{
@@ -76,7 +77,7 @@ export default {
   font-family:"Playfair Display", serif;
 }
 
-.stepscontainer {
+.stepsContainer {
     width: 100%;
     text-align: center;
 }
@@ -90,8 +91,6 @@ export default {
     font-size: 1.0rem;
     color:white;
     font-weight: bold;
-    margin-left: 10%;
-   
 }
 
 .steps .step-image {
@@ -117,7 +116,6 @@ export default {
     font-style: inherit;
     font-weight: inherit;
 }
-
 
 </style>
 
