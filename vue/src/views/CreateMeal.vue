@@ -57,7 +57,7 @@
     
     
     </form>
-    <draggable class="list-group" :list="recipeList" group="recipes" id="recipe_list">
+    <draggable class="list-group" id="recipe_list" :list="recipeList" group="recipes" >
               <recipe-panel v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
     </draggable>
     <draggable class="list-group" :list="mealList" group="recipes" id="meal_plan">

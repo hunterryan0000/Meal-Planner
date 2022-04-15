@@ -50,7 +50,5 @@ p{
     padding-right: 15px;
     font-size: 100%;
 }
-img{
-  width: 100%;
-}
+
 </style>

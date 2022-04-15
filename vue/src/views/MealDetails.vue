@@ -1,30 +1,26 @@
-!<template>
-  <div>
+<template>
+  <div class="mx-auto col-md-8">
     <div id="buttons">
       <span id="span" v-on:click.prevent="editMeal(meal)"> <a href=""></a> </span>
       <span id="delete" v-on:click.prevent="deleteMeal(meal)"><i class="fa fa-trash-o"></i></span>
     </div>
-
     <div class="meal-details-container">
       <!-- <p> {{meal}} </p> -->
+      <h1 class="text-center">{{meal.name}}</h1>
       <div class="container">
         <div class="row align-items-start text-center">
-
           <div class="col">
-            <h1>{{meal.name}}</h1>
-            <p>{{meal.description}}</p>
+            <h4>Meal Type: {{meal.type_of_meal}}</h4>
           </div>
-
           <div class="col">
-            <h3>{{meal.type_of_meal}}</h3>
-            <h3>Servings: {{meal.servings}}</h3>
+            <h4>Servings: {{meal.servings}}</h4>
           </div>
-
         </div>
+        <h6 class="text-center">{{meal.description}}</h6>
       </div>
-
-      <recipe-panel v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
-
+      <div class="list-group" id="recipe_list">
+        <recipe-panel class="recipe-panel" v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
+      </div>
     </div>
   </div>
 </template>
@@ -45,22 +41,21 @@ export default {
         }
     },
     created(){
-        console.log(this.$route.params.id);
         AuthService.searchMeal(this.$route.params.id)
         .then((response) => {
-            console.log(response.data);
             this.meal = response.data;
-        });
-        this.meal.recipeList.forEach((recipe) => {
-          console.log(recipe.recipe_id);
-          AuthService.searchRecipe(recipe.recipe_id)
-          .then((response) => {
-          console.log(recipe.recipe_id);
-          console.log(response.data);
-          this.recipeList.push(response.data);
-          })
-        });
+            console.log(response.data);
 
+            let recipes = response.data.mealsRecipesList;
+
+            recipes.forEach((recipe) => {
+              console.log(recipe.recipe_id);
+              AuthService.searchRecipe(recipe.recipe_id)
+              .then((response) => {
+              this.recipeList.push(response.data);
+              })
+            });
+        });
     },
     methods: {
         editMeal(meal){
@@ -87,7 +82,18 @@ p, h1, li{
 }
 
 #buttons{
-  padding: 20px;
+  padding-top:2%;
+}
+
+#recipe_list, #meal_plan{
+    width: 100%;
+    overflow-y: auto;
+    background-color: white;
+}
+
+#recipe_list *, #meal_plan *{
+    height: 100px;
+    border: 2px solid black;
 }
 
 #span{
@@ -96,9 +102,9 @@ p, h1, li{
   width: 180px;
   height: 55px;
   margin: 0 15px;
+  margin-right: 0;
   perspective: 1000px;
   float: right;
-  margin-right: 3vw;
   margin-bottom: 10px;
 }
 #span a{
@@ -151,5 +157,15 @@ p, h1, li{
   font-size: 30px;
   margin: 0;
   top:20%;
+}
+
+.recipe-panel {
+    border: 5px solid rgb(230, 213, 195);
+    background-color: cornsilk;
+    border-radius: 10px;
+}
+
+h6, h1 {
+  padding: 3%;
 }
 </style>
