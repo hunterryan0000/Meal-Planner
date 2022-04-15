@@ -1,6 +1,18 @@
 !<template>
-  <div>
-      <span id="span" v-on:click.prevent="editMeal(meal)"> <a href=""></a> </span>
+  <div class="meal-details-container">
+    <h1>Meal: {{meal.name}}</h1>
+    
+    <div class="recipe-container">
+      <ul class="recipe-list">
+        <li>Recipe Photo: Recipe Name: | Meal type: Serves x:{{recipe_id}}</li>
+      </ul>
+    </div>
+
+    <div>
+      <p>{{}}</p>
+    </div>
+      
+    <span id="span" v-on:click.prevent="editMeal(meal)"> <a href=""></a> </span>
     <span id="delete" v-on:click.prevent="deleteMeal(meal)"><i class="fa fa-trash-o"></i></span>
     <p>{{meal}}</p>
   </div>
@@ -39,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-p{
+p, h1, li{
     color: white
 }
 #span{
