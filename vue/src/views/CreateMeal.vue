@@ -118,6 +118,7 @@ export default {
         console.log(response.data);
         this.recipeList = response.data;
       })
+      console.log(this.recipeList);
   },
   methods: {
       submitMeal() {
