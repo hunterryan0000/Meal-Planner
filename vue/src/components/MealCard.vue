@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-/* span{
+span{
     font-weight: bolder;
     font-size: 150%;
     line-height: 30px;
@@ -31,6 +31,6 @@ p{
     padding-left: 15px;
     padding-right: 15px;
     font-size: 100%;
-} */
+}
 
 </style>

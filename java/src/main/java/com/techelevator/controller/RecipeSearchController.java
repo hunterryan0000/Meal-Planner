@@ -18,7 +18,7 @@ public class RecipeSearchController {
 
     public RecipeSearchController(RecipeDao recipeDao) {this.recipeDao = recipeDao;}
 
-    @RequestMapping(path = "/recipes/search/{term}", method = RequestMethod.GET)
+    @RequestMapping(path = "/recipe/search/{term}", method = RequestMethod.GET)
     public List<Recipe> search(@PathVariable String term){
         return recipeDao.getRecipes(term);
     }

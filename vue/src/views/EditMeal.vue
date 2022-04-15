@@ -126,6 +126,7 @@ export default {
                 AuthService.editMeal(this.getMeal)
                 .then((response) => {
                     console.log(response.data);
+                    this.$router.push('/meals/'+response.data.id);
                 })
             }
         }

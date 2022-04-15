@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 
-/* .cardWrapper{
+.cardWrapper{
   display: flex;
   flex-wrap: wrap;
   gap: 40px 40px;
@@ -44,6 +44,6 @@ export default {
   padding-bottom: 30px;
   text-align: center;
   box-shadow: 5px 5px 5px #422424;
-} */
+}
 
 </style>
