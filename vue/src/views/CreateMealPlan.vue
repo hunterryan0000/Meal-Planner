@@ -9,8 +9,11 @@
       <div class="plansWrapper">
           <div class="plansHeader">
               <h3>Plans</h3>
-              <h3>Days: </h3>
+              <h3 id="Name">Name: </h3>
+              <input type="text" id="name" v-model="name">
+              <h3 id="DayCounter">Days: </h3>
               <input type="number" id="days" min="0" max="31" v-model="days" @change.prevent="updateDays">
+              <button v-on:click="savePlan">Add</button>
           </div>
           <div v-for="day in planList" :key="day.id" id="daysList">
                 <p>Day {{day.id}}</p>
@@ -43,7 +46,8 @@ export default {
         return {
             mealList: [],
             planList: [],
-            days: 0
+            days: 0,
+            name: ''
         }
     },
     created() {
@@ -67,6 +71,24 @@ export default {
             let removeIndex = this.planList[dayId-1].mealList.map(item => item.id).indexOf(cardId);
             console.log(removeIndex);
             ~removeIndex && this.planList[dayId-1].mealList.splice(removeIndex, 1)
+        },
+        savePlan(){
+            console.log(this.getPlan)
+            if(this.name !== ''){
+                AuthService.addPlan(this.getPlan)
+                .then((r) => {
+                    console.log(r.data);
+                })
+            }
+        }
+    },
+    computed: {
+        getPlan() {
+            return {
+                name: this.name,
+                totalDays: this.days,
+                days: this.planList
+            }
         }
     }
 }
@@ -87,10 +109,13 @@ export default {
     justify-content: center;
     align-items: center;
 }
-.plansHeader :nth-child(2){
+.plansHeader #DayCounter{
     margin-left: auto;
 }
-input{
+#Name{
+    margin-left: 30%;
+}
+#days{
     width: 3vw;
 }
 #meal_list{

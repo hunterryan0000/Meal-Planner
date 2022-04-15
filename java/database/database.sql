@@ -94,7 +94,6 @@ create table meals_mealplan(
 	mealplan_id int,
 	meal_id int,
 	day int,
-	time time,
 	foreign key (mealplan_id) references mealplan(mealplan_id),
 	foreign key (meal_id) references meals(meal_id)
 );
