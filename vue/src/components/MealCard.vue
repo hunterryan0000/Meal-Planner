@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 h3{
     padding-top: 5%;
     font-weight: bolder;
