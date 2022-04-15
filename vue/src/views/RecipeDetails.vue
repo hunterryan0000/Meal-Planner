@@ -75,7 +75,7 @@ export default {
 }
 </script>
 
-<style scss scoped>
+<style scoped>
 h1{
     color: white;
 }
