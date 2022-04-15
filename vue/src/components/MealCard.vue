@@ -1,4 +1,4 @@
-!<template>
+<template>
   <div v-on:click.prevent="pushMealDetails(meal)">
       <span>{{meal.mealName}}</span>
       <p>{{meal.mealDescription}}</p>
