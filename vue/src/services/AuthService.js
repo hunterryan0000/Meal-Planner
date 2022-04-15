@@ -45,6 +45,10 @@ export default {
 
   addMeal(meal) {
     return http.post(`/meals/add`, meal, {header: authHeader()})
+  },
+
+  getMeals(){
+    return http.get(`/meals/all`, { headers: authHeader() })
   }
 
 }
