@@ -1,7 +1,8 @@
 !<template>
-  <div class="cardWrapper">
-      <meal-card class="card" v-for="meal in mealList" :key="meal.id" :meal="meal"></meal-card>
-  </div>
+<div>
+    <div class="cardWrapper">
+        <meal-card class="card" v-for="meal in mealList" :key="meal.id" :meal="meal"></meal-card>
+    </div>
 </div>
 </template>
 
