@@ -44,6 +44,7 @@ export default {
   },
 
   addMeal(meal) {
+    console.log(authHeader())
     return http.post(`/meals/add`, meal, {header: authHeader()})
   },
 
@@ -53,6 +54,14 @@ export default {
 
   searchMeal(id) {
     return http.get(`/meals/search/${id}`, {headers: authHeader()})
+  },
+
+  deleteMeal(meal) {
+    return http.delete(`/meals/delete`, {headers: authHeader(), data: meal})
+  },
+
+  editMeal(meal){
+    return http.put(`/meals/edit`, meal, { headers: authHeader() })
   }
 
 }

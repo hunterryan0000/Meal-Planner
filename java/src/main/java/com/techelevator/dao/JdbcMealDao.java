@@ -62,7 +62,7 @@ public class JdbcMealDao implements MealDao{
                 "SET name = ?, description = ?, type_of_meal = ?, servings = ? " +
                 "WHERE meal_id = ?";
 
-        int updateRowsCount = jdbcTemplate.update(sql, meal.getName(), meal.getDescription(), meal.getType_of_meal(), meal.getServings());
+        int updateRowsCount = jdbcTemplate.update(sql, meal.getName(), meal.getDescription(), meal.getType_of_meal(), meal.getServings(), meal.getId());
 
         //remove old recipes from meals
         List<MealsRecipes> mealsRecipesList = getMealById(meal.getId(), meal.getUser_id()).getMealsRecipesList();
