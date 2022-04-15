@@ -1,9 +1,7 @@
 !<template>
-<div>
   <div class="cardWrapper">
       <meal-card class="card" v-for="meal in mealList" :key="meal.id" :meal="meal"></meal-card>
   </div>
-<div>
 </template>
 
 <script>
@@ -32,18 +30,18 @@ export default {
 
 <style scoped>
 
-.cardWrapper{
+/* .cardWrapper{
   display: flex;
   flex-wrap: wrap;
   gap: 40px 40px;
   justify-content:center;
 }
-.meal_card{
+.card{
   background-color: white;
   width: 20%;
   padding-bottom: 30px;
   text-align: center;
   box-shadow: 5px 5px 5px #422424;
-}
+} */
 
 </style>
