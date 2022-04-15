@@ -1,4 +1,4 @@
-!<template>
+<template>
 <div>
     <h1 class="text-center" v-if="allBreakFast.length">Breakfast</h1>
     <div class="cardWrapper" v-if="allBreakFast.length">
@@ -84,7 +84,7 @@ export default {
   padding-top: 2%;
   padding-bottom: 5%;
 }
-.meal_card{
+.card{
   background-color: white;
   width: 20%;
   padding-bottom: 30px;
