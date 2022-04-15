@@ -65,6 +65,8 @@ public class JdbcMealDao implements MealDao{
         int updateRowsCount = jdbcTemplate.update(sql, meal.getName(), meal.getDescription(), meal.getType_of_meal(), meal.getServings(), meal.getId());
 
         //remove old recipes from meals
+        System.out.println(meal.getId());
+        System.out.println(meal.getUser_id());
         List<MealsRecipes> mealsRecipesList = getMealById(meal.getId(), meal.getUser_id()).getMealsRecipesList();
         for (MealsRecipes mealsRecipes: mealsRecipesList){
             mealsRecipesDao.removeMealsRecipes(mealsRecipes);

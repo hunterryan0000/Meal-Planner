@@ -1,7 +1,7 @@
 <template>
   <div v-on:click.prevent="pushMealDetails(meal)">
-      <span>{{meal.mealName}}</span>
-      <p>{{meal.mealDescription}}</p>
+      <span>{{meal.name}}</span>
+      <p>{{meal.description}}</p>
   </div>
 </template>
 
