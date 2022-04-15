@@ -29,11 +29,11 @@
 </template>
 
 <style scoped>
-#app {
+/* #app {
   background-image: url('https://cdn.discordapp.com/attachments/872641665314222100/963544684028895253/wood.jpg');
   height: 100vh;
   width: 100vw;
-}
+} */
 
 /* #nav {
   margin-bottom: 5%;
