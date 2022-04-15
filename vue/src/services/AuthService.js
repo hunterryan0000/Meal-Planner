@@ -44,6 +44,7 @@ export default {
   },
 
   addMeal(meal) {
+    console.log(authHeader())
     return http.post(`/meals/add`, meal, {header: authHeader()})
   },
 
