@@ -23,6 +23,17 @@ export default {
             console.log(response.data);
             this.meal = response.data;
         })
+    },
+    methods: {
+        editMeal(meal){
+            this.$router.push('/meals/edit/'+meal.id)
+        },
+        deleteMeal(meal){
+            AuthService.deleteMeal(meal)
+            .then(() => {
+                this.$router.push('/Meals');
+            })
+        }
     }
 }
 </script>

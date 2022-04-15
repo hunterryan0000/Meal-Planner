@@ -12,6 +12,7 @@ import EditRecipe from '../views/EditRecipe.vue'
 import CreateMeal from '../views/CreateMeal.vue'
 import Meals from '../views/Meals.vue'
 import MealDetails from '../views/MealDetails.vue'
+import EditMeal from '../views/EditMeal.vue'
 
 Vue.use(Router)
 
@@ -112,6 +113,14 @@ const router = new Router({
       path: '/meals',
       name: 'meals',
       component: Meals,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/meals/edit/:id",
+      name: "edit-meal",
+      component: EditMeal,
       meta: {
         requiresAuth: true
       }

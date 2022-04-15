@@ -55,6 +55,13 @@ public class MealController {
 
     @RequestMapping(path = "/meals/edit", method = RequestMethod.PUT)
     public Meal editMeal(Principal principal, @RequestBody Meal meal){
-        return null;
+        meal.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        return mealDao.modifyMeal(meal);
+    }
+
+    @RequestMapping(path= "/meals/delete", method = RequestMethod.DELETE)
+    public void deleteMeal(Principal principal, @RequestBody Meal meal){
+        meal.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        mealDao.deleteMeal(meal);
     }
 }

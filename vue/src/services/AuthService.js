@@ -53,6 +53,14 @@ export default {
 
   searchMeal(id) {
     return http.get(`/meals/search/${id}`, {headers: authHeader()})
+  },
+
+  deleteMeal(meal) {
+    return http.delete(`/meals/delete`, {headers: authHeader(), data: meal})
+  },
+
+  editMeal(meal){
+    return http.put(`/meals/edit`, meal, { headers: authHeader() })
   }
 
 }
