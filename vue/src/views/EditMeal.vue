@@ -133,6 +133,7 @@ export default {
     computed: {
         getMeal(){
           return {
+              id: this.meal.id,
               name: this.mealName,
               description: this.mealDescription,
               type_of_meal: this.typeOfMeal,
