@@ -1,7 +1,29 @@
 <template>
   <div id="Home">
-    <h1 id="welcome">Meals on Deals<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
+    <h1 id="welcome">Kook Book<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
     <!-- <img src=".gif" alt="Name gif"> -->
+    <h3 id="easy">Meal Planning Made Easy</h3>
+    <p>Get organized with the Kook Book Meal Planner. Customize your weekly meal plan based on your recipes.</p>
+    <div class = "stepsContainer">
+      <div class = "steps">
+        <img data-pin-nopin="true" class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/meal.jpg">
+        <br>
+        <span class="nums">1</span>
+        <span class="step-text">Add Recipes</span>
+      </div>
+      <div class = "steps">
+        <img data-pin-nopin="true" class="step-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS256s8dnj8IMnXjGqZw4FyQWomLGX9m0prWg&usqp=CAU">
+        <br>
+        <span class="nums">2</span>
+        <span class="step-text">Customize Meal planner</span>
+      </div>
+      <div class = "steps">
+        <img data-pin-nopin="true" class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/bag.jpg">
+        <br>
+        <span class="nums">3</span>
+        <span class="step-text">Customize Grocery List</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,7 +36,7 @@ export default {
 <style scoped>
 
 #Home h1 {
-  text-align:center; font-size:50px; text-transform:uppercase; color:white; letter-spacing:5px;
+  text-align:left; font-size:50px; text-transform:uppercase; color:white; letter-spacing:5px;
   font-family:"Playfair Display", serif; font-weight:400;
 }
 #Home h1 span {
@@ -36,10 +58,66 @@ export default {
   background-color:#f8f8f8;
 }
 
-/* #welcome{
-  font-size: 75px;
-  color: white;
-  
-} */
+#Home h3 {
+  text-align:center; font-size:30px; text-transform:uppercase; color:white; letter-spacing:5px;
+  font-family:"Playfair Display", serif; font-weight:200;
+}
+
+#welcome{
+  margin-left: 3%;
+}
+
+#Home h1 span {
+  margin-left: -3%;
+}
+
+#Home p{
+  text-align:center; font-size:15px; text-transform:uppercase; color:white; letter-spacing:1px;
+  font-family:"Playfair Display", serif;
+}
+
+.stepscontainer {
+    width: 100%;
+    text-align: center;
+}
+
+.steps {
+    text-align: center;
+    display: inline-block;
+    width: 360px;
+    padding: 25px;
+    box-sizing: border-box;
+    font-size: 1.0rem;
+    color:white;
+    font-weight: bold;
+    margin-left: 10%;
+   
+}
+
+.steps .step-image {
+    display: inline-block;
+    width: 100%;
+    max-width: 130px;
+    margin-bottom: 20px;
+    
+}
+
+.steps .nums {
+    display: inline-block;
+    background: #007444;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stepsContainer span {
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+
 </style>
 

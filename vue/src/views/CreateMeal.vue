@@ -22,7 +22,7 @@
     <h3 class="recipe_header">All Recipes</h3> 
     <div class="meal_header">
          <h3>Meal</h3>
-         <button v-on:click.prevent="submitMeal()">Add</button>
+         <button v-on:click.prevent="submitMeal()" type="submit">Add</button>
     </div>
     <h3 class="recipe_meal_header">Recipes</h3>
     <form class="form" action="">
@@ -118,16 +118,18 @@ export default {
         console.log(response.data);
         this.recipeList = response.data;
       })
+      console.log(this.recipeList);
   },
   methods: {
       submitMeal() {
           console.log(this.getMeal)
-          if(this.mealName !== ''){
+          if(this.mealName !== '' && this.typeOfMeal !== ''){
               AuthService.addMeal(this.getMeal)
               .then((response) => {
                   console.log(response.data);
-                  this.$router.push('/meals/'+response.data.id)
+                  this.$router.push('/meals/'+response.data.id);
               })
+              this.$router.push({ name: 'meals' });
           }
       }
   },

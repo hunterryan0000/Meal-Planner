@@ -1,19 +1,47 @@
 !<template>
   <div>
+    <div id="buttons">
       <span id="span" v-on:click.prevent="editMeal(meal)"> <a href=""></a> </span>
-    <span id="delete" v-on:click.prevent="deleteMeal(meal)"><i class="fa fa-trash-o"></i></span>
-    <p>{{meal}}</p>
+      <span id="delete" v-on:click.prevent="deleteMeal(meal)"><i class="fa fa-trash-o"></i></span>
+    </div>
+
+    <div class="meal-details-container">
+      <!-- <p> {{meal}} </p> -->
+      <div class="container">
+        <div class="row align-items-start text-center">
+
+          <div class="col">
+            <h1>{{meal.name}}</h1>
+            <p>{{meal.description}}</p>
+          </div>
+
+          <div class="col">
+            <h3>{{meal.type_of_meal}}</h3>
+            <h3>Servings: {{meal.servings}}</h3>
+          </div>
+
+        </div>
+      </div>
+
+      <recipe-panel v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
+
+    </div>
   </div>
 </template>
 
 <script>
 import AuthService from '../services/AuthService.js'
+import RecipePanel from '@/components/RecipePanel.vue'
 
 export default {
     name: 'mealdetails',
+    components: {
+      RecipePanel
+    },
     data(){
         return{
-            meal: null
+          recipeList: [],
+          meal: null
         }
     },
     created(){
@@ -22,7 +50,17 @@ export default {
         .then((response) => {
             console.log(response.data);
             this.meal = response.data;
-        })
+        });
+        this.meal.recipeList.forEach((recipe) => {
+          console.log(recipe.recipe_id);
+          AuthService.searchRecipe(recipe.recipe_id)
+          .then((response) => {
+          console.log(recipe.recipe_id);
+          console.log(response.data);
+          this.recipeList.push(response.data);
+          })
+        });
+
     },
     methods: {
         editMeal(meal){
@@ -39,9 +77,19 @@ export default {
 </script>
 
 <style scoped>
-p{
-    color: white
+p, h1, li{
+    color: black;
 }
+
+.meal-details-container{
+  background-color: cornsilk;
+  margin-top: 45px;
+}
+
+#buttons{
+  padding: 20px;
+}
+
 #span{
   position: relative;
   display: inline-flex;
