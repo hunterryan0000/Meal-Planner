@@ -4,24 +4,29 @@
       <span id="span" v-on:click.prevent="editMeal(meal)"> <a href=""></a> </span>
       <span id="delete" v-on:click.prevent="deleteMeal(meal)"><i class="fa fa-trash-o"></i></span>
     </div>
+
     <div class="meal-details-container">
-      <!-- <p> {{meal}} </p> -->
       <h1 class="text-center">{{meal.name}}</h1>
+
       <div class="container">
         <div class="row align-items-start text-center">
           <div class="col">
             <h4>Meal Type: {{meal.type_of_meal}}</h4>
           </div>
+
           <div class="col">
             <h4>Servings: {{meal.servings}}</h4>
           </div>
         </div>
+
         <h6 class="text-center">{{meal.description}}</h6>
       </div>
+
       <div class="list-group" id="recipe_list">
         <recipe-panel class="recipe-panel" v-for="recipe in recipeList" :key="recipe.id" :recipe="recipe"></recipe-panel>
       </div>
     </div>
+
   </div>
 </template>
 
