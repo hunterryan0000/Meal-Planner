@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.MealPlanDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Meal;
 import com.techelevator.model.MealPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -41,6 +42,13 @@ public class MealPlanController {
     @RequestMapping(path = "/plans/search/{mealplan_id}", method = RequestMethod.GET)
     public MealPlan findById(@PathVariable Long mealplan_id, Principal principal){
         return mealPlanDao.getMealPlanById(mealplan_id, new Long(userDao.findIdByUsername(principal.getName())));
+    }
+
+    @RequestMapping(path = "/plans/edit", method = RequestMethod.PUT)
+    public Meal editMeal(Principal principal, @RequestBody MealPlan mealPlan){
+        mealPlan.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+//        return mealPlanDao.modifyMealPlan(mealPlan);
+        return null;
     }
 
 

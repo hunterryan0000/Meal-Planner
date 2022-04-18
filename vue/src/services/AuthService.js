@@ -57,9 +57,12 @@ export default {
   addPlan(plan) {
     return http.post(`/plans/add`, plan, {headers: authHeader()})
   },
-
   getMealPlans(){
     return http.get(`/plans/all`, { headers: authHeader() })
   },
+  searchPlan(id){
+    return http.get(`/plans/search/${id}`, { headers: authHeader() });
+  },
+  
 
 }

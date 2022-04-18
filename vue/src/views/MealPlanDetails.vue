@@ -10,16 +10,27 @@
 
         <div class="row align-items-start" id="headers-container">
             <div class="col">
-                <h4> Days: 0 </h4>
+                <h4> Days: {{plan.totalDays}} </h4>
             </div>
             <div class="col">
-                <h1> plan name</h1>
+                <h1>{{plan.name}}</h1>
             </div>
         </div>
 
-        <div class="list-group" id="meal_list">
-            <meal-card class="meal-card" v-for="meal in mealList" :meal="meal" :key="meal.id" />
+        <div v-for="day in plan.days" :key="day.id" id="daysList">
+                <p>Day {{day.id}}</p>
+                <div id="plan_list">
+                    <div v-for="meal in day.mealList" :key="meal.id" id="mealCard">
+                       <meal-card  :meal="meal"></meal-card> 
+                       <!-- <button v-on:click.prevent="removeCard(day.id, meal.id)">remove</button> -->
+                    </div>
+                </div>  
         </div>
+
+
+        <!-- <div class="list-group" id="meal_list">
+            <meal-card class="meal-card" v-for="meal in mealList" :meal="meal" :key="meal.id" />
+        </div> -->
     </div>
   </div>
 </template>
@@ -40,24 +51,24 @@ export default {
         }
     },
     created(){
-        // *** .method() may need changed
-        // This sends a request for the meal plan by id, updates plan
+        console.log("HECK YEAH");
         AuthService.searchPlan(this.$route.params.id)
         .then((response) => {
             this.plan = response.data;
             console.log("console log - This is the plan's data: " + response.data);
+            console.log(response.data);
 
-            // *** the variable names may need changed
-            // This isolates the list of meals from a plan, received from response data
-            let meals = response.data.plansMealsList;
+            let days = response.data.days;
 
-            meals.forEach(meal => {
+            days.forEach(meal => {
+                console.log(meal);
                 console.log("console log - This is the meal id: " + meal.meal_id);
                 
-            // This requests meal information for each meal found in meal List of a plan, updates mealList array
-                AuthService.searchMeal(meal.meal_id)
-                .then((response) => {
+                meal.mealList.forEach((element) => {
+                    AuthService.searchMeal(element.id)
+                    .then((response) => {
                     this.mealList.push(response.data);
+                    })
                 })
             });
         })
@@ -79,12 +90,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .meal-plan-details-container{
     background-color: cornsilk;
     margin-top: 45px;
+    border: 5px solid rgb(230, 213, 195);
+    background-color: cornsilk;
+    border-radius: 10px;
+    /* height: 300px;
+    width: 300px; */
 }
-
 
 #buttons{
   padding-top:2%;

@@ -29,7 +29,7 @@ export default {
     },
     methods: {
     pushPlanDetails(plan){
-      this.$router.push('/mealplans/' + plan.id)
+      this.$router.push('/mealplan-details/' + plan.id)
      }
   }
 }

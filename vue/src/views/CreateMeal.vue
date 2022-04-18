@@ -1,4 +1,4 @@
-!<template>
+<template>
 <!-- <div class="root">
   <div class="header">
       <h3 class="recipe_header">All Recipes</h3>
@@ -157,41 +157,6 @@ export default {
 </script>
 
 <style scoped>
-/* div{
-    border: 3px solid green;
-}
-.wrapper{
-    display: flex;
-    height: 80vh;
-    margin-left: 5%;
-    margin-right: 5%;
-    gap: 30px;
-}
-.wrapper #recipe_list, .wrapper #meal_plan{
-    width: 50%;
-    overflow-y: auto;
-
-}
-#recipe_list,  #meal_plan{
-    display: flex;
-    flex-direction: column;
-}
-#recipe_list *, #meal_plan *{
-    height: 200px;
-}
-.root{
-    display: flex;
-    flex-direction: column;
-}
-.header{
-    display: flex;
-    justify-content: space-evenly;
-    margin-left: 5%;
-    margin-right: 5%;
-    gap: 30px;
-
-}
-*/
 .parent{
     margin-left: 30px;
     margin-right: 30px;
@@ -203,7 +168,7 @@ export default {
 }
 
 .recipe_header, .meal_header, .recipe_meal_header{
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
 } 
@@ -229,7 +194,7 @@ height: 80vh;
     border: 2px solid black;
 }
 label{
-    color: white;
+    color: black;
 }
 .meal_header button{
     display: block;

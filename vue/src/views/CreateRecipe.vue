@@ -326,7 +326,7 @@ label {
     font-weight: bold;
 }
 
-div .mx-auto {
+.mx-auto {
     border: 5px solid rgb(230, 213, 195);
     background-color: cornsilk;
     border-radius: 10px;
