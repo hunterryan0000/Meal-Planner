@@ -2,8 +2,8 @@
   <div class="mx-auto col-md-8">
 
     <div id="buttons">
-        <span id="span" v-on:click.prevent="editMeal(meal)"> <a href=""></a> </span>
-        <span id="delete" v-on:click.prevent="deleteMeal(meal)"><i class="fa fa-trash-o"></i></span>
+        <span id="span" v-on:click.prevent="editMealPlan(plan)"> <a href=""></a> </span>
+        <span id="delete" v-on:click.prevent="deleteMealPlan(plan)"><i class="fa fa-trash-o"></i></span>
     </div>
 
     <div class="meal-plan-details-container">
@@ -78,10 +78,8 @@ export default {
             this.$router.push('/mealplan/edit/' + mealPlan)
         },
         deleteMealPlan(mealPlan){
-            // ***.method() may need changed
             AuthService.deleteMealPlan(mealPlan)
             .then(() => {
-                // *** location may need changed, goes to mealplan list view after delete
                 this.$router.push('/mealplan');
             })
         }

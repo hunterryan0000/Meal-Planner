@@ -63,6 +63,9 @@ export default {
   searchPlan(id){
     return http.get(`/plans/search/${id}`, { headers: authHeader() });
   },
-  
+  deleteMealPlan(mealPlan){
+    return http.delete('/plans/delete', { headers: authHeader(), data: mealPlan})
+  }
+
 
 }
