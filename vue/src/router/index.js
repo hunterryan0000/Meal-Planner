@@ -14,6 +14,9 @@ import Meals from '../views/Meals.vue'
 import MealDetails from '../views/MealDetails.vue'
 import EditMeal from '../views/EditMeal.vue'
 import CreateMealPlan from '../views/CreateMealPlan.vue'
+// import MealPlans from '../views/MealPlans.vue'
+// import MealPlanDetails from '../views/MealPlanDetails.vue'
+// import EditMealPlan from '../views/EditMealPlan.vue'
 
 Vue.use(Router)
 
@@ -133,7 +136,23 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    // {
+    //   path: "/mealplans",
+    //   name: "mealplans",
+    //   component: MealPlans,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // {
+    //   path: "/mealplans/edit/:id",
+    //   name: "edit-mealplans",
+    //   component: EditMealPlans,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // }
       
   ]
 })

@@ -44,6 +44,7 @@ export default {
     },
     data() {
         return {
+            mealplan: null,
             mealList: [],
             planList: [],
             days: 0,
@@ -51,10 +52,23 @@ export default {
         }
     },
     created() {
-        AuthService.getMeals()
+        console.log("searching");
+        AuthService.searchPlan(this.$route.params.id)
         .then((r) => {
             console.log(r.data);
-            this.mealList = r.data;
+            this.mealplan = r.data;
+            AuthService.getMeals().then((r) => {
+                this.mealList = [];
+                this.planList = [];
+                for (let plan of r.data) {
+                    console.log(this.mealplan.mealList);
+                    if(this.mealplan.mealList.filter(e => e.meal_id == plan.id).length > 0) {
+                        this.planList.push(plan);
+                    }
+                    console.log(plan);
+                }
+            }
+            )
         })
     },
     methods: {
@@ -73,12 +87,12 @@ export default {
             ~removeIndex && this.planList[dayId-1].mealList.splice(removeIndex, 1)
         },
         savePlan(){
-            console.log(this.getPlan)
+            
             if(this.name !== ''){
                 AuthService.addPlan(this.getPlan)
                 .then((r) => {
                     console.log(r.data);
-                    //  this.$router.push('/mealplans/'+r.data.id);
+                     this.$router.push('/mealplans/'+r.data.id);
                 })
             }
         }
@@ -86,6 +100,7 @@ export default {
     computed: {
         getPlan() {
             return {
+                id: this.mealplan.id,
                 name: this.name,
                 totalDays: this.days,
                 days: this.planList

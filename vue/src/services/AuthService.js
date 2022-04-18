@@ -66,6 +66,22 @@ export default {
 
   addPlan(plan) {
     return http.post(`/plans/add`, plan, {headers: authHeader()})
-  }
+  },
+
+  getPlans(){
+    return http.get(`/plans/all`, { headers: authHeader() })
+  },
+
+  searchPlan(id) {
+    return http.get(`/plans/search/${id}`, {headers: authHeader()})
+  },
+
+  deletePlan(plan) {
+    return http.delete(`/plans/delete`, {headers: authHeader(), data: plan})
+  },
+
+  editPlan(plan){
+    return http.put(`/plans/edit`, plan, { headers: authHeader() })
+  },
 
 }
