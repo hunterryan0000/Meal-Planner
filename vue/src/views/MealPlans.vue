@@ -7,7 +7,7 @@
 </template>
 
 <script>
-//import AuthService from '../services/AuthService.js'
+import AuthService from '../services/AuthService.js'
 import MealPlanCard from '../components/MealPlanCard.vue'
 
 export default {
@@ -17,29 +17,16 @@ export default {
     },
     data () {
         return {
-            allMealPlans: [
-                {
-                    id: 1,
-                    name: "plan 1",
-                    days: 7,
-                    description: "vegan meal plan that lasts a week"
-                },
-                {
-                    id: 2,
-                    name: "plan 2",
-                    days: 30,
-                    description: "vegetarian plan lasting a month "
-                }
-            ]
+            allMealPlans: []
         }
     },
-    // created() {
-    //     AuthService.getMealPlans()
-    //     .then((response) => {
-    //         console.log(response.data);
-    //         this.allMealPlans = response.data;
-    //     })
-    // },
+    created() {
+        AuthService.getMealPlans()
+        .then((response) => {
+            console.log(response.data);
+            this.allMealPlans = response.data;
+        })
+    },
 }
 </script>
 

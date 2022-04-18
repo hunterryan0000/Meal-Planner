@@ -1,8 +1,10 @@
 <template>
   <div v-on:click.prevent="pushPlanDetails(plan)">
       <span>{{plan.name}}</span>
-      <p>Lasts {{plan.days}} days</p>
-      <p>{{plan.description}}</p>
+      <p>Lasts {{plan.totalDays}} day(s)</p>
+      <p>{{plan.description}}</p> 
+      <h6>Includes meals: </h6>
+      <p v-for="meal in mealSet" :key="meal">{{meal}}</p>
   </div>
 </template>
 
@@ -12,10 +14,23 @@ export default {
     props: {
         plan: Object
     },
+    data () {
+        return {
+            mealSet: new Set()
+        }
+    },
+    created() {
+        const days = this.plan.days;
+        days.forEach(day => {
+          day.mealList.forEach(meal => {
+            this.mealSet.add(meal.name);
+          });
+        });
+    },
     methods: {
-    // pushPlanDetails(mealPlan){
-    //   this.$router.push('/mealplans/' + plan.id)
-    // }
+    pushPlanDetails(plan){
+      this.$router.push('/mealplans/' + plan.id)
+     }
   }
 }
 </script>
@@ -43,7 +58,7 @@ span{
     line-height: 30px;
 }
 p{
-    padding-top: 30px;
+    padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
     font-size: 100%;
