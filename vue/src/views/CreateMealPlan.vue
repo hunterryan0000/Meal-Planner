@@ -147,7 +147,8 @@ export default {
     color: white;
     border: 1px solid purple;
     margin: 0;
-    font-size: 120%;
+    font-size: 180%;
+    text-align: center;
     width: 5%;
 }
 #daysList #plan_list{
