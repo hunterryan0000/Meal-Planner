@@ -14,6 +14,7 @@ import Meals from '../views/Meals.vue'
 import MealDetails from '../views/MealDetails.vue'
 import EditMeal from '../views/EditMeal.vue'
 import CreateMealPlan from '../views/CreateMealPlan.vue'
+import MealPlanDetails from '../views/MealPlanDetails.vue'
 
 Vue.use(Router)
 
@@ -130,6 +131,14 @@ const router = new Router({
       path: '/create-mealplan',
       name: 'create-mealplan',
       component: CreateMealPlan,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/mealplan-details',
+      name: 'mealplan-details',
+      component: MealPlanDetails,
       meta: {
         requiresAuth: true
       }
