@@ -14,6 +14,8 @@ public class MealPlan {
 
     private List<Day> days;
 
+    private List<MealsMealPlan> mealsMealPlanList;
+
     public Long getId() {
         return id;
     }
@@ -52,5 +54,13 @@ public class MealPlan {
 
     public void setDays(List<Day> days) {
         this.days = days;
+    }
+
+    public List<MealsMealPlan> getMealsMealPlanList() {
+        return mealsMealPlanList;
+    }
+
+    public void setMealsMealPlanList(List<MealsMealPlan> mealsMealPlanList) {
+        this.mealsMealPlanList = mealsMealPlanList;
     }
 }

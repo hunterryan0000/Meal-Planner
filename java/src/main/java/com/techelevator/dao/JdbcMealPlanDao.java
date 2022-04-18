@@ -10,6 +10,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -59,6 +60,17 @@ public class JdbcMealPlanDao implements MealPlanDao{
             }
         }
         return mealPlan;
+    }
+
+    @Override
+    public void deleteMealPlan(MealPlan mealPlan) {
+        List<MealsMealPlan> mealPlanList = mealPlan.getMealsMealPlanList();
+        for(MealsMealPlan meals: mealPlanList) {
+            mealsMealPlanDao.removeMealPlanMeals(meals);
+        }
+
+        String sql = "DELETE FROM mealplan WHERE mealplan_id = ?";
+        jdbcTemplate.update(sql, mealPlan.getId());
     }
 
     private MealPlan mapRowToMealPlan(SqlRowSet r, Long user_id){

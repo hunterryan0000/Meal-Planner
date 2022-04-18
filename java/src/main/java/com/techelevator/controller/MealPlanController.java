@@ -43,6 +43,10 @@ public class MealPlanController {
         return mealPlanDao.getMealPlanById(mealplan_id, new Long(userDao.findIdByUsername(principal.getName())));
     }
 
-
+    @RequestMapping(path = "/plans/delete", method = RequestMethod.DELETE)
+    public void deleteMealPlan(Principal principal, @RequestBody MealPlan mealPlan){
+        mealPlan.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        mealPlanDao.deleteMealPlan(mealPlan);
+    }
 
 }

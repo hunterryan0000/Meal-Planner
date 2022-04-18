@@ -59,4 +59,11 @@ public class JdbcMealsMealPlanDao implements MealsMealPlanDao{
         }
         return days;
     }
+
+    @Override
+    public void removeMealPlanMeals(MealsMealPlan mealsMealPlan) {
+        String sql ="DELETE FROM meals_mealplan " +
+                "WHERE mealplan_id = ? AND meal_id = ?";
+        jdbcTemplate.update(sql, mealsMealPlan.getMealplan_id(), mealsMealPlan.getMeal_id());
+    }
 }

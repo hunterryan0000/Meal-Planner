@@ -13,4 +13,6 @@ public interface MealsMealPlanDao {
 
     List<Day> getDaysByMealPlanId(Long mealplan_id, int totalDays, Long user_id);
 
+    void removeMealPlanMeals(MealsMealPlan mealsMealPlan);
+
 }
