@@ -1,8 +1,8 @@
 <template>
-  <div v-on:click.prevent="pushPlanDetails(mealPlan)">
-      <span>{{mealPlan.name}}</span>
-      <p>Lasts {{mealPlan.days}} days</p>
-      <p>{{mealPlan.description}}</p>
+  <div v-on:click.prevent="pushPlanDetails(plan)">
+      <span>{{plan.name}}</span>
+      <p>Lasts {{plan.days}} days</p>
+      <p>{{plan.description}}</p>
   </div>
 </template>
 
@@ -10,11 +10,11 @@
 export default {
     name: "meal-plan-card",
     props: {
-        mealPlan: Object
+        plan: Object
     },
     methods: {
     // pushPlanDetails(mealPlan){
-    //   this.$router.push('/mealplans/' + mealPlan.id)
+    //   this.$router.push('/mealplans/' + plan.id)
     // }
   }
 }
