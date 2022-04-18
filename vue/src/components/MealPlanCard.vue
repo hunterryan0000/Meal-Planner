@@ -1,26 +1,42 @@
 <template>
-  <div v-on:click.prevent="pushMealPlanDetails(mealplan)">
-      <span>{{mealplan.name}}</span>
-      <p>{{mealplan.description}}</p>
+  <div v-on:click.prevent="pushPlanDetails(plan)">
+      <span>{{plan.name}}</span>
+      <p>Lasts {{plan.days}} days</p>
+      <p>{{plan.description}}</p>
   </div>
 </template>
 
 <script>
 export default {
-    name: "mealplan-card",
+    name: "meal-plan-card",
     props: {
-        mealplan: Object
+        plan: Object
     },
     methods: {
-    pushMealPlanDetails(mealplan){
-      console.log("hit");
-      this.$router.push('/mealplans/'+mealplan.id)
-    }
+    // pushPlanDetails(mealPlan){
+    //   this.$router.push('/mealplans/' + plan.id)
+    // }
   }
 }
 </script>
 
 <style scoped>
+.recipe_image{
+    width: 10%;
+}
+.parallax {
+  
+
+  min-height: 200px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin-bottom: 15px;
+
+}
 span{
     font-weight: bolder;
     font-size: 150%;
@@ -32,5 +48,8 @@ p{
     padding-right: 15px;
     font-size: 100%;
 }
-
+img{
+  width: 100%;
+  max-height: 200px;
+}
 </style>
