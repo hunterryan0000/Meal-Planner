@@ -7,7 +7,7 @@
 </template>
 
 <script>
-//import AuthService from '../services/AuthService.js'
+import AuthService from '../services/AuthService.js'
 import MealPlanCard from '../components/MealPlanCard.vue'
 
 export default {
@@ -33,13 +33,13 @@ export default {
             ]
         }
     },
-    // created() {
-    //     AuthService.getMealPlans()
-    //     .then((response) => {
-    //         console.log(response.data);
-    //         this.allMealPlans = response.data;
-    //     })
-    // },
+    created() {
+        AuthService.getMealPlans()
+        .then((response) => {
+            console.log(response.data);
+            this.allMealPlans = response.data;
+        })
+    },
 }
 </script>
 

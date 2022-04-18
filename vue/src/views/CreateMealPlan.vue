@@ -78,7 +78,7 @@ export default {
                 AuthService.addPlan(this.getPlan)
                 .then((r) => {
                     console.log(r.data);
-                    //  this.$router.push('/mealplans/'+r.data.id);
+                      this.$router.push('/mealplans/'+r.data.id);
                 })
             }
         }
@@ -90,7 +90,14 @@ export default {
                 totalDays: this.days,
                 days: this.planList
             }
-        }
+        },
+        getMealPlanList(){
+          let list = [];
+          for(let meal of this.planList){
+              list.push({meal_id: meal.id});
+          }
+          return list;
+      }
     }
 }
 </script>

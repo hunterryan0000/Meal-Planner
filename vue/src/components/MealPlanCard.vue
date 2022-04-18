@@ -13,9 +13,9 @@ export default {
         plan: Object
     },
     methods: {
-    // pushPlanDetails(mealPlan){
-    //   this.$router.push('/mealplans/' + plan.id)
-    // }
+    pushPlanDetails(plan){
+      this.$router.push('/mealplans/' + plan.id)
+    }
   }
 }
 </script>
