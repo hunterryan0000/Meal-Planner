@@ -1,43 +1,43 @@
 <template>
-  <div>
-    <span id="span" v-on:click.prevent="editRecipe(recipe)"> <a href=""></a> </span>
-    <span id="delete" v-on:click.prevent="deleteRecipe(recipe)"><i class="fa fa-trash-o"></i></span>
-    <div class="detailswrapper">
+  <div class="mx-auto col-md-8">
+    
+    
+    <div class="recipe-details-container">
+
+      <div class="photo">
+        <img :src="recipe.photo_url" >
+      </div>
+
       <div class="namedesc">
         <span>{{recipe.name}}</span>
         <br>
         <p>{{recipe.description}}</p>
       </div>
 
-      <!-- <div></div> -->
-  
-      <div class="photo">
-        <img :src="recipe.photo_url" >
+      <div id="buttons">
+        <span id="span" v-on:click.prevent="editRecipe(recipe)"> <a href=""></a> </span>
+        <span id="delete" v-on:click.prevent="deleteRecipe(recipe)"><i class="fa fa-trash-o"></i></span>
       </div>
 
-      <div class="apping">
+      <div class="ingredient-container">
         <p>Servings: {{recipe.servings}}</p>
         <p>Difficulty: {{recipe.difficulty}}</p> 
         <p v-for="appliance in recipe.applianceList" :key="appliance.id"> Appliance: {{appliance.name}} </p>
 
-        <!-- Ingredients -->
         <h5>Ingredients</h5>
+
         <ul>
           <li v-for="ingredient in recipe.ingredientList" :key="ingredient.id">
             {{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}
           </li>
         </ul>
-
       </div>
 
-      <!-- Instructions -->
       <div class="instructions">
         <h3>Instructions</h3>
         <p v-for="string in recipe.instructions.split('\n')" :key="string">{{string}}</p>
       </div>
-
     </div>
-
   </div>
 </template>
 
@@ -76,33 +76,36 @@ export default {
 </script>
 
 <style scoped>
-h1{
-    color: white;
-}
-.detailswrapper{
+
+.recipe-details-container{
     display: flex;
     gap: 10px 10px;
     flex-wrap: wrap;
     justify-content: center;
     height: 100%;
     width: 100%;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    /* padding-left: 10vw;
+    padding-right: 10vw; */
+
+    /* margin-top: 45px;
+    border: 5px solid rgb(230, 213, 195);
+    background-color: cornsilk;
+    border-radius: 10px; */
 }
-.detailswrapper div {
+.recipe-details-container div {
     border: 5px solid rgb(230, 213, 195);
     background-color: cornsilk;
     border-radius: 10px;
-    height: 300px;
-    width: 300px;
+    /* height: 300px;
+    width: 300px; */
 }
 .namedesc {
     color: black;
     flex-basis: 40%;
     flex-grow: 0;
     flex-shrink: 0;
-    text-align: center;
-    padding: 10px 10px 10px 10px;
+    text-align: left;
+    padding: 10px;
     min-width: 0;
     min-height: 30vh;
     overflow: hidden;
@@ -115,6 +118,7 @@ h1{
 .namedesc p {
     font-size: 100%;
     margin-top: 20px;
+    
 }
 .photo{
     flex-basis: 34%;
@@ -129,8 +133,8 @@ h1{
     height: 100%;
     width: 100%;
 }
-.instructions, .apping{
-    flex-basis: 47%;
+.instructions, .ingredient-container{
+    flex-basis: 47.5%;
     flex-grow: 0;
     flex-shrink: 0;
     min-height: 55vh;
@@ -139,16 +143,14 @@ h1{
 }
 
 /* This section of CSS defines the EDIT button */
-#span{
+#span {
   position: relative;
   display: inline-flex;
   width: 180px;
   height: 55px;
-  margin: 0 15px;
+  margin: 20px;
   perspective: 1000px;
   float: right;
-  margin-right: 3vw;
-  margin-bottom: 10px;
 }
 #span a{
   font-size: 19px;
@@ -193,6 +195,7 @@ h1{
   height: 50px;
   text-align: center;
   border-radius: 5px;
+  margin: 20px;
 }
 #delete i{
   position: relative;

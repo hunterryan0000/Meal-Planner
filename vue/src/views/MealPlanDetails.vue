@@ -1,15 +1,12 @@
 <template>
   <div class="mx-auto col-md-8">
     <div id="buttons">
-      <span id="span" v-on:click.prevent="editMealPlan(plan)">
-        <a href=""></a>
-      </span>
-      <span id="delete" v-on:click.prevent="deleteMealPlan(plan)"
-        ><i class="fa fa-trash-o"></i
-      ></span>
+      <span id="span" v-on:click.prevent="editMealPlan(plan)"><a href=""></a></span>
+      <span id="delete" v-on:click.prevent="deleteMealPlan(plan)"><i class="fa fa-trash-o"></i></span>
     </div>
 
     <div class="meal-plan-details-container">
+
       <div class="row align-items-start" id="headers-container">
         <div class="col">
           <h4>Days: {{ plan.totalDays }}</h4>
@@ -94,23 +91,20 @@ export default {
   border: 5px solid rgb(230, 213, 195);
   background-color: cornsilk;
   border-radius: 10px;
-  /* height: 300px;
-    width: 300px; */
 }
 
-#buttons {
-  padding-top: 2%;
-}
+/* #span {
+  margin-top: 20px;
+} */
+
 #span {
   position: relative;
   display: inline-flex;
   width: 180px;
   height: 55px;
-  margin: 0 15px;
-  margin-right: 0;
+  margin: 20px;
   perspective: 1000px;
   float: right;
-  margin-bottom: 10px;
 }
 #span a {
   font-size: 19px;
@@ -154,6 +148,7 @@ export default {
   height: 50px;
   text-align: center;
   border-radius: 5px;
+  margin: 20px;
 }
 #delete i {
   position: relative;
