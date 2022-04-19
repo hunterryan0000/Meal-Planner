@@ -166,7 +166,6 @@ export default {
 }
 
 .recipe_header, .meal_header, .recipe_meal_header{
-    color: white;
     width: 100%;
     text-align: center;
 } 
@@ -191,9 +190,7 @@ height: 80vh;
     height: 100px;
     border: 2px solid black;
 }
-label{
-    color: white;
-}
+
 .meal_header button{
     display: block;
     right: 15px;

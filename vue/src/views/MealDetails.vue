@@ -84,11 +84,11 @@ p, h1, li{
 .meal-details-container{
   background-color: cornsilk;
   margin-top: 45px;
+  border: 5px solid rgb(230, 213, 195);
+  background-color: cornsilk;
+  border-radius: 10px;
 }
 
-#buttons{
-  padding-top:2%;
-}
 
 #recipe_list, #meal_plan{
     width: 100%;
@@ -101,16 +101,14 @@ p, h1, li{
     border: 2px solid black;
 }
 
-#span{
+#span {
   position: relative;
   display: inline-flex;
   width: 180px;
   height: 55px;
-  margin: 0 15px;
-  margin-right: 0;
+  margin: 20px;
   perspective: 1000px;
   float: right;
-  margin-bottom: 10px;
 }
 #span a{
   font-size: 19px;
@@ -155,6 +153,7 @@ p, h1, li{
   height: 50px;
   text-align: center;
   border-radius: 5px;
+  margin: 20px;
 }
 #delete i{
   position: relative;
