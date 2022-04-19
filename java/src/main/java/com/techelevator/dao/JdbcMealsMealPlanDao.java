@@ -73,4 +73,9 @@ public class JdbcMealsMealPlanDao implements MealsMealPlanDao{
         jdbcTemplate.update(sql, id);
     }
 
+    @Override
+    public void nukeByMealId(Long id) {
+        String sql = "delete from meals_mealplan where meal_id = ?";
+        jdbcTemplate.update(sql, id);
+    }
 }

@@ -17,4 +17,6 @@ public interface MealsMealPlanDao {
 
     void nukeByMealPlanId(Long id);
 
+    void nukeByMealId(Long id);
+
 }
