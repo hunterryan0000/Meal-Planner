@@ -26,12 +26,11 @@
         </div>
       </div>
 
-      <h5>Grocery List</h5>
-      
-      <h5>{{ingredientsList}}</h5>
-      <h5>{{test}}</h5>
+      <h3>Grocery List</h3>
 
-      <h4>{{ingredientFinal}}</h4>
+      <h5>{{ingredientsList}}</h5>
+
+      <h6 v-for="ingredient in this.ingredientsFinal" :key="ingredient">{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</h6>
     </div>
   </div>
 </template>
@@ -50,6 +49,7 @@ export default {
       mealList: [],
       plan: null,
       ingredientsList: {},
+      ingredientsFinal: [],
       test: []
     };
   },
@@ -75,8 +75,14 @@ export default {
                 this.ingredientsList[response.data.name] = newRecipe;
               }
 
-              this.test.push(response.data.name);
-            });
+            }).then( () => {
+                  for (const x in this.ingredientsList) {
+                    this.ingredientsList[x].ingredients.forEach(ingredient => {
+                      console.log(ingredient);
+                      this.ingredientsFinal.push(ingredient);
+                    });
+                  }
+               });
           });
         });
       });
@@ -117,19 +123,7 @@ export default {
       })
     },
   },
-  computed: {
-        ingredientFinal() {
-            let ret = [];
-            console.log(this.ingredientsList);
-            console.log(Object.getOwnPropertyNames(this.ingredientsList));
-            for (const x in this.ingredientsList) {
-              console.log("hello");
-              ret.push(this.ingredientsList[x]);
-            }
-            console.log(this.ingredientsList);
-            return ret; 
-        }
-    }
+
 };
 </script>
 
