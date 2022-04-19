@@ -1,9 +1,6 @@
 <template>
   <div class="mx-auto col-md-8">
-    <div id="buttons">
-      <span id="span" v-on:click.prevent="editRecipe(recipe)"> <a href=""></a> </span>
-      <span id="delete" v-on:click.prevent="deleteRecipe(recipe)"><i class="fa fa-trash-o"></i></span>
-    </div>
+    
     
     <div class="recipe-details-container">
 
@@ -15,6 +12,11 @@
         <span>{{recipe.name}}</span>
         <br>
         <p>{{recipe.description}}</p>
+      </div>
+
+      <div id="buttons">
+        <span id="span" v-on:click.prevent="editRecipe(recipe)"> <a href=""></a> </span>
+        <span id="delete" v-on:click.prevent="deleteRecipe(recipe)"><i class="fa fa-trash-o"></i></span>
       </div>
 
       <div class="ingredient-container">
@@ -74,23 +76,21 @@ export default {
 </script>
 
 <style scoped>
-h1{
-    color: white;
-}
+
 .recipe-details-container{
     display: flex;
     gap: 10px 10px;
     flex-wrap: wrap;
-    /* justify-content: center; */
-    /* height: 100%; */
+    justify-content: center;
+    height: 100%;
     width: 100%;
     /* padding-left: 10vw;
     padding-right: 10vw; */
 
-    margin-top: 45px;
+    /* margin-top: 45px;
     border: 5px solid rgb(230, 213, 195);
     background-color: cornsilk;
-    border-radius: 10px;
+    border-radius: 10px; */
 }
 .recipe-details-container div {
     border: 5px solid rgb(230, 213, 195);
@@ -118,6 +118,7 @@ h1{
 .namedesc p {
     font-size: 100%;
     margin-top: 20px;
+    
 }
 .photo{
     flex-basis: 34%;
@@ -133,7 +134,7 @@ h1{
     width: 100%;
 }
 .instructions, .ingredient-container{
-    flex-basis: 47%;
+    flex-basis: 47.5%;
     flex-grow: 0;
     flex-shrink: 0;
     min-height: 55vh;
