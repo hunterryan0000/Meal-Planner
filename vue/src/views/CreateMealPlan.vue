@@ -21,10 +21,10 @@
               <button class="btn-success btn" v-on:click="savePlan">Save</button>
           </div>
           <div v-for="day in planList" :key="day.id" id="daysList">
-                <p>Day{{day.id}}</p>
+                <p>{{day.id}}</p>
                 <draggable class="dragArea list-group" :list="day.mealList" group="meals" id="plan_list">
                     <div v-for="meal in day.mealList" :key="meal.id" id="mealCard">
-                       <meal-card  :meal="meal"></meal-card> 
+                       <h3>{{meal.name}}</h3>
                        <button v-on:click.prevent="removeCard(day.id, meal.id)">remove</button>
                     </div>
                 </draggable>  
@@ -181,7 +181,7 @@ export default {
 }
 #daysList #plan_list{
     width: 95%;
-    height: 170px;
+    height: 90px;
     
 }
 
@@ -190,6 +190,7 @@ export default {
     flex-direction: column;
     height: 100%;
     border: 5px solid gray;
+    padding: 5px;
 }
 
 #mealCard button{
