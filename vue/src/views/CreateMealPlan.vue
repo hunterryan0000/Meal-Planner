@@ -21,10 +21,10 @@
               <button class="btn-success btn" v-on:click="savePlan">Save</button>
           </div>
           <div v-for="day in planList" :key="day.id" id="daysList">
-                <p>Day{{day.id}}</p>
+                <p>{{day.id}}</p>
                 <draggable class="dragArea list-group" :list="day.mealList" group="meals" id="plan_list">
                     <div v-for="meal in day.mealList" :key="meal.id" id="mealCard">
-                       <meal-card  :meal="meal"></meal-card> 
+                       <h3>{{meal.name}}</h3>
                        <button v-on:click.prevent="removeCard(day.id, meal.id)">remove</button>
                     </div>
                 </draggable>  
@@ -51,8 +51,8 @@ export default {
     data() {
         return {
             mealList: [],
-            planList: [],
-            days: 0,
+            planList: [{id: 1, mealList: []}],
+            days: 1,
             name: ''
         }
     },
@@ -65,9 +65,21 @@ export default {
     },
     methods: {
         updateDays(){
-            this.planList = [];
-            for(let l=1; l<=this.days; l++){
-                this.planList.push({id: l, mealList: []})
+            // this.planList = [];
+            // for(let l=1; l<=this.days; l++){
+            //     this.planList.push({id: l, mealList: []})
+            // }
+            console.log(this.planList.length);
+            if(this.planList.length > this.days){
+                while(this.planList.length > this.days){
+                    this.planList.pop();
+                }
+            } else if(this.planList.length < this.days){
+                while(this.planList.length < this.days) {
+                    console.log("here it comes");
+                    console.log(this.planList[this.planList.length-1].id);
+                    this.planList.push({id: this.planList[this.planList.length-1].id+1, mealList: []})
+                }
             }
         },
         removeCard(dayId, cardId){
@@ -169,7 +181,7 @@ export default {
 }
 #daysList #plan_list{
     width: 95%;
-    height: 170px;
+    height: 90px;
     
 }
 
@@ -178,6 +190,7 @@ export default {
     flex-direction: column;
     height: 100%;
     border: 5px solid gray;
+    padding: 5px;
 }
 
 #mealCard button{
