@@ -18,7 +18,7 @@
               <h3 id="Name">Plan Name: </h3>
               <input type="text" id="name" v-model="name">
               
-              <button class="btn-success btn" v-on:click="savePlan">Add</button>
+              <button class="btn-success btn" v-on:click="savePlan">Save</button>
           </div>
           <div v-for="day in planList" :key="day.id" id="daysList">
                 <p>Day{{day.id}}</p>
@@ -84,7 +84,7 @@ export default {
                 AuthService.addPlan(this.getPlan)
                 .then((r) => {
                     console.log(r.data);
-                      this.$router.push('/mealplans/'+r.data.id);
+                      this.$router.push('/mealplan-details/'+r.data.id);
                 })
             }
         }
