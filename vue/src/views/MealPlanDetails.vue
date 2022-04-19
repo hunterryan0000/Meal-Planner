@@ -75,12 +75,14 @@ export default {
     },
     methods: {
         editMealPlan(mealPlan){
-            this.$router.push('/mealplan/edit/' + mealPlan)
+            console.log(mealPlan)
+            this.$router.push('/mealplan/edit/' + mealPlan.id)
         },
         deleteMealPlan(mealPlan){
             AuthService.deleteMealPlan(mealPlan)
-            .then(() => {
-                this.$router.push('/mealplan');
+            .then((r) => {
+              console.log(r.data);
+                this.$router.push('/mealplans');
             })
         }
     },
