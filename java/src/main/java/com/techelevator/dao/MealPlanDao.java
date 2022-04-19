@@ -14,4 +14,6 @@ public interface MealPlanDao {
     MealPlan addMealPlan(MealPlan mealPlan);
 
     void deleteMealPlan(MealPlan mealPlan);
+
+    MealPlan editMealPlan(MealPlan mealPlan);
 }

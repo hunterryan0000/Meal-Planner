@@ -45,17 +45,15 @@ public class MealPlanController {
     }
 
     @RequestMapping(path = "/plans/edit", method = RequestMethod.PUT)
-    public Meal editMeal(Principal principal, @RequestBody MealPlan mealPlan){
-        
-        return null;
+    public MealPlan editMealPlan(Principal principal, @RequestBody MealPlan mealPlan){
+        mealPlanDao.editMealPlan(mealPlan);
+        return mealPlan;
     }
 
 
     @RequestMapping(path = "/plans/delete", method = RequestMethod.DELETE)
     public void deleteMealPlan(Principal principal, @RequestBody MealPlan mealPlan){
         mealPlanDao.deleteMealPlan(mealPlan);
-
-        //mealPlanDao.deleteMealPlan(mealPlan);
     }
 
 }

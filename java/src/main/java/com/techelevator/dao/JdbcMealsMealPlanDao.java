@@ -66,4 +66,11 @@ public class JdbcMealsMealPlanDao implements MealsMealPlanDao{
                 "WHERE mealplan_id = ? AND meal_id = ?";
         jdbcTemplate.update(sql, mealsMealPlan.getMealplan_id(), mealsMealPlan.getMeal_id());
     }
+
+    @Override
+    public void nukeByMealPlanId(Long id) {
+        String sql = "Delete from meals_mealplan where mealplan_id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
 }

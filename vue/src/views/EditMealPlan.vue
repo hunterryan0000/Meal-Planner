@@ -98,7 +98,7 @@ export default {
         savePlan(){
             
             if(this.name !== ''){
-                AuthService.addPlan(this.getPlan)
+                AuthService.editPlan(this.getPlan)
                 .then((r) => {
                     console.log(r.data);
                      this.$router.push('/mealplan-details/'+r.data.id);
