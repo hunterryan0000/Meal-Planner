@@ -43,6 +43,11 @@ public class JdbcMealsRecipesDao implements MealsRecipesDao {
         jdbcTemplate.update(sql, mealsRecipes.getMeal_id(), mealsRecipes.getRecipe_id());
     }
 
+    @Override
+    public void nukeByRecipeId(Long id) {
+        String sql = "delete from meals_recipes where recipe_id = ?";
+        jdbcTemplate.update(sql, id);
+    }
 
     private MealsRecipes mapRowToMealsRecipes(SqlRowSet resultSet){
         MealsRecipes mealsRecipes = new MealsRecipes();

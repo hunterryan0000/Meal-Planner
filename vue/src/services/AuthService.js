@@ -65,6 +65,9 @@ export default {
   },
   deleteMealPlan(mealPlan){
     return http.delete('/plans/delete', { headers: authHeader(), data: mealPlan})
+  },
+  editPlan(plan) {
+    return http.put('/plans/edit', plan, { headers: authHeader() })
   }
 
 

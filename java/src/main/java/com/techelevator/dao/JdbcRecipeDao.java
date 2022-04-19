@@ -27,6 +27,9 @@ public class JdbcRecipeDao implements RecipeDao{
     @Autowired
     private RecipeAppliancesDao recipeAppliancesDao;
 
+    @Autowired
+    private MealsRecipesDao mealsRecipesDao;
+
     @Override
     public List<Recipe> getAll(Long userId) {
         String sql = "select * from recipes where user_id = ?";
@@ -99,6 +102,8 @@ public class JdbcRecipeDao implements RecipeDao{
             recipeAppliances.setRecipe_id(recipe.getId());
             recipeAppliancesDao.removeRecipeAppliances(recipeAppliances);
         }
+
+        mealsRecipesDao.nukeByRecipeId(recipe.getId());
 
         String sql = "DELETE FROM recipes WHERE recipe_id = ?";
         jdbcTemplate.update(sql, recipe.getId());

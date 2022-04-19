@@ -5,8 +5,6 @@
 
   <div id="root">
 
-      
-
       <div class="mealsWrapper">
         <h3>Meals:</h3>  
         <draggable class="dragArea list-group" :list="mealList" :group="{ name: 'meals', pull: 'clone', put: 'false' }" id="meal_list">
@@ -113,7 +111,9 @@ export default {
 <style scoped>
 .mealsWrapper{
     /* border: 4px solid white; */
-    width: 30%
+    width: 30%;
+    overflow-y: scroll;
+    background-color: white;
 
 }
 .plansWrapper{
@@ -178,8 +178,8 @@ export default {
     flex-direction: column;
     height: 100%;
     border: 5px solid gray;
-    
 }
+
 #mealCard button{
     margin-top: auto;
 }
@@ -191,10 +191,8 @@ export default {
 }
 
 h1 {
-
     text-align: center;
     padding: 10px;
-    
 }
 
 .meal-card {

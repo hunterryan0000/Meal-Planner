@@ -1,22 +1,29 @@
 <template>
+  <div class="parent">
+  
+    <h1> Edit Meal Plan </h1>
+
   <div id="root">
+
+      
+
       <div class="mealsWrapper">
-        <h3>Meals</h3>  
+        <h3>Meals:</h3>  
         <draggable class="dragArea list-group" :list="mealList" :group="{ name: 'meals', pull: 'clone', put: 'false' }" id="meal_list">
-            <meal-card v-for="meal in mealList" :key="meal.id" :meal="meal"></meal-card>
+            <meal-card class="meal-card" v-for="meal in mealList" :key="meal.id" :meal="meal"></meal-card>
         </draggable>
       </div>
       <div class="plansWrapper">
           <div class="plansHeader">
-              <h3>Plans</h3>
-              <h3 id="Name">Name: </h3>
-              <input type="text" id="name" v-model="name">
               <h3 id="DayCounter">Days: </h3>
               <input type="number" id="days" min="0" max="31" v-model="days" @change.prevent="updateDays">
-              <button v-on:click="savePlan">Add</button>
+              <h3 id="Name">Plan Name: </h3>
+              <input type="text" id="name" v-model="name">
+              
+              <button class="btn-success btn" v-on:click="savePlan">Save</button>
           </div>
           <div v-for="day in planList" :key="day.id" id="daysList">
-                <p>Day {{day.id}}</p>
+                <p>Day{{day.id}}</p>
                 <draggable class="dragArea list-group" :list="day.mealList" group="meals" id="plan_list">
                     <div v-for="meal in day.mealList" :key="meal.id" id="mealCard">
                        <meal-card  :meal="meal"></meal-card> 
@@ -29,6 +36,7 @@
 
 
   </div>
+  </div>
 </template>
 
 <script>
@@ -37,7 +45,7 @@ import draggable from 'vuedraggable';
 import MealCard from '../components/MealCard.vue'
 
 export default {
-    name: 'create-mealplan',
+    name: 'edit-mealplan',
     components: {
         MealCard,
         draggable
@@ -52,20 +60,21 @@ export default {
         }
     },
     created() {
-        console.log("searching");
         AuthService.searchPlan(this.$route.params.id)
         .then((r) => {
             console.log(r.data);
+            this.name = r.data.name;
+            this.planList = [];
             this.mealplan = r.data;
-            AuthService.getMeals().then((r) => {
+            this.days = r.data.totalDays;
+            for(let day of r.data.days){
+                this.planList.push(day);
+            }
+            console.log(this.planList);
+            AuthService.getMeals().then((re) => {
                 this.mealList = [];
-                this.planList = [];
-                for (let plan of r.data) {
-                    console.log(this.mealplan.mealList);
-                    if(this.mealplan.mealList.filter(e => e.meal_id == plan.id).length > 0) {
-                        this.planList.push(plan);
-                    }
-                    console.log(plan);
+                for (let plan of re.data) {
+                    this.mealList.push(plan);
                 }
             }
             )
@@ -89,10 +98,10 @@ export default {
         savePlan(){
             
             if(this.name !== ''){
-                AuthService.addPlan(this.getPlan)
+                AuthService.editPlan(this.getPlan)
                 .then((r) => {
                     console.log(r.data);
-                     this.$router.push('/mealplans/'+r.data.id);
+                     this.$router.push('/mealplan-details/'+r.data.id);
                 })
             }
         }
@@ -112,20 +121,21 @@ export default {
 
 <style scoped>
 .mealsWrapper{
-    border: 4px solid white;
+    /* border: 4px solid white; */
     width: 30%
+
 }
 .plansWrapper{
     width: 70%;
-    border: 4px solid red;
+    /* border: 4px solid red; */
     overflow-y: scroll;
 }
 .plansHeader{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
-.plansHeader #DayCounter{
+.plansHeader button{
     margin-left: auto;
 }
 #Name{
@@ -135,12 +145,12 @@ export default {
     width: 3vw;
 }
 #meal_list{
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
     height: 95%;
     background-color: white;
 }
 #plan_list{
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
     height: 100%;
     background-color: white;
     display: flex;
@@ -149,7 +159,7 @@ export default {
 }
 #root{
     display: flex;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     height: 80vh;
 }
 #daysList{
@@ -160,7 +170,6 @@ export default {
 #daysList p{
     writing-mode: vertical-rl;
     text-orientation: upright;
-    color: white;
     border: 1px solid purple;
     margin: 0;
     font-size: 180%;
@@ -172,9 +181,7 @@ export default {
     height: 170px;
     
 }
-h3{
-    color: white;
-}
+
 #mealCard{
     display: flex;
     flex-direction: column;
@@ -184,6 +191,27 @@ h3{
 }
 #mealCard button{
     margin-top: auto;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+h1 {
+
+    text-align: center;
+    padding: 10px;
+    
+}
+
+.meal-card {
+    border: 2px solid black;
+}
+
+#daysList {
+    border: 2px solid black;
 }
 
 </style>
