@@ -93,6 +93,9 @@ export default {
   border-radius: 10px;
 }
 
+#mealCard {
+  display: inline-flex;
+}
 /* #span {
   margin-top: 20px;
 } */
