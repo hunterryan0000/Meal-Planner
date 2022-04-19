@@ -130,8 +130,8 @@ export default {
     min-height: 30vh;
 }
 .photo img {
-    height: 100%;
-    width: 100%;
+    height: 30vh;
+    /* width: 300px; */
 }
 .instructions, .ingredient-container{
     flex-basis: 47.5%;
