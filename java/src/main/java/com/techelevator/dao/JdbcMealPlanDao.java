@@ -64,9 +64,11 @@ public class JdbcMealPlanDao implements MealPlanDao{
 
     @Override
     public void deleteMealPlan(MealPlan mealPlan) {
-        List<MealsMealPlan> mealPlanList = mealPlan.getMealsMealPlanList();
-        for(MealsMealPlan meals: mealPlanList) {
-            mealsMealPlanDao.removeMealPlanMeals(meals);
+        for (Day day: mealPlan.getDays()) {
+            List<MealsMealPlan> mealsMealPlanList = mealsMealPlanDao.mapDaytoMealsMealPlan(day, mealPlan.getId());
+            for (MealsMealPlan mealsMealPlan : mealsMealPlanList) {
+                mealsMealPlanDao.removeMealPlanMeals(mealsMealPlan);
+            }
         }
 
         String sql = "DELETE FROM mealplan WHERE mealplan_id = ?";

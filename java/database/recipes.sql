@@ -818,6 +818,211 @@ insert into recipe_appliances values
 
 
 
+--Ryan
+insert into recipes values
+(default, (select user_id from users where username = 'Matthew'),
+ 'Cinnamon Baked Doughnuts',
+ 'Love this recipe! It is simple and I love the texture. These are absolutely delicious!!',
+ 'Preheat the oven to 350 degrees. Spray 2 doughnut pans well. Into a large bowl, sift together the flour, sugar, baking powder, cinnamon, nutmeg, and salt.
+ In a small bowl, whisk together the egg, milk, melted butter, and vanilla. Stir the wet mixture into the dry ingredients until just combined.
+ Spoon the batter into the baking pans, filling each one a little more than three-quarters full.
+ Bake for 17 minutes, until a toothpick comes out clean. Allow to cool for 5 minutes, then tap the doughnuts out onto a sheet pan.
+ For the topping, melt the 8 tablespoons of butter in an 8-inch saute pan. Combine the sugar and cinnamon in a small bowl.
+ Dip each doughnut first in the butter and then in the cinnamon sugar, either on one side or both sides.',
+ 12, 3, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/7/29/0/BX0903H_cinnamon-baked-doughnuts-recipe_s4x3.jpg.rend.hgtvcom.826.620.suffix/1449692373072.jpeg');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'flour'),
+ 'all-purpose flour', 2, 'cup');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'sugar'),
+ 'sugar', 1.25, 'cup');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'cinnamon'),
+ 'cinnamon', 1, 'tsp');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'nutmeg'),
+ 'ground nutmeg', .5, 'tsp');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'salt'),
+ 'kosher salt', .5, 'tsp');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'egg'),
+ 'extra-large egg, lightly beaten', 1, '');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'milk'),
+ 'whole milk', 1.25, 'cup');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'butter'),
+ 'unsalted butter, melted', 2, 'tbsp');
+
+ insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
+ (select ingredient_id from ingredients where name = 'vanilla'),
+ 'vanilla extract', 2, 'tsp');
+
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Cinnamon Baked Doughnuts'),
+ (select recipe_id from recipes where name = 'oven'));
+
+
+
+ insert into recipes values
+ (default, (select user_id from users where username = 'Matthew'),
+  'Avocado Toast',
+  'There are two secrets to these simple avocado toasts: rubbing the bread with garlic for just a hint of flavor and adding a pop of crunchy sea salt on top.',
+  'Mash the avocado with a fork in a shallow bowl until chunky. Season with fine salt and black pepper.
+  Lightly brush the toasts with oil, and season with fine salt and pepper. Divide the mashed avocado evenly among the toasts,
+  and top with more flaky sea salt, more black pepper and red pepper flakes if using.',
+  4, 1, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/12/11/0/FNK_All-the-Avocado-Toast_s4x3.jpg.rend.hgtvcom.826.620.suffix/1450059496131.jpeg');
+
+
+ insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Avocado Toast'),
+  (select ingredient_id from ingredients where name = 'avocado'),
+  '8-ounce ripe avocado, halved, pitted, and peeled', 1, '');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Avocado Toast'),
+  (select ingredient_id from ingredients where name = 'bread'),
+  'whole grain or whole wheat bread', 4, 'slices');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Avocado Toast'),
+  (select ingredient_id from ingredients where name = 'garlic'),
+  'clove garlic, peeled and halved', 1, 'clove');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Avocado Toast'),
+  (select ingredient_id from ingredients where name = 'olive oil'),
+  'extra-virgin olive oil', 2, 'tbsp');
+
+
+  insert into recipes values
+  (default, (select user_id from users where username = 'Matthew'),
+   'Granola',
+   'I have tried several other granola recipes, and this one by far is the best.',
+   'Preheat oven to 250 degrees F. In a large bowl, combine the oats, nuts, coconut, and brown sugar.
+   In a separate bowl, combine maple syrup, oil, and salt. Combine both mixtures and pour onto 2 sheet pans.
+   Cook for 1 hour and 15 minutes, stirring every 15 minutes to achieve an even color.
+   Remove from oven and transfer into a large bowl. Add raisins and mix until evenly distributed.',
+   6, 3, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/EA1E06_granola_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599882741.jpeg');
+
+
+  insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'oat'),
+   'rolled oats', 3, 'cup');
+
+   insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'almond'),
+   'silvered almonds', 1, 'cup');
+
+   insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'coconut'),
+   'shredded sweet coconut', .75, 'cup');
+
+   insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'brown sugar'),
+   'dark brown sugar', 6, 'tbsp');
+
+   insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Granola'),
+  (select ingredient_id from ingredients where name = 'maple syrup'),
+  'maple syrup', 6, 'tbsp');
+
+   insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'vegetable oil'),
+   'vegetable oil', .25, 'cup');
+
+   insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'salt'),
+   'salt', .75, 'tsp');
+
+   insert into recipe_ingredients values
+  ((select recipe_id from recipes where name = 'Granola'),
+   (select ingredient_id from ingredients where name = 'raisin'),
+   'raisins', 1, 'cup');
+
+
+  insert into recipe_appliances values
+  ((select appliance_id from appliances where name = 'Granola'),
+   (select recipe_id from recipes where name = 'oven'));
+
+
+insert into recipes values
+ (default, (select user_id from users where username = 'Matthew'),
+  'Scrambled Eggs with Herbs',
+  'So easy and so good. Made it for our weekly "big" breakfast on Sunday and now can"'"t resist making it more often, highly recommended!',
+  'Whisk together the eggs, milk, chives, parsley and tarragon in a medium bowl. Season with salt and pepper.
+  Melt the butter in a medium nonstick skillet over medium to medium-low heat.
+  When the butter"'"s foam begins to subside, add the egg mixture and cook, stirring almost constantly, for 4 to 7 minutes depending on the desired firmness of the eggs.
+  Serve immediately.',
+  4, 1, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/12/9/0/FNK_Scrambled-Eggs-with-Herbs_s4x3.jpg.rend.hgtvcom.826.620.suffix/1387411425932.jpeg');
+
+
+ insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Scrambled Eggs with Herbs'),
+  (select ingredient_id from ingredients where name = 'egg'),
+  'large eggs', 10, '');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Granola'),
+  (select ingredient_id from ingredients where name = 'milk'),
+  'half and half, or heavy cream', .25, 'cup');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Granola'),
+  (select ingredient_id from ingredients where name = 'chives'),
+  'thinly sliced fresh chives', 1, 'tbsp');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Granola'),
+  (select ingredient_id from ingredients where name = 'parsley'),
+  'minced fresh flat-leaf parsley leaves', 2, 'tbsp');
+
+  insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Granola'),
+ (select ingredient_id from ingredients where name = 'tarragon'),
+ 'finely chopped fresh tarragon leaves', 1.5, 'tsp');
+
+  insert into recipe_ingredients values
+ ((select recipe_id from recipes where name = 'Granola'),
+  (select ingredient_id from ingredients where name = 'butter'),
+  'unsalted butter', 2, 'tbsp');
+
+
+ insert into recipe_appliances values
+ ((select appliance_id from appliances where name = 'Granola'),
+  (select recipe_id from recipes where name = 'stove'));
+
+
+-- Ryan
+
+
+
 
 
 
