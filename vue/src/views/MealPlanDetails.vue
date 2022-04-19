@@ -29,9 +29,12 @@
         </div>
       </div>
 
-      <!-- <div class="list-group" id="meal_list">
-            <meal-card class="meal-card" v-for="meal in mealList" :meal="meal" :key="meal.id" />
-        </div> -->
+      <h5>Grocery List</h5>
+      
+      <h5>{{ingredientsList}}</h5>
+      <h5>{{test}}</h5>
+
+      <h4>{{ingredientFinal}}</h4>
     </div>
   </div>
 </template>
@@ -49,12 +52,43 @@ export default {
     return {
       mealList: [],
       plan: null,
+      ingredientsList: {},
+      test: []
     };
   },
   created() {
     console.log("HECK YEAH");
     AuthService.searchPlan(this.$route.params.id).then((response) => {
       this.plan = response.data;
+
+
+      this.plan.days.forEach(day => {
+        day.mealList.forEach(meal => {
+          meal.mealsRecipesList.forEach(recipe => {
+            
+            AuthService.searchRecipe(recipe.recipe_id).then((response) => {
+              if(response.data.name in this.ingredientsList) {
+                const currRecipe = this.ingredientsList[response.data.name];
+                currRecipe.count++;
+              } else {
+                const newRecipe = {
+                  count: 1,
+                  ingredients: response.data.ingredientList
+                }
+                this.ingredientsList[response.data.name] = newRecipe;
+              }
+
+              this.test.push(response.data.name);
+            });
+          });
+        });
+      });
+
+  
+
+
+
+
       console.log("console log - This is the plan's data: " + response.data);
       console.log(response.data);
 
@@ -71,6 +105,8 @@ export default {
         });
       });
     });
+
+    
   },
   methods: {
     editMealPlan(mealPlan) {
@@ -84,6 +120,19 @@ export default {
       })
     },
   },
+  computed: {
+        ingredientFinal() {
+            let ret = [];
+            console.log(this.ingredientsList);
+            console.log(Object.getOwnPropertyNames(this.ingredientsList));
+            for (const x in this.ingredientsList) {
+              console.log("hello");
+              ret.push(this.ingredientsList[x]);
+            }
+            console.log(this.ingredientsList);
+            return ret; 
+        }
+    }
 };
 </script>
 
