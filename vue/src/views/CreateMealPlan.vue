@@ -51,8 +51,8 @@ export default {
     data() {
         return {
             mealList: [],
-            planList: [],
-            days: 0,
+            planList: [{id: 1, mealList: []}],
+            days: 1,
             name: ''
         }
     },
@@ -65,9 +65,21 @@ export default {
     },
     methods: {
         updateDays(){
-            this.planList = [];
-            for(let l=1; l<=this.days; l++){
-                this.planList.push({id: l, mealList: []})
+            // this.planList = [];
+            // for(let l=1; l<=this.days; l++){
+            //     this.planList.push({id: l, mealList: []})
+            // }
+            console.log(this.planList.length);
+            if(this.planList.length > this.days){
+                while(this.planList.length > this.days){
+                    this.planList.pop();
+                }
+            } else if(this.planList.length < this.days){
+                while(this.planList.length < this.days) {
+                    console.log("here it comes");
+                    console.log(this.planList[this.planList.length-1].id);
+                    this.planList.push({id: this.planList[this.planList.length-1].id+1, mealList: []})
+                }
             }
         },
         removeCard(dayId, cardId){
