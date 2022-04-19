@@ -12,4 +12,6 @@ public interface MealsRecipesDao {
 
     void removeMealsRecipes(MealsRecipes mealsRecipes);
 
+    void nukeByRecipeId(Long id);
+
 }

@@ -19,6 +19,9 @@ public class JdbcMealDao implements MealDao{
     @Autowired
     private MealsRecipesDao mealsRecipesDao;
 
+    @Autowired
+    private MealsMealPlanDao mealsMealPlanDao;
+
     @Override
     public List<Meal> getAll(Long userId) {
         String sql = "SELECT * FROM meals where user_id = ?";
@@ -93,6 +96,7 @@ public class JdbcMealDao implements MealDao{
         for (MealsRecipes recipes: recipesList){
             mealsRecipesDao.removeMealsRecipes(recipes);
         }
+        mealsMealPlanDao.nukeByMealId(meal.getId());
 
         String sql = "DELETE FROM meals WHERE meal_id = ?";
         jdbcTemplate.update(sql, meal.getId());

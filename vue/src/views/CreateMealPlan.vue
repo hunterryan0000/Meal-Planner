@@ -111,7 +111,9 @@ export default {
 <style scoped>
 .mealsWrapper{
     /* border: 4px solid white; */
-    width: 30%
+    width: 30%;
+    overflow-y: scroll;
+    background-color: white;
 
 }
 .plansWrapper{

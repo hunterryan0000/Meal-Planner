@@ -64,15 +64,24 @@ public class JdbcMealPlanDao implements MealPlanDao{
 
     @Override
     public void deleteMealPlan(MealPlan mealPlan) {
-        for(Day days: mealPlan.getDays()){
-            List<MealsMealPlan> mealsMealPlans = mealsMealPlanDao.mapDaytoMealsMealPlan(days, mealPlan.getId());
-            for(MealsMealPlan mealsMealPlan: mealsMealPlans){
-                mealsMealPlanDao.removeMealPlanMeals(mealsMealPlan);
-            }
-        }
+        mealsMealPlanDao.nukeByMealPlanId(mealPlan.getId());
 
         String sql = "DELETE FROM mealplan WHERE mealplan_id = ?";
         jdbcTemplate.update(sql, mealPlan.getId());
+    }
+
+    @Override
+    public MealPlan editMealPlan(MealPlan mealPlan) {
+        mealsMealPlanDao.nukeByMealPlanId(mealPlan.getId());
+        String sql = "update mealplan set name = ?, totaldays = ? where mealplan_id = ?";
+        jdbcTemplate.update(sql, mealPlan.getName(), mealPlan.getTotalDays(), mealPlan.getId());
+        for(Day days: mealPlan.getDays()){
+            List<MealsMealPlan> mealsMealPlans = mealsMealPlanDao.mapDaytoMealsMealPlan(days, mealPlan.getId());
+            for(MealsMealPlan mealsMealPlan: mealsMealPlans){
+                mealsMealPlanDao.add(mealsMealPlan);
+            }
+        }
+        return mealPlan;
     }
 
     private MealPlan mapRowToMealPlan(SqlRowSet r, Long user_id){

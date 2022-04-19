@@ -15,4 +15,8 @@ public interface MealsMealPlanDao {
 
     void removeMealPlanMeals(MealsMealPlan mealsMealPlan);
 
+    void nukeByMealPlanId(Long id);
+
+    void nukeByMealId(Long id);
+
 }
