@@ -47,7 +47,7 @@ create table recipe_ingredients (
 	recipe_id int,
 	ingredient_id int,
 	name varchar(50),
-	quantity int,
+	quantity float,
 	measurement varchar(50),
 	foreign key (recipe_id) references recipes(recipe_id),
 	foreign key (ingredient_id) references ingredients(ingredient_id)

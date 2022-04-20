@@ -274,12 +274,12 @@ insert into recipe_ingredients values
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Noodle Kugel'), 
  (select ingredient_id from ingredients where name = 'granulated sugar'), 
- 'granulated sugar', (2/3), 'cup');
+ 'granulated sugar', .67, 'cup');
 
 insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Noodle Kugel'), 
  (select ingredient_id from ingredients where name = 'raisin'), 
- 'raisin', (2/3), 'cup');
+ 'raisin', .67, 'cup');
 
 insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Noodle Kugel'), 
@@ -414,7 +414,7 @@ insert into recipe_ingredients values
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Lemony Baked Cod with Wild Rice and Fennel'), 
  (select ingredient_id from ingredients where name = 'golden-raisins'), 
- 'golden-raisins', (1/3), 'cup');
+ 'golden-raisins', .33, 'cup');
  
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Lemony Baked Cod with Wild Rice and Fennel'), 
@@ -454,12 +454,12 @@ insert into recipe_ingredients values
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Lemony Baked Cod with Wild Rice and Fennel'), 
  (select ingredient_id from ingredients where name = 'almond'), 
- 'almond', (1/3), 'cup');
+ 'almond', .33, 'cup');
  
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Lemony Baked Cod with Wild Rice and Fennel'), 
  (select ingredient_id from ingredients where name = 'parsley'), 
- 'parsley', (1/3), 'cup');
+ 'parsley', .33, 'cup');
  
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'Lemony Baked Cod with Wild Rice and Fennel'), 
@@ -763,7 +763,7 @@ insert into recipe_ingredients values
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'The Best Swedish Meatballs'), 
  (select ingredient_id from ingredients where name = 'pepper'), 
- 'pepper', (1/8), 'tsp');
+ 'pepper', .1, 'tsp');
  
  insert into recipe_ingredients values 
 ((select recipe_id from recipes where name = 'The Best Swedish Meatballs'), 
@@ -845,7 +845,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
 (select ingredient_id from ingredients where name = 'chili pepper'),
-'pinch of red pepper flakes', (1/16), 'tsp');
+'pinch of red pepper flakes', .06, 'tsp');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
@@ -865,7 +865,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
 (select ingredient_id from ingredients where name = 'red cabbage'),
-'red cabbage', (1/2), 'cup');
+'red cabbage', .5, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
@@ -875,7 +875,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
 (select ingredient_id from ingredients where name = 'black bean'),
-'black beans drained and rinsed', (3/4), 'cup');
+'black beans drained and rinsed', .75, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
@@ -885,7 +885,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
 (select ingredient_id from ingredients where name = 'cilantro'),
-'cilantro leaves', (1/2), 'cup');
+'cilantro leaves', .5, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
@@ -924,7 +924,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
 (select ingredient_id from ingredients where name = 'banana'),
-'frozen banana', (1/2), 'cup');
+'frozen banana', .5, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
@@ -965,7 +965,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
 (select ingredient_id from ingredients where name = 'butter'),
-'butter', (1/4), 'cup');
+'butter', .25, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
@@ -995,7 +995,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
 (select ingredient_id from ingredients where name = 'black pepper'),
-'ground black pepper', (1/2), 'tsp');
+'ground black pepper', .5, 'tsp');
 
 insert into recipe_appliances values
 ((select appliance_id from appliances where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
@@ -1020,7 +1020,7 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
 (select ingredient_id from ingredients where name = 'butter'),
-'butter melted', (1/2), 'cup');
+'butter melted', .5, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
@@ -1030,12 +1030,12 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
 (select ingredient_id from ingredients where name = 'milk'),
-'milk', (1/3), 'cup');
+'milk', .33, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
 (select ingredient_id from ingredients where name = 'vanilla extract'),
-'vanilla extract', (1/2), 'tsp');
+'vanilla extract', .5, 'tsp');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
@@ -1050,12 +1050,12 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
 (select ingredient_id from ingredients where name = 'flour'),
-'flour', (1/2), 'cup');
+'flour', .5, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
 (select ingredient_id from ingredients where name = 'butter'),
-'butter', (1/3), 'cup');
+'butter', .33, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
@@ -1082,7 +1082,7 @@ insert into recipes values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
 (select ingredient_id from ingredients where name = 'chicken broth'),
-'low sodium chicken broth', (1/2), 'cup');
+'low sodium chicken broth', .5, 'cup');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
@@ -1102,27 +1102,27 @@ insert into recipe_ingredients values
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
 (select ingredient_id from ingredients where name = 'black pepper'),
-'ground black pepper', (1/2), 'tsp');
+'ground black pepper', .5, 'tsp');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
 (select ingredient_id from ingredients where name = 'paprika'),
-'sweet paprika', (1/2), 'tsp');
+'sweet paprika', .5, 'tsp');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
 (select ingredient_id from ingredients where name = 'basil'),
-'dried basil', (1/2), 'tsp');
+'dried basil', .5, 'tsp');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
 (select ingredient_id from ingredients where name = 'garlic powder'),
-'garlic powder', (1/2), 'tsp');
+'garlic powder', .5, 'tsp');
 
 insert into recipe_ingredients values
 ((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
 (select ingredient_id from ingredients where name = 'oregano'),
-'dried oregano', (1/2), 'tsp');
+'dried oregano', .5, 'tsp');
 
 insert into recipe_appliances values
 ((select appliance_id from appliances where name = 'Slow Cooker Chicken Breast'),

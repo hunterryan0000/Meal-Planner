@@ -213,16 +213,25 @@ export default {
             ],
 
             measurementOptions: [
-                {value: 'Tbsp', text: 'Tbsp'},
-                {value: 'tsp', text: 'tsp'},
+                {value: 'bunch', text: 'bunch'},
                 {value: 'cup', text: 'cup'},
-                {value: 'gallon', text: 'gallon'},
-                {value: 'grams', text: 'grams'},
-                {value: 'mg', text: 'mg'},
+                {value: 'fluid oz', text: 'fluid oz'},
+                {value: 'ft', text: 'ft'},
+                {value: 'gal', text: 'gal'},
+                {value: 'gm', text: 'gm'},
+                {value: 'in', text: 'in'},
                 {value: 'lbs', text: 'lbs'},
+                {value: 'L', text: 'L'},
+                {value: 'ml', text: 'ml'},
+                {value: 'mg', text: 'mg'},
                 {value: 'oz', text: 'oz'},
-                {value: 'liter', text: 'liter'},
-                {value: 'ml', text: 'ml'}
+                {value: 'pinch', text: 'pinch'},
+                {value: 'pt', text: 'pt'},
+                {value: 'tbsp', text: 'tbsp'},
+                {value: 'tsp', text: 'tsp'},
+                {value: 'unit', text: 'unit'},
+                {value: 'whole', text: 'whole'}
+                
             ]
         }
     },
