@@ -1255,6 +1255,132 @@ insert into recipe_appliances values
 
 
 
+insert into recipes values 
+(default, (select user_id from users where username = 'Matthew'), 
+ 'Oven-Roasted Asparagus', 
+ 'Salty and savory, the roasting method kills the natural bitterness of asparagus. Try it next to grilled fish or lamb. ', 
+ ' Step 1
+
+Preheat an oven to 425 degrees F (220 degrees C).
+Step 2
+
+Place the asparagus into a mixing bowl, and drizzle with the olive oil. Toss to coat the spears, then sprinkle with Parmesan cheese, garlic, salt, and pepper. Arrange the asparagus onto a baking sheet in a single layer.
+Step 3
+
+Bake in the preheated oven until just tender, 12 to 15 minutes depending on thickness. Sprinkle with lemon juice just before serving.
+', 
+ 4, 2, 'https://cdn.discordapp.com/attachments/872641665314222100/966096168499154974/image.webp');
+	
+		
+insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'asparagus'), 
+ 'asparagus', 1, 'bunch');
+ 
+ insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'olive oil'), 
+ 'olive oil', 3, 'tbsp');
+ 
+ insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'sea salt'), 
+ 'sea salt', 1, 'tsp');
+ 
+ insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'black pepper'), 
+ 'black pepper', .5, 'tsp');
+ 
+
+insert into recipe_appliances values 
+((select appliance_id from appliances where name = 'Oven-Roasted Asparagus'), 
+ (select recipe_id from recipes where name = 'Oven'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insert into recipes values 
+(default, (select user_id from users where username = 'Matthew'), 
+ 'Caesar Salad', 
+ 'Classic Caesar Salad with crisp homemade croutons and a light caesar dressing – for when you want to impress your dinner guests.', 
+ 'In a large mixing bowl, combine all of your ingredients and toss gently to coat the lettuce in caesar dressing. This recipe makes enough croutons for two full salads so you’ll have them ready to go for round 2!
+', 
+ 4, 3, 'https://cdn.discordapp.com/attachments/872641665314222100/966097641589055518/Caesar-Salad-Recipe-5-600x900.jpg');
+	
+		
+insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'garlic'), 
+ 'garlic', 1, 'tsp');
+ 
+ insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'dijon mustard'), 
+ 'dijon mustard', 2, 'tsp');
+ 
+ insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'worcestershire sauce'), 
+ 'worcestershire sauce', 1, 'tsp');
+ 
+ insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'lemon juice'), 
+ 'lemon juice', 2, 'tsp');
+ 
+  insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'red wine vinegar'), 
+ 'red wine vinegar', 1.5, 'tsp');
+ 
+   insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'extra virgin olive oil'), 
+ 'extra virgin olive oil', .33, 'cup');
+ 
+    insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'sea salt'), 
+ 'sea salt', .5, 'tsp');
+ 
+    insert into recipe_ingredients values 
+((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+ (select ingredient_id from ingredients where name = 'black pepper'), 
+ 'black pepper', .125, 'tsp');
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
