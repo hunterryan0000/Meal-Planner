@@ -1,15 +1,15 @@
 <template>
-  <div class="mx-auto col-md-8">
+  <div class="mx-auto col-md-8 wrappervert">
     <div id="buttons">
       <span id="span" v-on:click.prevent="editMealPlan(plan)"><a href=""></a></span>
       <span id="delete" v-on:click.prevent="deleteMealPlan(plan)"><i class="fa fa-trash-o"></i></span>
     </div>
-
+    <div class="wrapper">
     <div class="meal-plan-details-container">
 
       <div class="row align-items-start" id="headers-container">
         <div class="col">
-          <h4>Days: {{ plan.totalDays }}</h4>
+          <h2 class="TotalDays">Total Days: {{ plan.totalDays }}</h2>
         </div>
         <div class="col">
           <h1>{{ plan.name }}</h1>
@@ -17,18 +17,24 @@
       </div>
 
       <div v-for="day in plan.days" :key="day.id" id="daysList">
-        <p>Day {{ day.id }}</p>
+        <hr>
+        <h4>Day {{ day.id }}</h4>
         <div id="plan_list">
           <div v-for="meal in day.mealList" :key="meal.id" id="mealCard">
-            <meal-card :meal="meal"></meal-card>
+            <p>{{meal.type_of_meal}}</p>
+            <meal-card :meal="meal" class="card"></meal-card>
             <!-- <button v-on:click.prevent="removeCard(day.id, meal.id)">remove</button> -->
           </div>
         </div>
       </div>
+    </div>
+
+    <div class='groceryList'> 
 
       <h3>Grocery List</h3>
 
       <h6 v-for="ingredient in this.ingredientsFinal" :key="ingredient">{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</h6>
+    </div>
     </div>
   </div>
 </template>
@@ -113,7 +119,7 @@ export default {
 </script>
 
 <style scoped>
-.meal-plan-details-container {
+.meal-plan-details-container, .groceryList {
   background-color: cornsilk;
   margin-top: 45px;
   border: 5px solid rgb(230, 213, 195);
@@ -121,12 +127,42 @@ export default {
   border-radius: 10px;
 }
 
+.meal-plan-details-container{
+  width: 80vw;
+}
+.groceryList{
+  width: 20vw;
+}
+
+#headers-container{
+  padding: 5px;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  width: 100%;
+
+}
+#buttons{
+  /* position: absolute; */
+  right: 21%;
+  top: 2.5%;
+}
 #mealCard {
   display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 0;
 }
 /* #span {
   margin-top: 20px;
 } */
+
+hr{
+  border: 1px solid black;
+}
 
 #span {
   position: relative;
