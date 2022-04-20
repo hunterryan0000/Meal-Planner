@@ -28,8 +28,6 @@
 
       <h3>Grocery List</h3>
 
-      <h5>{{ingredientsList}}</h5>
-
       <h6 v-for="ingredient in this.ingredientsFinal" :key="ingredient">{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</h6>
     </div>
   </div>
@@ -48,9 +46,8 @@ export default {
     return {
       mealList: [],
       plan: null,
-      ingredientsList: {},
-      ingredientsFinal: [],
-      test: []
+      ingredientsList: [],
+      ingredientsFinal: []
     };
   },
   created() {
@@ -58,31 +55,19 @@ export default {
     AuthService.searchPlan(this.$route.params.id).then((response) => {
       this.plan = response.data;
 
-
       this.plan.days.forEach(day => {
         day.mealList.forEach(meal => {
-          meal.mealsRecipesList.forEach(recipe => {
-            
+          meal.mealsRecipesList.forEach(recipe => {     
             AuthService.searchRecipe(recipe.recipe_id).then((response) => {
-              if(response.data.name in this.ingredientsList) {
-                const currRecipe = this.ingredientsList[response.data.name];
-                currRecipe.count++;
-              } else {
-                const newRecipe = {
-                  count: 1,
-                  ingredients: response.data.ingredientList
+              response.data.ingredientList.forEach(ingredient => {
+                if(this.ingredientsList.includes(ingredient.name)) {
+                  //pass
+                } else {
+                  this.ingredientsFinal.push(ingredient);
+                  this.ingredientsList.push(ingredient.name);
                 }
-                this.ingredientsList[response.data.name] = newRecipe;
-              }
-
-            }).then( () => {
-                  for (const x in this.ingredientsList) {
-                    this.ingredientsList[x].ingredients.forEach(ingredient => {
-                      console.log(ingredient);
-                      this.ingredientsFinal.push(ingredient);
-                    });
-                  }
-               });
+              });
+            });
           });
         });
       });
