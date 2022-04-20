@@ -240,8 +240,14 @@ export default {
                     ingredientObject.ingredient_id = this.ingredientList[index].id;
                 }
             }
-            this.ingredients.push(ingredientObject);
-            console.log(this.ingredients);
+
+            if(ingredientObject.quantity == null || ingredientObject.quantity == '' || ingredientObject.measurement == null || ingredientObject.measurement == '' ) {
+                alert("Ingredient needs measurement and quantity.");
+            } else {
+                this.ingredients.push(ingredientObject);
+                console.log(this.ingredients);
+            }
+            
         },
         removeIngredientFromArray(ingredient) {
             this.ingredients = this.ingredients.filter( element => {
