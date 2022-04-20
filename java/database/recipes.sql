@@ -816,65 +816,6 @@ insert into recipe_appliances values
  (select recipe_id from recipes where name = 'Stove'));
 
 
-
-
-  insert into recipes values
-  (default, (select user_id from users where username = 'Matthew'),
-   'Granola',
-   'I have tried several other granola recipes, and this one by far is the best.',
-   'Preheat oven to 250 degrees F. In a large bowl, combine the oats, nuts, coconut, and brown sugar.
-   In a separate bowl, combine maple syrup, oil, and salt. Combine both mixtures and pour onto 2 sheet pans.
-   Cook for 1 hour and 15 minutes, stirring every 15 minutes to achieve an even color.
-   Remove from oven and transfer into a large bowl. Add raisins and mix until evenly distributed.',
-   6, 3, 'https://assets.vogue.com/photos/5891768ce8e3104f57c7383e/16:9/w_1280,c_limit/00-holding-the-perfect-healthy-granola-recipe.jpg');
-
-
-  insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'oat'),
-   'rolled oats', 3, 'cup');
-
-   insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'almond'),
-   'silvered almonds', 1, 'cup');
-
-   insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'coconut'),
-   'shredded sweet coconut', (3/4), 'cup');
-
-   insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'brown sugar'),
-   'dark brown sugar', 6, 'tbsp');
-
-   insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Granola'),
-  (select ingredient_id from ingredients where name = 'maple syrup'),
-  'maple syrup', 6, 'tbsp');
-
-   insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'vegetable oil'),
-   'vegetable oil', (1/4), 'cup');
-
-   insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'salt'),
-   'salt', (3/4), 'tsp');
-
-   insert into recipe_ingredients values
-  ((select recipe_id from recipes where name = 'Granola'),
-   (select ingredient_id from ingredients where name = 'raisin'),
-   'raisins', 1, 'cup');
-
-
-  insert into recipe_appliances values
-  ((select appliance_id from appliances where name = 'Granola'),
-   (select recipe_id from recipes where name = 'oven'));
-
-
 insert into recipes values
 (default, (select user_id from users where username = 'Matthew'),
 'Best Breakfast Burrito',
@@ -1004,68 +945,6 @@ insert into recipe_ingredients values
 insert into recipe_appliances values
 ((select appliance_id from appliances where name = 'Strawberry Banana Smoothie'),
 (select recipe_id from recipes where name = 'blender'));
-
-insert into recipes values
-(default, (select user_id from users where username = 'Matthew'),
-'Caesar Salad',
-'Best Caesar Salad dressing I have ever made.',
-'In a medium bowl, whisk together the egg yolk, lemon juice, garlic, Worcestershire, pepper flakes, mustard, and anchovies.
-Slowly whisk in the oils to emulsify. Season, to taste, with salt and pepper. Place the lettuce in a large bowl. Sprinkle with Parmesan and black pepper.
-Drizzle with desired amount of dressing and toss well. Sprinkle top with croutons.',
-2, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmZrWab0IWO9Jz4esNLrgTMQTWe9QDhLq1UA&usqp=CAU');
-
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'egg yolk'),
-'egg yolk', 1, '');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'lemon juice'),
-'lemon juice', 3, 'tbsp');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'garlic'),
-'minced garlic', 1, 'tbsp');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'chili pepper'),
-'chili pepper', (1/4), 'tsp');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'dijon mustard'),
-'dijon mustard', 1, 'tbsp');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'vegetable oil'),
-'vegetable oil', 1, 'cup');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'olive oil'),
-'olive oil', (1/3), 'cup');
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'romaine lettuce'),
-'large-head romaine lettuce', 1, '');
-
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Caesar Salad'),
-(select ingredient_id from ingredients where name = 'parmesan'),
-'parmesan', (1/4), 'cup');
-
-
-insert into recipe_appliances values
-((select appliance_id from appliances where name = 'Caesar Salad'),
-(select recipe_id from recipes where name = 'mixing bowl'));
-
 
 
 insert into recipes values
@@ -1298,23 +1177,6 @@ insert into recipe_appliances values
  (select recipe_id from recipes where name = 'Oven'));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 insert into recipes values 
 (default, (select user_id from users where username = 'Matthew'), 
  'Caesar Salad', 
@@ -1325,45 +1187,48 @@ insert into recipes values
 	
 		
 insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'garlic'), 
  'garlic', 1, 'tsp');
  
  insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'dijon mustard'), 
  'dijon mustard', 2, 'tsp');
  
  insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'worcestershire sauce'), 
  'worcestershire sauce', 1, 'tsp');
  
  insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'lemon juice'), 
  'lemon juice', 2, 'tsp');
  
   insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'red wine vinegar'), 
  'red wine vinegar', 1.5, 'tsp');
  
    insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'extra virgin olive oil'), 
  'extra virgin olive oil', .33, 'cup');
  
     insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'sea salt'), 
  'sea salt', .5, 'tsp');
  
     insert into recipe_ingredients values 
-((select recipe_id from recipes where name = 'Oven-Roasted Asparagus'), 
+((select recipe_id from recipes where name = 'Caesar Salad'),
  (select ingredient_id from ingredients where name = 'black pepper'), 
  'black pepper', .125, 'tsp');
- 
+
+ insert into recipe_appliances values
+ ((select appliance_id from appliances where name = 'Caesar Salad'),
+  (select recipe_id from recipes where name = 'mixing bowl'));
 
 
 
