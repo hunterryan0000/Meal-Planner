@@ -14,7 +14,7 @@
       <div class="plansWrapper">
           <div class="plansHeader">
               <h3 id="DayCounter">Days: </h3>
-              <input type="number" id="days" min="0" max="31" v-model="days" @change.prevent="updateDays">
+              <input type="number" id="days" min="1" max="31" v-model="days" @change.prevent="updateDays">
               <h3 id="Name">Plan Name: </h3>
               <input type="text" id="name" v-model="name">
               
