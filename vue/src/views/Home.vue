@@ -1,9 +1,9 @@
 <template>
   <div id="Home">
-      <h1 id="welcome">Kook Book<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
+      <h1 id="welcome">Meal Planner<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
       <!-- <img src=".gif" alt="Name gif"> -->
       <h3 id="easy">Meal Planning Made Easy</h3>
-      <p>Get organized with the Kook Book Meal Planner. Customize your weekly meal plan based on your recipes.</p>
+      <p>Get organized with the Meal Planner. Customize your weekly meal plan based on your recipes.</p>
     <div class = "stepsContainer">
       <div class = "steps">
         <img class="step-image" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/meal.jpg">
