@@ -1,6 +1,7 @@
 <template>
   <div id="Home">
-      <h1 id="welcome">Meal Planner<span>Welcome, {{this.$store.state.user.username}}!!!!!!</span></h1>
+      <h1 id="welcome"><div id ="name">Meal Planner</div><span>Welcome, {{this.$store.state.user.username}}!!!!!!</span>
+      </h1>
       <!-- <img src=".gif" alt="Name gif"> -->
       <h3 id="easy">Meal Planning Made Easy</h3>
       <p>Get organized with the Meal Planner. Customize your weekly meal plan based on your recipes.</p>
@@ -64,12 +65,8 @@ export default {
   padding-top: 2rem;
 }
 
-#welcome{
-  margin-left: 3%;
-}
-
-#Home h1 span {
-  margin-left: -3%;
+#name{
+  text-align: center;
 }
 
 #Home p{
