@@ -8,6 +8,7 @@ insert into ingredients values (default, 'oil and fat');
 insert into ingredients values (default, 'vegetable oil and fat');
 insert into ingredients values (default, 'vegetable');
 insert into ingredients values (default, 'dairy');
+insert into ingredients values (default, 'onion powder');
 insert into ingredients values (default, 'cereal');
 insert into ingredients values (default, 'natural flavouring');
 insert into ingredients values (default, 'vegetable oil');

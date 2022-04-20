@@ -818,103 +818,6 @@ insert into recipe_appliances values
 
 
 
---Ryan
-insert into recipes values
-(default, (select user_id from users where username = 'Matthew'),
- 'Cinnamon Baked Doughnuts',
- 'Love this recipe! It is simple and I love the texture. These are absolutely delicious!!',
- 'Preheat the oven to 350 degrees. Spray 2 doughnut pans well. Into a large bowl, sift together the flour, sugar, baking powder, cinnamon, nutmeg, and salt.
- In a small bowl, whisk together the egg, milk, melted butter, and vanilla. Stir the wet mixture into the dry ingredients until just combined.
- Spoon the batter into the baking pans, filling each one a little more than three-quarters full.
- Bake for 17 minutes, until a toothpick comes out clean. Allow to cool for 5 minutes, then tap the doughnuts out onto a sheet pan.
- For the topping, melt the 8 tablespoons of butter in an 8-inch saute pan. Combine the sugar and cinnamon in a small bowl.
- Dip each doughnut first in the butter and then in the cinnamon sugar, either on one side or both sides.',
- 12, 3, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/7/29/0/BX0903H_cinnamon-baked-doughnuts-recipe_s4x3.jpg.rend.hgtvcom.826.620.suffix/1449692373072.jpeg');
-
-
-insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'flour'),
- 'all-purpose flour', 2, 'cup');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'sugar'),
- 'sugar', 1.25, 'cup');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'cinnamon'),
- 'cinnamon', 1, 'tsp');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'nutmeg'),
- 'ground nutmeg', .5, 'tsp');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'salt'),
- 'kosher salt', .5, 'tsp');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'egg'),
- 'extra-large egg, lightly beaten', 1, '');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'milk'),
- 'whole milk', 1.25, 'cup');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'butter'),
- 'unsalted butter, melted', 2, 'tbsp');
-
- insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Cinnamon Baked Doughnuts'),
- (select ingredient_id from ingredients where name = 'vanilla'),
- 'vanilla extract', 2, 'tsp');
-
-
-insert into recipe_appliances values
-((select appliance_id from appliances where name = 'Cinnamon Baked Doughnuts'),
- (select recipe_id from recipes where name = 'oven'));
-
-
-
- insert into recipes values
- (default, (select user_id from users where username = 'Matthew'),
-  'Avocado Toast',
-  'There are two secrets to these simple avocado toasts: rubbing the bread with garlic for just a hint of flavor and adding a pop of crunchy sea salt on top.',
-  'Mash the avocado with a fork in a shallow bowl until chunky. Season with fine salt and black pepper.
-  Lightly brush the toasts with oil, and season with fine salt and pepper. Divide the mashed avocado evenly among the toasts,
-  and top with more flaky sea salt, more black pepper and red pepper flakes if using.',
-  4, 1, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/12/11/0/FNK_All-the-Avocado-Toast_s4x3.jpg.rend.hgtvcom.826.620.suffix/1450059496131.jpeg');
-
-
- insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Avocado Toast'),
-  (select ingredient_id from ingredients where name = 'avocado'),
-  '8-ounce ripe avocado, halved, pitted, and peeled', 1, '');
-
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Avocado Toast'),
-  (select ingredient_id from ingredients where name = 'bread'),
-  'whole grain or whole wheat bread', 4, 'slices');
-
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Avocado Toast'),
-  (select ingredient_id from ingredients where name = 'garlic'),
-  'clove garlic, peeled and halved', 1, 'clove');
-
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Avocado Toast'),
-  (select ingredient_id from ingredients where name = 'olive oil'),
-  'extra-virgin olive oil', 2, 'tbsp');
-
-
   insert into recipes values
   (default, (select user_id from users where username = 'Matthew'),
    'Granola',
@@ -923,7 +826,7 @@ insert into recipe_appliances values
    In a separate bowl, combine maple syrup, oil, and salt. Combine both mixtures and pour onto 2 sheet pans.
    Cook for 1 hour and 15 minutes, stirring every 15 minutes to achieve an even color.
    Remove from oven and transfer into a large bowl. Add raisins and mix until evenly distributed.',
-   6, 3, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/EA1E06_granola_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599882741.jpeg');
+   6, 3, 'https://assets.vogue.com/photos/5891768ce8e3104f57c7383e/16:9/w_1280,c_limit/00-holding-the-perfect-healthy-granola-recipe.jpg');
 
 
   insert into recipe_ingredients values
@@ -939,7 +842,7 @@ insert into recipe_appliances values
    insert into recipe_ingredients values
   ((select recipe_id from recipes where name = 'Granola'),
    (select ingredient_id from ingredients where name = 'coconut'),
-   'shredded sweet coconut', .75, 'cup');
+   'shredded sweet coconut', (3/4), 'cup');
 
    insert into recipe_ingredients values
   ((select recipe_id from recipes where name = 'Granola'),
@@ -954,12 +857,12 @@ insert into recipe_appliances values
    insert into recipe_ingredients values
   ((select recipe_id from recipes where name = 'Granola'),
    (select ingredient_id from ingredients where name = 'vegetable oil'),
-   'vegetable oil', .25, 'cup');
+   'vegetable oil', (1/4), 'cup');
 
    insert into recipe_ingredients values
   ((select recipe_id from recipes where name = 'Granola'),
    (select ingredient_id from ingredients where name = 'salt'),
-   'salt', .75, 'tsp');
+   'salt', (3/4), 'tsp');
 
    insert into recipe_ingredients values
   ((select recipe_id from recipes where name = 'Granola'),
@@ -973,53 +876,378 @@ insert into recipe_appliances values
 
 
 insert into recipes values
- (default, (select user_id from users where username = 'Matthew'),
-  'Scrambled Eggs with Herbs',
-  'So easy and so good. Made it for our weekly "big" breakfast on Sunday and now can"'"t resist making it more often, highly recommended!',
-  'Whisk together the eggs, milk, chives, parsley and tarragon in a medium bowl. Season with salt and pepper.
-  Melt the butter in a medium nonstick skillet over medium to medium-low heat.
-  When the butter"'"s foam begins to subside, add the egg mixture and cook, stirring almost constantly, for 4 to 7 minutes depending on the desired firmness of the eggs.
-  Serve immediately.',
-  4, 1, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/12/9/0/FNK_Scrambled-Eggs-with-Herbs_s4x3.jpg.rend.hgtvcom.826.620.suffix/1387411425932.jpeg');
+(default, (select user_id from users where username = 'Matthew'),
+'Best Breakfast Burrito',
+'This hearty, healthy breakfast burrito recipe is the best way to kickstart your morning.',
+'Preheat the oven to 425°F and line a large baking sheet with parchment paper.
+Place the potatoes onto the sheet, drizzle with olive oil, and sprinkle generously with salt and pepper, the smoked paprika, and pinches of red pepper flakes.
+Toss to coat, spread evenly on the pan, and bake for 30 minutes or until golden brown and crisp around the edges.
+Heat a grill pan on the stove to medium heat. Place the red pepper on the pan and let it char for 4 to 5 minutes per side, or until the pepper is soft and each side has black grill marks.
+Alternatively, you can roast it in the oven until soft. Remove from the grill, remove the stem and ribbing, and slice the pepper into strips.
+Assemble the burritos: Divide the spinach leaves and red cabbage, if using, among the tortillas.
+Top with the scrambled eggs, red pepper strips, black beans, pico de gallo, potatoes, avocado, and cilantro.
+Sprinkle with salt and pepper and a squeeze of lime. Fold the left and right sides of the tortilla over the filling.
+Fold the bottom flap of the burrito up and over the filling, tucking the sides and the filling as you roll the burrito.',
+3, 3, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/4/22/0/CCHAP-110F_Breakfast-Burrito_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382539589470.jpeg');
 
 
- insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Scrambled Eggs with Herbs'),
-  (select ingredient_id from ingredients where name = 'egg'),
-  'large eggs', 10, '');
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'potato'),
+'yellow potatoes cut into 1/2 inch pieces', 1, 'lb');
 
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Granola'),
-  (select ingredient_id from ingredients where name = 'milk'),
-  'half and half, or heavy cream', .25, 'cup');
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'paprika'),
+'smoked paprika', .5, 'tsp');
 
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Granola'),
-  (select ingredient_id from ingredients where name = 'chives'),
-  'thinly sliced fresh chives', 1, 'tbsp');
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'chili pepper'),
+'pinch of red pepper flakes', (1/16), 'tsp');
 
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Granola'),
-  (select ingredient_id from ingredients where name = 'parsley'),
-  'minced fresh flat-leaf parsley leaves', 2, 'tbsp');
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'red bell pepper'),
+'red bell pepper', 1, '');
 
-  insert into recipe_ingredients values
-((select recipe_id from recipes where name = 'Granola'),
- (select ingredient_id from ingredients where name = 'tarragon'),
- 'finely chopped fresh tarragon leaves', 1.5, 'tsp');
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'tortilla'),
+'12-inch tortillas', 3, '');
 
-  insert into recipe_ingredients values
- ((select recipe_id from recipes where name = 'Granola'),
-  (select ingredient_id from ingredients where name = 'butter'),
-  'unsalted butter', 2, 'tbsp');
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'spinach'),
+'fresh spinach', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'red cabbage'),
+'red cabbage', (1/2), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'egg'),
+'scrambled eggs', 9, '');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'black bean'),
+'black beans drained and rinsed', (3/4), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'avocado'),
+'ripe avocado', 1, '');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'cilantro'),
+'cilantro leaves', (1/2), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Best Breakfast Burrito'),
+(select ingredient_id from ingredients where name = 'lime'),
+'lime cut in quarters', 1, '');
 
 
- insert into recipe_appliances values
- ((select appliance_id from appliances where name = 'Granola'),
-  (select recipe_id from recipes where name = 'stove'));
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Best Breakfast Burrito'),
+(select recipe_id from recipes where name = 'stove'));
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Best Breakfast Burrito'),
+(select recipe_id from recipes where name = 'oven'));
 
 
--- Ryan
+insert into recipes values
+(default, (select user_id from users where username = 'Matthew'),
+'Strawberry Banana Smoothie',
+'This refreshing strawberry banana smoothie recipe comes together in seconds in the blender. Perfect for hot summer afternoons or as a healthy breakfast.',
+'Combine the raspberries, strawberries, banana, almond milk, honey or maple, basil, if using, and ice in a blender. Blend until smooth.
+Taste. If its too tart for you, add another 1/2 cup or so of almond milk and another tablespoon of honey or maple.',
+2, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSugFKDZ12jY7clg9hPZLyLXwdhoq1mG7nXTw&usqp=CAU');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
+(select ingredient_id from ingredients where name = 'raspberry'),
+'raspberries', 1.5, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
+(select ingredient_id from ingredients where name = 'strawberry'),
+'strawberries', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
+(select ingredient_id from ingredients where name = 'banana'),
+'frozen banana', (1/2), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
+(select ingredient_id from ingredients where name = 'oat milk'),
+'almond or oat milk', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
+(select ingredient_id from ingredients where name = 'honey'),
+'honey', 1, 'tbsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Strawberry Banana Smoothie'),
+(select ingredient_id from ingredients where name = 'ice'),
+'ice', 1.5, 'cup');
+
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Strawberry Banana Smoothie'),
+(select recipe_id from recipes where name = 'blender'));
+
+insert into recipes values
+(default, (select user_id from users where username = 'Matthew'),
+'Caesar Salad',
+'Best Caesar Salad dressing I have ever made.',
+'In a medium bowl, whisk together the egg yolk, lemon juice, garlic, Worcestershire, pepper flakes, mustard, and anchovies.
+Slowly whisk in the oils to emulsify. Season, to taste, with salt and pepper. Place the lettuce in a large bowl. Sprinkle with Parmesan and black pepper.
+Drizzle with desired amount of dressing and toss well. Sprinkle top with croutons.',
+2, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmZrWab0IWO9Jz4esNLrgTMQTWe9QDhLq1UA&usqp=CAU');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'egg yolk'),
+'egg yolk', 1, '');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'lemon juice'),
+'lemon juice', 3, 'tbsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'garlic'),
+'minced garlic', 1, 'tbsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'chili pepper'),
+'chili pepper', (1/4), 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'dijon mustard'),
+'dijon mustard', 1, 'tbsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'vegetable oil'),
+'vegetable oil', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'olive oil'),
+'olive oil', (1/3), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'romaine lettuce'),
+'large-head romaine lettuce', 1, '');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Caesar Salad'),
+(select ingredient_id from ingredients where name = 'parmesan'),
+'parmesan', (1/4), 'cup');
+
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Caesar Salad'),
+(select recipe_id from recipes where name = 'mixing bowl'));
+
+
+
+insert into recipes values
+(default, (select user_id from users where username = 'Matthew'),
+'Creamy Garlic-Parmesan Mashed Potatoes',
+'Tired of plain mashed potatoes? Why not try adding something new?',
+'Place potatoes into a large pot and cover with salted water; bring to a boil. Reduce heat to medium-low and simmer until tender, 20 to 25 minutes.
+While potatoes are cooking, melt butter over medium-low heat in a small saucepan. Add garlic and saute until soft, about 5 minutes.
+Drain potatoes and return to the pot. Add garlic-butter mixture, milk, Parmesan cheese, parsley, sea salt, and pepper; mash until smooth.',
+10, 3, 'https://grandbaby-cakes.com/wp-content/uploads/2019/09/Garlic-Mashed-Potatoes-Recipe-1-500x375.jpg');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'potatoes'),
+'potatoes peeled and quartered', 5, 'lb');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'butter'),
+'butter', (1/4), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'garlic'),
+'minced garlic', 6, 'clove');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'milk'),
+'2% milk', 2, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'parmesan'),
+'parmesan cheese', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'parsley'),
+'parsley fresh and chopped', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'sea salt'),
+'sea salt', 1, 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select ingredient_id from ingredients where name = 'black pepper'),
+'ground black pepper', (1/2), 'tsp');
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Creamy Garlic-Parmesan Mashed Potatoes'),
+(select recipe_id from recipes where name = 'stove'));
+
+
+insert into recipes values
+(default, (select user_id from users where username = 'Matthew'),
+'Sweet Potato Casserole Dessert',
+'Fluffy sweet potatoes mixed with butter, sugar, and vanilla, and baked with a crunchy pecan streusel topping.',
+'Preheat oven to 350 degrees F (175 degrees C). Grease a 9x13 inch baking dish. In a large bowl, mix together mashed sweet potatoes, 1/2 cup butter, milk, sugar, vanilla extract, and eggs.
+Spread sweet potato mixture into the prepared baking dish. In a small bowl, mix together brown sugar and flour. Cut in 1/3 cup butter until mixture is crumbly, then stir in pecans.
+Sprinkle pecan mixture over the sweet potatoes. Bake for 25 minutes in the preheated oven, or until golden brown.',
+16, 4, 'https://static01.nyt.com/images/2015/10/19/dining/19COOKING-CASSEROLE3/19COOKING-CASSEROLE3-articleLarge.jpg');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'sweet potato'),
+'sweet potatoes cooked and mashed', 4.5, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'butter'),
+'butter melted', (1/2), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'sugar'),
+'sugar', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'milk'),
+'milk', (1/3), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'vanilla extract'),
+'vanilla extract', (1/2), 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'egg'),
+'eggs beaten', 2, '');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'brown sugar'),
+'brown sugar', 1, 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'flour'),
+'flour', (1/2), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'butter'),
+'butter', (1/3), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Sweet Potato Casserole Dessert'),
+(select ingredient_id from ingredients where name = 'nut'),
+'favorite nuts or pecans', 1, 'cup');
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Sweet Potato Casserole Dessert'),
+(select recipe_id from recipes where name = 'oven'));
+
+insert into recipes values
+(default, (select user_id from users where username = 'Matthew'),
+'Slow Cooker Chicken Breast',
+'This comforting Slow Cooker Chicken Breast recipe is made with a mouthwatering blend of herbs and spices. Guaranteed to turn out perfectly every time!',
+'Pour water or chicken broth inside the insert of your slow cooker. Pat dry the chicken breasts with paper towels. Rub the chicken with olive oil and set aside.
+ In a small mixing bowl combine the salt, black pepper, paprika, garlic powder, onion powder, basil, and oregano; mix until thoroughly incorporated.
+ Rub the chicken breasts with the seasoning mixture. Transfer the chicken breasts to the slow cooker.
+ Cover and cook on LOW for 3 to 4 hours, or until internal temperature of the chicken registers at 165˚F. Use an Instant Read Meat Thermometer to check for doneness.
+ Remove chicken breasts from the slow cooker and let the chicken rest for about 5 to 8 minutes before cutting and serving.
+ If you’d like a bit of browning on the cooked chicken, put it under the broiler for about 3 to 4 minutes after you cooked it in the slow cooker.',
+4, 4, 'https://www.gimmesomeoven.com/wp-content/uploads/2013/09/Easy-Slow-Cooker-Shredded-Chicken-1.jpg');
+
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'chicken broth'),
+'low sodium chicken broth', (1/2), 'cup');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'chicken'),
+'boneless skinless chicken breasts', 4, '');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'olive oil'),
+'olive oil', 2, 'tbsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'salt'),
+'salt', 1, 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'black pepper'),
+'ground black pepper', (1/2), 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'paprika'),
+'sweet paprika', (1/2), 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'basil'),
+'dried basil', (1/2), 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'garlic powder'),
+'garlic powder', (1/2), 'tsp');
+
+insert into recipe_ingredients values
+((select recipe_id from recipes where name = 'Slow Cooker Chicken Breast'),
+(select ingredient_id from ingredients where name = 'oregano'),
+'dried oregano', (1/2), 'tsp');
+
+insert into recipe_appliances values
+((select appliance_id from appliances where name = 'Slow Cooker Chicken Breast'),
+(select recipe_id from recipes where name = 'slow cooker'));
 
 
 
