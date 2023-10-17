@@ -30,31 +30,31 @@ public class RecipeController {
     @RequestMapping(path = "/recipes/all", method =  RequestMethod.GET)
     public List<Recipe> findAll(Principal principal) {
         System.out.println(principal);
-        return recipeDao.getAll(new Long(userDao.findIdByUsername(principal.getName())));
+        return recipeDao.getAll((long) userDao.findIdByUsername(principal.getName()));
     }
 
     @RequestMapping(path = "/recipes/search/{recipe_id}", method = RequestMethod.GET)
     public Recipe findById(@PathVariable Long recipe_id, Principal principal) {
-        return recipeDao.getRecipeById(recipe_id, new Long(userDao.findIdByUsername(principal.getName())));
+        return recipeDao.getRecipeById(recipe_id, (long) userDao.findIdByUsername(principal.getName()));
     }
 
     @RequestMapping(path = "/recipes/add", method = RequestMethod.POST)
     public Recipe addRecipe(Principal principal, @RequestBody Recipe recipe){
-       recipe.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+       recipe.setUser_id((long) userDao.findIdByUsername(principal.getName()));
        recipe = recipeDao.addRecipe(recipe);
        return recipe;
     }
 
     @RequestMapping(path = "/recipes/edit", method = RequestMethod.PUT)
     public Recipe editRecipe(Principal principal, @RequestBody Recipe recipe){
-        recipe.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        recipe.setUser_id((long) userDao.findIdByUsername(principal.getName()));
         return recipeDao.modifyRecipe(recipe);
     }
 
     @RequestMapping(path = "/recipes/delete", method = RequestMethod.DELETE)
     public void deleteRecipe(Principal principal, @RequestBody Recipe recipe){
         System.out.println(principal);
-        recipe.setUser_id(new Long(userDao.findIdByUsername(principal.getName())));
+        recipe.setUser_id((long) userDao.findIdByUsername(principal.getName()));
         recipeDao.deleteRecipe(recipe);
     }
 

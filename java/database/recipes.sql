@@ -1396,7 +1396,7 @@ insert into recipe_appliances values ((select appliance_id from appliances where
 
 
 insert into recipes values 
-(default, (select user_id from users where username = 'Marcello'), 'The Best Chocolate Chip Cookie Recipe Ever4', 'This is the best chocolate chip cookie recipe ever. No funny ingredients, no chilling time, etc. Just a simple, straightforward, amazingly delicious, doughy yet still fully cooked, chocolate chip cookie that turns out perfectly every single time! ', 'Preheat oven to 375 degrees F. Line a baking pan with parchment paper and set aside.
+(default, (select user_id from users where username = 'bj'), 'The Best Chocolate Chip Cookie Recipe Ever4', 'This is the best chocolate chip cookie recipe ever. No funny ingredients, no chilling time, etc. Just a simple, straightforward, amazingly delicious, doughy yet still fully cooked, chocolate chip cookie that turns out perfectly every single time! ', 'Preheat oven to 375 degrees F. Line a baking pan with parchment paper and set aside.
 In a separate bowl mix flour, baking soda, salt, baking powder. Set aside.
 Cream together butter and sugars until combined.
 Beat in eggs and vanilla until fluffy.
@@ -1421,7 +1421,7 @@ insert into recipe_appliances values ((select appliance_id from appliances where
 
 
 insert into recipes values 
-(default, (select user_id from users where username = 'Marcello'), 'The Best New York Style Pizza Dough4', 'The best, authentic NY pizza dough recipe for making pizza dough at home. This is the best thin crust pizza ever! This recipe make four 14″ pizzas (about 2.5 to 3 lbs of dough).  You will never want take out again!', 'To mix the dough
+(default, (select user_id from users where username = 'bj'), 'The Best New York Style Pizza Dough4', 'The best, authentic NY pizza dough recipe for making pizza dough at home. This is the best thin crust pizza ever! This recipe make four 14″ pizzas (about 2.5 to 3 lbs of dough).  You will never want take out again!', 'To mix the dough
 
     Place water in mixing bowl.
     In a separate bowl, mix salt and yeast (and sugar if using) into flour
