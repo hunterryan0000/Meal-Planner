@@ -38,7 +38,7 @@ export default {
   },
 
   addMeal(meal) {
-    console.log(authHeader())
+    // console.log(authHeader())
     return http.post(`/meals/add`, meal, {headers: authHeader()})
   },
   getMeals(){

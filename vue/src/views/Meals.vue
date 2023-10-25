@@ -40,7 +40,7 @@ export default {
     created() {
         AuthService.getMeals()
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             this.mealList = response.data;
         })
     },

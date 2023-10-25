@@ -62,7 +62,7 @@ export default {
     created() {
         AuthService.searchPlan(this.$route.params.id)
         .then((r) => {
-            console.log(r.data);
+            // console.log(r.data);
             this.name = r.data.name;
             this.planList = [];
             this.mealplan = r.data;
@@ -70,7 +70,7 @@ export default {
             for(let day of r.data.days){
                 this.planList.push(day);
             }
-            console.log(this.planList);
+            // console.log(this.planList);
             AuthService.getMeals().then((re) => {
                 this.mealList = [];
                 for (let plan of re.data) {
@@ -88,11 +88,11 @@ export default {
             }
         },
         removeCard(dayId, cardId){
-            console.log(`${dayId} ${cardId}`);
-            console.log(this.planList[dayId-1].mealList);
+            // console.log(`${dayId} ${cardId}`);
+            // console.log(this.planList[dayId-1].mealList);
 
             let removeIndex = this.planList[dayId-1].mealList.map(item => item.id).indexOf(cardId);
-            console.log(removeIndex);
+            // console.log(removeIndex);
             ~removeIndex && this.planList[dayId-1].mealList.splice(removeIndex, 1)
         },
         savePlan(){
@@ -100,7 +100,7 @@ export default {
             if(this.name !== ''){
                 AuthService.editPlan(this.getPlan)
                 .then((r) => {
-                    console.log(r.data);
+                    // console.log(r.data);
                      this.$router.push('/mealplan-details/'+r.data.id);
                 })
             }

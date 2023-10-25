@@ -96,10 +96,10 @@ export default {
         }
     },
     created() {
-        console.log("searching");
+        // console.log("searching");
         AuthService.searchMeal(this.$route.params.id)
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             this.meal = response.data;
             this.mealDescription = response.data.description;
             this.mealName = response.data.name;
@@ -109,13 +109,13 @@ export default {
                 this.recipeList = [];
                 this.mealList = [];
                 for(let recipe of response.data){
-                    console.log(this.meal.mealsRecipesList);
+                    // console.log(this.meal.mealsRecipesList);
                     if(this.meal.mealsRecipesList.filter(e => e.recipe_id == recipe.id).length > 0){
                         this.mealList.push(recipe);
                     } else{
                         this.recipeList.push(recipe);
                     }
-                    console.log(recipe);
+                    // console.log(recipe);
                 }
             })
         })
@@ -125,7 +125,7 @@ export default {
             if(this.mealName !== ''){
                 AuthService.editMeal(this.getMeal)
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.$router.push('/meals/'+response.data.id);
                 })
                 this.$router.push({ name: 'meals' });

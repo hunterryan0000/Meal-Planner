@@ -57,7 +57,7 @@ export default {
     };
   },
   created() {
-    console.log("HECK YEAH");
+    // console.log("HECK YEAH");
     AuthService.searchPlan(this.$route.params.id).then((response) => {
       this.plan = response.data;
 
@@ -83,14 +83,14 @@ export default {
 
 
 
-      console.log("console log - This is the plan's data: " + response.data);
-      console.log(response.data);
+      // console.log("console log - This is the plan's data: " + response.data);
+      // console.log(response.data);
 
       let days = response.data.days;
 
       days.forEach((meal) => {
-        console.log(meal);
-        console.log("console log - This is the meal id: " + meal.meal_id);
+        // console.log(meal);
+        // console.log("console log - This is the meal id: " + meal.meal_id);
 
         meal.mealList.forEach((element) => {
           AuthService.searchMeal(element.id).then((response) => {
@@ -108,8 +108,8 @@ export default {
     },
     deleteMealPlan(mealPlan){
       AuthService.deleteMealPlan(mealPlan)
-      .then((r) => {
-        console.log(r.data);
+      .then(() => {
+        // console.log(r.data);
           this.$router.push('/mealplans');
       })
     },

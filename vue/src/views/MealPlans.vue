@@ -23,7 +23,7 @@ export default {
     created() {
         AuthService.getMealPlans()
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             this.allMealPlans = response.data;
         })
     },

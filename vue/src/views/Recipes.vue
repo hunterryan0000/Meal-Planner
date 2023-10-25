@@ -25,7 +25,7 @@ export default  {
   created() {
       AuthService.getRecipes()
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.recipeList = response.data;
       })
   },

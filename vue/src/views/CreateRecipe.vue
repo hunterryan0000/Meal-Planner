@@ -237,7 +237,7 @@ export default {
     },
     methods: {
         addIngredientToArray(){
-            console.log(this.ingredients)
+            // console.log(this.ingredients)
             let ingredientObject = {
                 ingredient_id: null,
                 name: this.ingredient,
@@ -254,7 +254,7 @@ export default {
                 alert("Ingredient needs measurement and quantity.");
             } else {
                 this.ingredients.push(ingredientObject);
-                console.log(this.ingredients);
+                // console.log(this.ingredients);
             }
             
         },
@@ -274,7 +274,7 @@ export default {
                 }
             }
             this.appliances.push(applianceObject);
-            console.log(this.appliances);
+            // console.log(this.appliances);
         },
         removeApplianceFromArray(appliance) {
             this.appliances = this.appliances.filter( element => {
@@ -282,11 +282,11 @@ export default {
             })
         },
         submitRecipe(){
-            console.log(this.getRecipe);
+            // console.log(this.getRecipe);
             if(this.name !== '' && this.instructions !== '') {
                 AuthService.addRecipe(this.getRecipe)
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.$router.push('/recipes/'+response.data.id);
             })
             } else {
@@ -296,14 +296,14 @@ export default {
         searchIngredientList(){
             this.ingredientList = [];
             if(this.ingredient !== '') {
-                console.log(this.ingredient);
+                // console.log(this.ingredient);
                 AuthService.findIngredient(this.ingredient)
                 .then((response) => {
                     response.data.forEach(element => {
                         this.ingredientList.push(element);
                     });
                 })
-                console.log(this.ingredientList);
+                // console.log(this.ingredientList);
             }
         },
         searchApplianceList(){
@@ -315,7 +315,7 @@ export default {
                         this.applianceList.push(element);
                     });
                 })
-                console.log(this.applianceList);
+                // console.log(this.applianceList);
             }
         }
     },

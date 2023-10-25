@@ -16,7 +16,7 @@ export default {
     },
     methods: {
     pushRecipeDetails(recipe){
-      console.log("hit");
+      // console.log("hit");
       this.$router.push('/recipes/'+recipe.id)
     }
   }

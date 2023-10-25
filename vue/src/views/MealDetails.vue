@@ -49,12 +49,12 @@ export default {
         AuthService.searchMeal(this.$route.params.id)
         .then((response) => {
             this.meal = response.data;
-            console.log(response.data);
+            // console.log(response.data);
 
             let recipes = response.data.mealsRecipesList;
 
             recipes.forEach((recipe) => {
-              console.log(recipe.recipe_id);
+              // console.log(recipe.recipe_id);
               AuthService.searchRecipe(recipe.recipe_id)
               .then((response) => {
               this.recipeList.push(response.data);

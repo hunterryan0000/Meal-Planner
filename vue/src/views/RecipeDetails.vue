@@ -54,17 +54,17 @@ export default {
     created() {
       AuthService.searchRecipe(this.$route.params.id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.recipe = response.data;
       })
   },
   methods: {
     editRecipe(recipe){
-      console.log("hit");
+      // console.log("hit");
       this.$router.push('/recipes/edit/'+recipe.id)
     },
     deleteRecipe(recipe){
-      console.log(recipe);
+      // console.log(recipe);
 
       AuthService.deleteRecipe(recipe)
       .then(() => {

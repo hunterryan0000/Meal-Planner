@@ -59,7 +59,7 @@ export default {
     created() {
         AuthService.getMeals()
         .then((r) => {
-            console.log(r.data);
+            // console.log(r.data);
             this.mealList = r.data;
         })
     },
@@ -69,33 +69,33 @@ export default {
             // for(let l=1; l<=this.days; l++){
             //     this.planList.push({id: l, mealList: []})
             // }
-            console.log(this.planList.length);
+            // console.log(this.planList.length);
             if(this.planList.length > this.days){
                 while(this.planList.length > this.days){
                     this.planList.pop();
                 }
             } else if(this.planList.length < this.days){
                 while(this.planList.length < this.days) {
-                    console.log("here it comes");
-                    console.log(this.planList[this.planList.length-1].id);
+                    // console.log("here it comes");
+                    // console.log(this.planList[this.planList.length-1].id);
                     this.planList.push({id: this.planList[this.planList.length-1].id+1, mealList: []})
                 }
             }
         },
         removeCard(dayId, cardId){
-            console.log(`${dayId} ${cardId}`);
-            console.log(this.planList[dayId-1].mealList);
+            // console.log(`${dayId} ${cardId}`);
+            // console.log(this.planList[dayId-1].mealList);
 
             let removeIndex = this.planList[dayId-1].mealList.map(item => item.id).indexOf(cardId);
-            console.log(removeIndex);
+            // console.log(removeIndex);
             ~removeIndex && this.planList[dayId-1].mealList.splice(removeIndex, 1)
         },
         savePlan(){
-            console.log(this.getPlan)
+            // console.log(this.getPlan)
             if(this.name !== ''){
                 AuthService.addPlan(this.getPlan)
                 .then((r) => {
-                    console.log(r.data);
+                    // console.log(r.data);
                       this.$router.push('/mealplan-details/'+r.data.id);
                 })
             }
